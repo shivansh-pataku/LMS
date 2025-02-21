@@ -1,0 +1,56 @@
+  .Container_Classes{
+    height: auto;
+    /* width: 70%; */ width: 200%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    column-gap: 0px;
+    justify-content: space-evenly;
+  }
+  .Container_Classes> div {
+    background-color: rgb(255, 255, 255);
+    /* height: auto; /* Allow height to adjust 
+    width: auto; Take full width of grid cell */
+    max-width: 260px;/* Prevents divs from becoming too large */
+    min-height: 240px; /* Maintain a minimum height */
+    border: 1px solid black;
+    font-size: clamp(16px, 2vw, 30px); /* Responsive font size */
+    border-radius: 8px;
+    box-shadow: 0vw 0vw 0.4vw 0.1vw #00000048;
+    width: 70%;
+  }
+
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .item:hover {
+  
+    box-shadow: vw vw 0.4vw 0.1vw #750303f9;
+  
+  
+  }
+  
+  .image img {
+    width: 270px;
+    height: 156px;
+    object-fit: cover;
+    border-radius: 7px;
+    object-fit: cover;
+  }
+  
+  .text {
+    margin-top: 2px;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  
+  

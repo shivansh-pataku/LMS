@@ -1,0 +1,46 @@
+  .Container_Subjects{
+    height: auto; /* Allow height to adjust */
+    width: 25%; /* Take full width of grid cell */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding-left: 20px
+
+  }
+  
+  .Container_Subjects li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    display: block;
+    width: 230px;
+    text-wrap:initial;
+    border-radius: 2px;
+    /* margin: 3px; */
+    padding: 4px 5px 5px 10px;
+    margin: -3px 4px 2px -6px;
+  }
+  
+  .Container_Subjects li a:hover
+  {  
+    background-color: #92929273;
+    font-weight: 500;
+    transition: background-color 0.6s ease;
+    transition: color 0.3s ease;
+    transition: font-weight 0.3s ease;
+    color: black;
+    /* margin: 0px 1px 0px 1px;
+    transition: margin 1s ease; 
+    outline: 1px solid rgba(0, 0, 0, 0.3);*/
+  }
+  
+  
+  .Container_Subjects ul {
+    display: flex;
+    flex-direction: column; /* Ensure top-to-bottom order */
+    list-style: none;
+    padding: 4px;
+    font-weight: 300;
+    
+  }

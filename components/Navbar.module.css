@@ -1,0 +1,52 @@
+
+.navbar {
+    background-color: #3333337b;
+    overflow: hidden;
+    display: flex;
+    padding: 7px 17px 7px 7px;
+
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 7px 15px 2px 15px;
+    border-radius: 2px;
+    display: block;
+    width: max-content;
+    font-weight: 400;
+}
+
+/* .navbar a:hover  */
+/* a:not(.logo):hover */
+a:not(.logo):hover
+{  
+    background-color: #778176;
+
+    transition: background-color 0.6s ease;
+    transition: color 0.3s ease;
+    color: black;
+    color: black;
+    /* margin: 0px 1px 0px 1px;
+    transition: margin 1s ease; 
+    outline: 1px solid rgba(0, 0, 0, 0.3);*/
+}
+
+.navbar .logo:hover {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6); /* Add shadow */
+}
+
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: auto;
+    padding: 2px 15px 6px 15px;
+    transition: text-shadow 0.3s ease;
+}
+
+
+.navbar .SignupLogin:hover {
+    color: rgb(41, 41, 135);
+    transition: color 0.3s ease;
+    margin: 0px 0px 0px 0px;
+}

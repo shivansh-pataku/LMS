@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    color: black;
+}
+
+
+.logo {
+    text-align: center;
+    font-size: 30px;
+    padding: 2px 15px 6px 15px;
+    font-weight: 500;
+    margin-bottom: 5cm;
+    background-color: rgba(0, 0, 0, 0.116);
+    text-decoration-color: black;
+}
+
+
+.headingsB {
+    text-align: center;
+    font-weight: 400;
+}
+
+#role {
+    padding: 1.2cqmin;
+    font-family: "Jost", serif;
+    font-weight: 500;
+    width: 265px;
+    border-width: 1.5px;
+    border-radius: 1.8px;
+
+}
+
+#container {
+
+
+    display: flex;
+    /* making itmes flexible so that can be moved */
+    justify-content: center;
+    /* moving the itms to centter*/
+    align-items: center;
+    padding: 0.5cm;
+
+
+}
+
+.box {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.ib {
+    padding: 1.2cqmin;
+    font-family: "Jost", serif;
+    font-weight: 500;
+    width: 250PX;
+    border-width: 1.5px;
+    border-radius: 1.8px;
+    box-sizing: border-box;
+
+}
+
+#submit {
+
+    font-weight: 600;
+    font-size: 14px;
+
+    padding: 0.1cm;
+    display: block;
+    margin: auto;
+    padding: 7px;
+    font-family: "Jost", serif;
+    font-weight: 500;
+    width: 70PX;
+    background-color: rgb(20, 193, 37);
+    border-width: 1px;
+    border-radius: 1.8px;
+
+}
+
+#forgot_password {
+    font-size: small;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    color: rgb(66, 66, 169);
+}
