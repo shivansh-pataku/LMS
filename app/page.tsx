@@ -8,6 +8,7 @@ export default function Home() {
       <Navbar />
       <Container_Subjects />
       <Container_Classes />
+      <h1>Shivansh</h1>
     </>
   );
 }
