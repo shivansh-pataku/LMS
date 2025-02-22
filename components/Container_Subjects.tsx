@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from './Container_Subjects.module.css';
 
 export default function Container_Subjects() {

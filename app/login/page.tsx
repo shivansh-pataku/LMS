@@ -1,7 +1,8 @@
-import React from "react";
-// import styles from "./login_signup.css"; 
-import '../../styles/login_signup.css';  // Importing CSSC // orrect way for global CSS
-
+'use client';
+import React from 'react';
+import Link from "next/link";
+import '../../styles/login_signup.css';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     return (
@@ -34,7 +35,7 @@ export default function Login() {
 
                         <br />
                         {/* Forgot Password Link */}
-                        <a id="forgot_password" href="forgot_password.html">Forgot password?</a>
+                        <Link id="forgot_password" href="/forgot_password">Forgot password?</Link>
                         <br /><br />
                     </form>
                 </div>

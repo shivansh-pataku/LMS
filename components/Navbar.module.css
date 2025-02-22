@@ -16,11 +16,13 @@
     font-weight: 400;
 }
 
+
+
 /* .navbar a:hover  */
 /* a:not(.logo):hover */
 a:not(.logo):hover
 {  
-    background-color: #778176;
+    background-color: rgba(41, 41, 135, 0.416);
 
     transition: background-color 0.6s ease;
     transition: color 0.3s ease;
@@ -45,7 +47,8 @@ a:not(.logo):hover
 }
 
 
-.navbar .SignupLogin:hover {
+
+.navbar .signupLogin:hover {
     color: rgb(41, 41, 135);
     transition: color 0.3s ease;
     margin: 0px 0px 0px 0px;

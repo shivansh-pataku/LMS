@@ -33,6 +33,7 @@ import Link from 'next/link'; //  Import useNavigate
 import styles from './Navbar.module.css';
 import { useRouter } from 'next/navigation';
 
+
 export default function Navbar() {
   const router = useRouter(); // Initialize navigate function
 
@@ -45,22 +46,29 @@ export default function Navbar() {
       <Link href="/about" className={styles.navLink}>About</Link>
 
 
-      <button
-        className={styles.SignupLogin}
+      {/* <button
+        className={styles.signupLogin}
         onClick={() => router.push('/login')} // ✅ Now navigate is defined
-        style={{ backgroundColor: "rgb(123, 123, 123)", marginLeft: "20px", border: "2px solid", borderRadius: "2px" }}
+        style={{ backgroundColor: "rgb(123, 123, 123)", marginLeft: "20px",  borderRadius: "2px", width: "50px" }}
+        // border: "2px solid",
       >
         <b>SignIn</b>
-      </button>
+      </button> */}
+
+      <Link href="/login" className={styles.signupLogin}
+      style={{ backgroundColor: "rgb(123, 123, 123)", marginLeft: "20px",  borderRadius: "2px", width: "50px" }}>
+        <b>SignIn</b>
+      </Link>
 
       {/* ✅ SignUp Button (Using Link) */}
-      <Link
-        href="/signup"
-        className={styles.SignupLogin}
-        style={{ backgroundColor: "rgb(9, 121, 9)", marginLeft: "10px", border: "2px solid", borderRadius: "2px", width: "50px" }}
+      <Link href="/signup" className={styles.signupLogin}
+        style={{ backgroundColor: "rgb(9, 121, 9)", marginLeft: "10px",  borderRadius: "2px", width: "50px" }}
+        // border: "2px solid",
       >
         <b>SignUp</b>
       </Link>
+
+
     </div>
   );
 }

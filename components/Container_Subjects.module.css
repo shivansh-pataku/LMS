@@ -5,7 +5,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     flex-direction: column;
-    padding-left: 20px
+    padding-left: 50px;
+    padding-top: 50px;
 
   }
   
