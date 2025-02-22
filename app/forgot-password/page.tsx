@@ -60,7 +60,7 @@ export default function Login() {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
-                        <br />
+                        <br /><br />
 
                         <input
                             className="ib"
@@ -74,17 +74,20 @@ export default function Login() {
                         <br /><br />
 
                         {otpVisible && (
-                            <input
-                                type="text"
-                                className="ib"
-                                placeholder="Enter the OTP"
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                                maxLength={6}
-                                required
-                            />
+                            <>
+                                <input
+                                    type="text"
+                                    className="ib"
+                                    placeholder="Enter the OTP"
+                                    value={otp}
+                                    onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
+                                    maxLength={6}
+                                    required
+                                />
+                                <br/><br/>
+                            </>
                         )}
-                        <br />
+
 
                         <input type="submit" id="submit" value={otpVisible ? "Submit" : "Confirm"} />
                     </form>

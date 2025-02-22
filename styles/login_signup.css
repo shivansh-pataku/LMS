@@ -61,12 +61,17 @@ body {
 
 .form_signup{
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns of equal width */
+    display: flex; /* came into single line in container_full */
+    flex-wrap: wrap; /* arrranged in lins if space is not available */
+
+
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* Creates 2 columns of equal width */
 
     row-gap: 27px; /* Space between grid rows */
-    column-gap: 0px;
-    width: 100%; /* Increased width to accommodate two columns */
+    column-gap: 25px;
+    width: 525px;/* Increased width to accommodate two columns */
     margin: 0 auto; /* Center the form */
     padding: 20px;
     /* background-color: white; */
@@ -78,13 +83,17 @@ body {
 }
 
 .ib {
-    padding: 1.2cqmin;
+    padding: 10px;
+    border: 0.5px solid ;
     font-family: "Jost", serif;
     font-weight: 500;
     width: 250PX;
     border-width: 1.5px;
     border-radius: 1.8px;
     box-sizing: border-box;
+    background-color: white;
+    font-size: small;
+    text-decoration-color: black;
 }
 
 #submit {
@@ -102,6 +111,7 @@ body {
     background-color: rgb(20, 193, 37);
     border-width: 1px;
     border-radius: 1.8px;
+    cursor: pointer;
 
 }
 

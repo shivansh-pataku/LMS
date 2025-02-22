@@ -9,9 +9,9 @@ export default function Login() {
         <>
             {/* Navigation Bar */}
             <nav className="logo">
-                <a href="Homepage.html" style={{ textDecoration: "none", color: "black" }}>
+                <Link href="/" style={{ textDecoration: "none", color: "black" }}>
                     Jupyter
-                </a>
+                </Link>
             </nav>
 
             {/* Heading */}
@@ -24,19 +24,19 @@ export default function Login() {
 
                         {/* Email Input */}
                         <input className="ib" placeholder="E-mail" type="email" id="email" name="email" required />
-                        <br /><br />
+                        <br/><br/>
 
                         {/* Password Input */}
                         <input className="ib" placeholder="Password" type="password" id="password" name="password" required />
-                        <br /><br /><br />
+                        <br/><br/><br/>
 
                         {/* Submit Button */}
                         <input style={{ fontWeight: 600, fontSize: "14px" }} type="submit" id="submit" value="Login" />
 
-                        <br />
+                        <br/>
                         {/* Forgot Password Link */}
-                        <Link id="forgot_password" href="/forgot_password">Forgot password?</Link>
-                        <br /><br />
+                        <Link id="forgot_password" href="/forgot-password">Forgot password?</Link>
+                        <br/><br/>
                     </form>
                 </div>
             </div>

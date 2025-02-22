@@ -16,17 +16,43 @@ export default function Signup() {
             state : '',
             country : '',
             DOB : '',
-            role : ''
-
+            role : '',
+            department : '',
+            profileImage: null as File | null,
         });
 
 
-        const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 
+        const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
+            
+            // Create FormData to send image
+            const submitData = new FormData();
+            Object.entries(formData).forEach(([key, value]) => {
+                if (key === 'profileImage' && value) {
+                    submitData.append('profileImage', value);
+                } else {
+                    submitData.append(key, String(value));
+                }
+            });
+        
             console.log('form submitted', formData);
+            // Add your API call here to handle form submission with image
+        };
 
-        }
+        const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.target.files?.[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                    alert('Image size should be less than 5MB');
+                    return;
+                }
+                setFormData(prev => ({
+                    ...prev,
+                    profileImage: file
+                }));
+            }
+        };
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             const {name, value} = e.target;
@@ -73,7 +99,7 @@ return (
 <input  className="ib" placeholder="e-mail" type="email" name="email" value={formData.email} onChange={handleChange} />
 
 {/* <label htmlFor="DOB"> </label><br/> */}
-<input  className="ib" placeholder="Date of Birth" type="date" name="DOB" value={formData.DOB}  onChange={handleChange} />
+<input  className="ib" placeholder="Date of Birth" type="date" name="DOB" value={formData.DOB}  onChange={handleChange} style={{cursor: 'pointer'}}/>
 
 {/* <label htmlFor="role"></label> */}
 <select name="role" className="ib" value={formData.role} onChange={handleChange}>
@@ -83,28 +109,62 @@ return (
                     <option value="Admin">Admin</option>
                 </select>
 
+<select name="department" className="ib" value={formData.department} onChange={handleChange}>
+                    <option value="" defaultValue="">Your Department</option>
+                    <option value="MCA">MCA</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Library Sciences">Library Sciences</option>
+                </select>
+
 {/* CITY/TOWN,COUNTRY, */}
 
 {/* <label htmlFor="City/Town"> </label><br/> */}
-<input  className="ib" placeholder="City/Town" type="text" name="City_Town" value={formData.city_town}  onChange={handleChange} />
+<input  className="ib" placeholder="City/Town" type="text" name="city_town" value={formData.city_town}  onChange={handleChange} />
 
 {/* <label htmlFor="State"> </label> */}
-<input  className="ib" placeholder="State" type="text" name="State" value={formData.state}  onChange={handleChange} />
+<input  className="ib" placeholder="State" type="text" name="state" value={formData.state}  onChange={handleChange} />
 
 {/* <label htmlFor="Country"> </label><br/> */}
-<input  className="ib" placeholder="Country" type="text" name="Country" value={formData.country}  onChange={handleChange} />
-
-{/* DATE BRITH */}
-
-
-
-{/* <label htmlFor="City/Town"> </label> */}
-<input  className="ib" placeholder="City/Town" type="text" name="City/Town" value={formData.lastName}  onChange={handleChange} />
-
+<input  className="ib" placeholder="Country" type="text" name="country" value={formData.country}  onChange={handleChange} />
 
 
 {/* <label htmlFor="password"> </label><br/> */}
-<input  className="ib" placeholder="Please set a strong password" type="password" name="password"  value={formData.password} onChange={handleChange} required /><br/>
+<input  className="ib" placeholder="Please set a strong password" type="password" name="password"  value={formData.password} onChange={handleChange} required />
+
+
+
+{/* //////////////////////////////////////////////////////////////////////////////////// */}
+
+
+{/* Profile Image Upload */}
+<div className="image-upload-container">
+    <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        className="ib"
+        id="profile-image"
+        style={{ display: 'none' }}
+    />
+
+    <label 
+        htmlFor="profile-image" 
+        className="ib" 
+        style={{
+            display: 'flex',
+            color: 'green',
+            cursor: 'pointer'
+  
+        }}
+    >
+        {formData.profileImage ? 'Image Selected ✓' : 'Upload Profile Picture'}
+    </label>
+</div>
+
+
+
+
+{/* //////////////////////////////////////////////////////////////////////////////////// */}
 
 
 <input style={{fontWeight: 600, fontSize: "14px"}} type="submit" id="submit" value="signup" name="form" />
