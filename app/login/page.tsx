@@ -1,42 +1,55 @@
-'use client';
-import React from 'react';
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import '../../styles/login_signup.css';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import "../../styles/login_signup.css";
 
 export default function Login() {
+    const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError("");
+
+        const result = await signIn("credentials", {
+            email,
+            password,
+            redirect: false, // Prevent automatic redirection
+        });
+
+        if (result?.error) {
+            setError(result.error);
+        } else {
+            router.push("/dashboard"); // Redirect after successful login
+        }
+    };
+
     return (
         <>
-            {/* Navigation Bar */}
             <nav className="logo">
                 <Link href="/" style={{ textDecoration: "none", color: "black" }}>
                     Jupyter
                 </Link>
             </nav>
 
-            {/* Heading */}
             <h2 className="headingsB">Login to explore</h2>
 
-            {/* Container */}
             <div id="container">
                 <div className="box">
-                    <form id="signupForm"> {/* Form without action & method */}
-
-                        {/* Email Input */}
-                        <input className="ib" placeholder="E-mail" type="email" id="email" name="email" required />
-                        <br/><br/>
-
-                        {/* Password Input */}
-                        <input className="ib" placeholder="Password" type="password" id="password" name="password" required />
-                        <br/><br/><br/>
-
-                        {/* Submit Button */}
-                        <input style={{ fontWeight: 600, fontSize: "14px" }} type="submit" id="submit" value="Login" />
-
-                        <br/>
-                        {/* Forgot Password Link */}
+                    <form id="signupForm" onSubmit={handleSubmit}>
+                        <input className="ib" placeholder="E-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <br /><br />
+                        <input className="ib" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <br /><br /><br />
+                        <input style={{ fontWeight: 600, fontSize: "14px" }} type="submit" value="Login" />
+                        {error && <p style={{ color: "red" }}>{error}</p>}
+                        <br />
                         <Link id="forgot_password" href="/forgot-password">Forgot password?</Link>
-                        <br/><br/>
+                        <br /><br />
                     </form>
                 </div>
             </div>

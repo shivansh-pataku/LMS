@@ -64,7 +64,7 @@ body {
     display: flex; /* came into single line in container_full */
     flex-wrap: wrap; /* arrranged in lins if space is not available */
 
-
+  
     /* display: grid; */
     /* grid-template-columns: repeat(2, 1fr); */
     /* Creates 2 columns of equal width */
