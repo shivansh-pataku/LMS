@@ -22,6 +22,10 @@
     "next": "^15.1.7",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.0",
+    "@ag-grid-community/client-side-row-model": "^32.3.4",
+    "@ag-grid-community/core": "^32.3.4",
+    "ag-grid-community": "^33.1.1",
+    "ag-grid-react": "^33.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0"

@@ -110,7 +110,7 @@ export default function Signup() {
                         <input className="ib" placeholder="State" type="text" name="state" value={formData.state} onChange={handleChange} />
                         <input className="ib" placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
                         <input className="ib" placeholder="Please set a strong password" type="password" name="password" value={formData.password} onChange={handleChange} required />
-                        
+
                         {/* Profile Image Upload */}
                         <div className="image-upload-container">
                             <input
@@ -121,9 +121,9 @@ export default function Signup() {
                                 id="profile-image"
                                 style={{ display: 'none' }}
                             />
-                            <label 
-                                htmlFor="profile-image" 
-                                className="ib" 
+                            <label
+                                htmlFor="profile-image"
+                                className="ib"
                                 style={{
                                     display: 'flex',
                                     color: 'green',
