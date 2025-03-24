@@ -1,49 +1,87 @@
 'use client';
+
 import React, { FormEvent, useState } from 'react';
-import '../../styles/login_signup.css';
-// import React from 'react';
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
-;
+import Link from 'next/link';
+import '../../styles/login_signup.css';
 
-
-
-
-
-export default function Login() {
-
+export default function ForgotPassword() {
     const [otpVisible, setOtpVisible] = useState(false);
-    const [email, setEmail] = useState("");
-    const [contact, setContact] = useState("");
-    const [otp, setOtp] = useState("");
+    const [email, setEmail] = useState<string>('');
+    const [otp, setOtp] = useState<string>('');
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (!email || !contact) {
-            alert("Please enter a valid email and contact.");
+        if (!email) {
+            alert("Please enter a valid email.");
             return;
         }
 
         if (!otpVisible) {
-            // First click: Show OTP input
-            setOtpVisible(true);
-            alert("Please check your email for OTP");
+            // ✅ Request OTP
+            try {
+                setLoading(true);
+                const response = await fetch("/api/auth/forgot-password", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.message || "Failed to send OTP");
+
+                alert("OTP sent successfully!");
+                setOtpVisible(true);
+            } catch (error: unknown) { // ✅ Fixed ESLint issue
+                if (error instanceof Error) {
+                    console.error("❌ Error sending OTP:", error.message);
+                    alert(error.message);
+                } else {
+                    alert("An unexpected error occurred.");
+                }
+            } finally {
+                setLoading(false);
+            }
         } else {
-            // Second click: Validate and submit
+            // ✅ Verify OTP
             if (otp.length !== 6) {
                 alert("Please enter a valid 6-digit OTP.");
                 return;
             }
-            alert("Submitted!");
-            // Here you would normally send the data to a backend API.
+
+            try {
+                setLoading(true);
+                const response = await fetch("/api/auth/verify-otp", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, otp })
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.message || "OTP verification failed");
+
+                alert("OTP Verified! Redirecting to reset password...");
+                router.push(`/reset-password?email=${encodeURIComponent(email)}`);
+            } catch (error: unknown) { // ✅ Fixed ESLint issue
+                if (error instanceof Error) {
+                    console.error("❌ Error verifying OTP:", error.message);
+                    alert(error.message);
+                } else {
+                    alert("An error occurred. Please try again.");
+                }
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
     return (
         <div>
             <nav className="logo">
-                <a href="/" style={{ textDecoration: "none", color: "black" }}>Jupyter</a>
+                <Link href="/" style={{ textDecoration: "none", color: "black" }}>Jupyter</Link>
             </nav>
 
             <h2 className="headingsB">Confirm to change your password</h2>
@@ -51,24 +89,12 @@ export default function Login() {
             <div id="container">
                 <div className="box">
                     <form onSubmit={handleSubmit}>
-
                         <input
                             className="ib"
                             placeholder="E-mail"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <br /><br />
-
-                        <input
-                            className="ib"
-                            placeholder="Contact"
-                            type="text"
-                            value={contact}
-                            onChange={(e) => setContact(e.target.value.replace(/[^0-9]/g, ''))}
-                            maxLength={10}
                             required
                         />
                         <br /><br />
@@ -80,16 +106,20 @@ export default function Login() {
                                     className="ib"
                                     placeholder="Enter the OTP"
                                     value={otp}
-                                    onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
+                                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))} // ✅ Allow only numbers
                                     maxLength={6}
                                     required
                                 />
-                                <br/><br/>
+                                <br /><br />
                             </>
                         )}
 
-
-                        <input type="submit" id="submit" value={otpVisible ? "Submit" : "Confirm"} />
+                        <input
+                            type="submit"
+                            id="submit"
+                            value={loading ? "Processing..." : otpVisible ? "Submit OTP" : "Request OTP"}
+                            disabled={loading}
+                        />
                     </form>
                 </div>
             </div>
