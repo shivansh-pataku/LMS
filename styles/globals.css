@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet'); */
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
@@ -23,6 +24,15 @@ body {
     background-color: snow;
 
 }
+
+/* html, body {
+    height: 100%;
+    overflow: hidden;
+    Prevents whole page from scrolling
+  } */
+  
+
+  
 
 /* #root {
     max-width: 1280px;
@@ -72,3 +82,266 @@ body {
     gap : 20px;
     padding: 20px;
 } 
+
+.classic_heading{
+    color: #184e10;
+    font-family: jost;
+    font-weight: 500;
+    font-size:x-large;
+    margin-top: 12px;
+    margin-bottom: 1px;
+    padding: 1px;
+}
+
+.row{
+    width: 1011px;
+    height: 25px;
+    border-collapse: collapse;
+    table-layout: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #184e10;
+    font-family: Commissioner;
+    font-weight: 400;
+    font-size: small;
+    align-items: center;
+    border-radius: 1px;
+    align-content: space-between;
+}
+
+
+
+
+.TV ,.TA{
+    height: 17px;
+    /* background-color: #184e1044; */
+    text-align: left;
+    padding: 3px;
+    margin: 1px;
+    width: 13%;
+    font-family: Commissioner;
+    font-weight: 400;
+    /* border: 1px solid #184e10/; */
+}
+
+.TVE{
+    height: 17px;
+    /* background-color: #184e1044; */
+    text-align: left;
+    padding: 3px;
+    margin: 1px;
+    width: 13%;
+    font-family: Commissioner;
+    font-weight: 400;
+    z-index: 1;
+    background-color: rgba(108, 68, 75, 0.187);
+    border-radius: 2px;
+    border : 1px solid #184e10;
+    border: none;
+}
+
+.TV{
+background-color: #184e1048;
+font-weight: 500;
+}
+
+.TA{
+background-color: #10264e62;
+}
+
+
+
+
+#a1{
+    width: 200px;
+}
+#a2{
+    width: 113px;
+}
+#a3{
+    width: 55px;
+}
+#a4{
+    width: 62px;
+}
+#a5{
+    width: 60px;
+}
+#a6{
+    width: 350px
+}
+#a7{
+    width: 115px;
+}
+
+
+.submit {
+
+    font-size: 14px;
+    /* padding: .1cm; */
+    display: block;
+    /* margin: auto; */
+    /* margin-top: 1px; */
+    padding: 0px;
+    font-family: Jost, serif;
+    font-weight: 500;
+    width: 123px;
+    height: 23px;
+    background-color: #14c125;
+    border-width: 1px;
+    border-radius: 1.8px;
+    cursor: pointer;
+}
+
+
+
+/* /////////////////////////////////////////////////////// AG GRIDS CSS /////////////////////////////////////////////////////// */
+
+
+/* Custom AG Grid Styling */
+.ag-theme-alpine {
+    font-family: comissioner;
+    font-size: 14px;
+    /* height: 50px; */
+    height: 60px !important;
+  }
+.div.ag-viewport.ag-center-cols-viewport{
+
+}
+  /* Header Styling */
+  .ag-header {
+    /* background-color: #007bff !important;  */
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Column Headers */
+  .ag-header-cell {
+    /* height: 40px !important;
+    line-height: 40px !important; */
+    font-size: 14px;
+    /* padding: 10px; */
+    text-transform: uppercase;
+    /* border-right: 1px solid #ccc; */
+    /* height: 50px; */
+  }
+  
+  
+  /* Row Styling */
+  .ag-row {
+    background-color: #f9f9f9; /* Light gray background */
+  }
+  
+  /* Alternate Row Styling */
+  .ag-row:nth-child(even) {
+    background-color: #e9ecef; /* Slightly darker */
+  }
+  
+  /* Selected Row Styling */
+  .ag-row-selected {
+    background-color: #ffeeba !important; /* Yellow highlight */
+    color: black;
+    font-weight: bold;
+  }
+  
+  /* Editable Cell Styling */
+  .ag-cell-editable {
+    background-color: #d4edda !important; /* Light green */
+  }
+  
+  /* Grid Borders */
+  .ag-root-wrapper {
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); */
+  }
+
+  .ag-root-wrapper.ag-layout-normal {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;}
+  
+  /* Grid Height and Width */
+  .ag-theme-alpine {
+    /* height: 350px  !important; */
+    height:70%  !important;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  /* Centering Cell Content */
+  .ag-cell {
+    text-align: left;
+    padding: 2px;
+    font-family: commissioner;
+    color: rgb(18, 70, 106);
+    font-weight: 400;
+    font-size: small;
+
+  }
+  
+element.style {
+    left: 0px;
+    width: 100px;
+    height: 20px;
+
+}
+
+.custom-header {
+    background-color: #00c40d9c !important; /* Orange */
+    color: white !important;
+    font-family: commissioner;
+    height: 10px;
+  }
+
+.course-name{
+    background-color: #00c40d9c !important; /* Orange */
+    color: white !important;
+    font-family: commissioner;
+    /* height: 10px; */
+  }
+
+
+  /* /////////////////////////////////////// */
+
+ 
+  /* Customize scrollbar */
+  .ag-body-viewport::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .ag-body-viewport::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .ag-body-viewport::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 5px;
+  }
+  
+  .ag-paging-panel {
+    border-top: 1px solid;
+    border-top-color: var(--ag-border-color);
+    color: var(--ag-secondary-foreground-color);
+    height: var(--ag-header-height);
+    font-family: Commissioner;
+    font-size: 15px;
+    font-weight:400;
+    background-color: bisque;
+    height:fit-content; 
+
+ 
+}
+
+.ag-paging-panel > .ag-paging-page-size .ag-wrapper {
+    min-width: calc(var(--ag-grid-size)* 10);
+    border-radius: 10%;
+    background-color: rgba(204, 157, 99, 0.355);
+
+}
+
+/* /////////////////////////////////////////////////////////////////////////// */
+
