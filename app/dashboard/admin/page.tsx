@@ -5,6 +5,7 @@ import axios from "axios";
 import DashboardLayout from "@/components/DashboardLayout";
 import Image from "next/image";
 
+// Define Pending User Type
 type PendingUser = {
     id: number;
     first_name: string;
@@ -18,25 +19,68 @@ type PendingUser = {
     role_name: string;
 };
 
-const APPROVABLE_ROLES = [1, 2]; // Replace hardcoded role IDs
+// Define Pending Course Type
+type PendingCourse = {
+    id: number;
+    course_code: string;
+    course_name: string;
+    department: string;
+    teacher_name: string;
+    teacher_email: string;
+    course_category: string;
+    description: string;
+    course_start_date: string;
+    course_end_date: string;
+    created_at: string;
+    credit: number;
+    semester: number;
+    course_image: string | null;
+};
+
+const APPROVABLE_ROLES = [1, 2];
 
 export default function AdminDashboard() {
     const [pendingUsers, setPendingUsers] = useState<PendingUser[]>([]);
+    const [pendingCourses, setPendingCourses] = useState<PendingCourse[]>([]);
+    const [rejectionReason, setRejectionReason] = useState<{ [key: number]: string }>({});
 
     useEffect(() => {
         fetchPendingUsers();
+        fetchPendingCourses();
     }, []);
 
+    // Fetch Pending Users
     const fetchPendingUsers = async () => {
         try {
             const response = await axios.get<PendingUser[]>("/api/admin/get-pending-users");
+            console.log("Pending Users API Response:", response.data); // Log the response
             setPendingUsers(response.data.filter(user => APPROVABLE_ROLES.includes(user.role_id)));
         } catch (err) {
             console.error("Error fetching pending users:", err);
         }
     };
+    
+    // const fetchPendingUsers = async () => {
+    //     try {
+    //         const response = await axios.get<PendingUser[]>("/api/admin/get-pending-users");
+    //         setPendingUsers(response.data.filter(user => APPROVABLE_ROLES.includes(user.role_id)));
+    //     } catch (err) {
+    //         console.error("Error fetching pending users:", err);
+    //     }
+    // };
 
-    const handleApproval = async (userId: number, approve: boolean) => {
+    // Fetch Pending Courses
+    const fetchPendingCourses = async () => {
+        try {
+            const response = await axios.get<PendingCourse[]>("/api/admin/get-pending-courses");
+            setPendingCourses(response.data);
+        } catch (err) {
+            console.error("Error fetching pending courses:", err);
+        }
+    };
+
+    // Handle User Approval
+    const handleUserApproval = async (userId: number, approve: boolean) => {
         try {
             await axios.post("/api/admin/approve-user", { userId, approve });
             setPendingUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
@@ -47,13 +91,31 @@ export default function AdminDashboard() {
         }
     };
 
+    // Handle Course Approval
+    const handleCourseApproval = async (courseId: number, approve: boolean) => {
+        try {
+            await axios.post("/api/admin/approve-course", {
+                courseId,
+                approve,
+                rejectionReason: !approve ? rejectionReason[courseId] || null : undefined,
+            });
+            setPendingCourses(prevCourses => prevCourses.filter(course => course.id !== courseId));
+            alert(approve ? "Course approved!" : "Course rejected!");
+        } catch (error) {
+            console.error("Error updating course:", error);
+            alert("Failed to process request.");
+        }
+    };
+
     return (
         <DashboardLayout role="admin">
             <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-            <h2 className="mt-4 text-xl">Pending Approvals</h2>
+            
+            {/* ✅ User Approvals Section */}
+            <h2 className="mt-4 text-xl">Pending User Approvals</h2>
             <button 
                 className="mt-2 mb-4 bg-blue-500 text-white px-4 py-2 rounded-md"
-                onClick={fetchPendingUsers}
+                onClick={() => { fetchPendingUsers(); fetchPendingCourses(); }}
             >
                 Refresh List
             </button>
@@ -83,7 +145,7 @@ export default function AdminDashboard() {
                                             width={40} 
                                             height={40} 
                                             className="rounded-full"
-                                            unoptimized // Allows Base64 images to work
+                                            unoptimized
                                         />
                                     ) : (
                                         <Image 
@@ -99,18 +161,19 @@ export default function AdminDashboard() {
                                 <td className="p-2">{user.email}</td>
                                 <td className="p-2">{user.contact || "N/A"}</td>
                                 <td className="p-2">{user.department || "N/A"}</td>
-                                <td className="p-2">{user.role_name}</td>
+                                <td className="p-2">{user.role_id === 1 ? "Student" : user.role_id === 2 ? "Teacher" : "Unknown"}</td>
+
                                 <td className="p-2">{new Date(user.created_at).toLocaleDateString()}</td>
                                 <td className="p-2">
                                     <button 
                                         className="bg-green-500 text-white px-4 py-1 rounded-md mr-2"
-                                        onClick={() => handleApproval(user.id, true)}
+                                        onClick={() => handleUserApproval(user.id, true)}
                                     >
                                         Approve
                                     </button>
                                     <button 
                                         className="bg-red-500 text-white px-4 py-1 rounded-md"
-                                        onClick={() => handleApproval(user.id, false)}
+                                        onClick={() => handleUserApproval(user.id, false)}
                                     >
                                         Reject
                                     </button>
@@ -121,6 +184,86 @@ export default function AdminDashboard() {
                         <tr>
                             <td colSpan={8} className="text-center p-4">No pending approvals.</td>
                         </tr>
+                    )}
+                </tbody>
+            </table>
+            {/* ✅ Course Approvals Section */}
+            <h2 className="mt-4 text-xl">Pending Course Approvals</h2>
+            <table className="mt-4 w-full border-collapse border border-gray-200">
+                <thead>
+                    <tr className="bg-gray-100">
+                        <th className="border p-2">Image</th>
+                        <th className="border p-2">Course Code</th>
+                        <th className="border p-2">Course Name</th>
+                        <th className="border p-2">Department</th>
+                        <th className="border p-2">Teacher</th>
+                        <th className="border p-2">Category</th>
+                        <th className="border p-2">Semester</th>
+                        <th className="border p-2">Credits</th>
+                        <th className="border p-2">Start Date</th>
+                        <th className="border p-2">End Date</th>
+                        <th className="border p-2">Description</th>
+                        <th className="border p-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {pendingCourses.length > 0 ? (
+                        pendingCourses.map(course => (
+                            <tr key={course.id} className="border">
+                                <td className="p-2">
+                                    {course.course_image ? (
+                                        <Image 
+                                            src={course.course_image} 
+                                            alt="Course"
+                                            width={60} 
+                                            height={60} 
+                                            className="rounded-md"
+                                        />
+                                    ) : (
+                                        <Image
+                                            src="/no-image.png" 
+                                            alt="No Image"
+                                            width={60} 
+                                            height={60} 
+                                            className="rounded-md"
+                                        />
+                                    )}
+                                </td>
+                                <td className="p-2">{course.course_code}</td>
+                                <td className="p-2">{course.course_name}</td>
+                                <td className="p-2">{course.department}</td>
+                                <td className="p-2">{course.teacher_name}</td>
+                                <td className="p-2">{course.course_category}</td>
+                                <td className="p-2">{course.semester}</td>
+                                <td className="p-2">{course.credit}</td>
+                                <td className="p-2">{course.course_start_date}</td>
+                                <td className="p-2">{course.course_end_date}</td>
+                                <td className="p-2">{course.description}</td>
+                                <td className="p-2">
+                                    <button 
+                                        className="bg-green-500 text-white px-4 py-1 rounded-md mr-2"
+                                        onClick={() => handleCourseApproval(course.id, true)}
+                                    >
+                                        Approve
+                                    </button>
+                                    <button 
+                                        className="bg-red-500 text-white px-4 py-1 rounded-md"
+                                        onClick={() => handleCourseApproval(course.id, false)}
+                                    >
+                                        Reject
+                                    </button>
+                                    <input
+                                        type="text"
+                                        placeholder="Rejection Reason"
+                                        className="ml-2 px-2 py-1 border rounded-md"
+                                        value={rejectionReason[course.id] || ""}
+                                        onChange={(e) => setRejectionReason(prev => ({ ...prev, [course.id]: e.target.value }))}
+                                    />
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr><td colSpan={12} className="text-center p-4">No pending courses.</td></tr>
                     )}
                 </tbody>
             </table>
