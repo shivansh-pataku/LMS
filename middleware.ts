@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest) {
 
     const rolePaths: Record<number, string> = {
         4: "/dashboard/master-admin",
-        3: "/`dashboard`/admin",
+        3: "/dashboard/admin",
         2: "/dashboard/teacher",
         1: "/dashboard/student",
     };
