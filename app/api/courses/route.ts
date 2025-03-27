@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import mysql from 'mysql2/promise';
 
-// Create a connection pool
+// Create a connection pool; session : dept, teacher name; teacher email id
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
@@ -19,8 +19,8 @@ export async function POST(request: Request) {  // FIX: Added request parameter
         connection = await pool.getConnection();
 
         // Execute the queries
-        const [alloted] = await connection.query("SELECT * FROM courses WHERE status IN ('active', 'inactive')");
-        const [suggested] = await connection.query("SELECT * FROM courses WHERE status IN ('suggested', 'rejected')");
+        const [alloted] = await connection.query("SELECT * FROM courses WHERE status IN ('active', 'inactive')");// approved ,
+        const [suggested] = await connection.query("SELECT * FROM courses WHERE status IN ('suggested', 'rejected')");// pending, rejected
 
         // Return the results
         return NextResponse.json({ alloted, suggested }, { status: 200 });  // FIX: Correct response format

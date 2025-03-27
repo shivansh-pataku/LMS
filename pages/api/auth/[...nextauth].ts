@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
                 semester: token.semester as number || 1, // Default to 1
             };
             
-            console.log("Generated Session:", session); // Log session in the terminal
+            // console.log("Generated Session:", session); // Log session in the terminal
             return session;
         },
     },
