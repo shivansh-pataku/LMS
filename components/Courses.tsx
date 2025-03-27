@@ -67,7 +67,7 @@ export default function Courses() {
 
     const columnDefs = [
         { 
-        field: "id", 
+        field: "id", // give normal sr no
         headerName: "Sr.", 
         sortable: true, 
         filter: true,
