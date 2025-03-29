@@ -1,0 +1,49 @@
+.cover{
+    width: 100%; /* Fixed width */
+    height: 300px; /* Fixed height */
+    max-width: 100%; /* Prevents exceeding parent width */
+    max-height: 300px; /* Ensures it doesn't exceed viewport height */
+    overflow: hidden; /* Prevents image overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 3px #88b561;
+    z-index: 9;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+.cover img{
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    object-fit: cover; /* Prevents image from stretching */
+    object-position:center; /* Helps in centering the image */
+    z-index: 8;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+.dp{
+    width: 170px; /* Responsive image */
+    height: 170px; /* Maintain aspect ratio */
+    border: solid 4px #d1c4a9;
+    border-radius: 100%;
+    position: absolute;
+    top : 210px;
+    right: 46%;
+    z-index: 10;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+.dp img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+
+.info{
+    height: 800px;
+    width: 100%;
+    padding: 10px;
+    z-index: 1;
+    background-color:rgba(245, 222, 179, 0.496)
+}
+

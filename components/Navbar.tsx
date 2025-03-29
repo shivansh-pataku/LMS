@@ -17,9 +17,10 @@ export default function Navbar() {
       <Link href="#home" className={styles.navLink}>Home</Link>
       <Link href="#services" className={styles.navLink}>Services</Link>
       <Link href="#contact" className={styles.navLink}>Contact</Link>
-      <Link href="#about" className={styles.navLink}>About</Link>
-      <button onClick={handleLogin} className={styles.SignupLogin}> <b>SignIn</b> </button>
-      <Link href="/signup" className={styles.SignupLogin}> <b>Signup</b> </Link>
+      <Link href="/profile" className={styles.navLink}>Profile</Link>
+      {/* About #About */}
+      {/* <button onClick={handleLogin} className={styles.SignupLogin}> <b>SignIn</b> </button>
+      <Link href="/signup" className={styles.SignupLogin}> <b>Signup</b> </Link> */}
       <Link href="/user" className={styles.navLink}>Component</Link>
 
 
