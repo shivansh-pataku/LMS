@@ -14,6 +14,7 @@ type ApprovedUser = {
     password: string;
     role: Role;
     department: string;
+    semester: number;
     created_at: string;
 };
 
@@ -23,14 +24,19 @@ declare module "next-auth" {
         user: {
             id: string;
             role: Role;
-            name?: string;
+            first_name: string;
+            last_name: string;
             email?: string;
             department?: string;
+            semester: number;
         };
     }
     interface User {
         role: Role;
         department: string;
+        first_name: string;
+        last_name: string;
+        semester: number;
     }
 }
 
@@ -48,9 +54,11 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 try {
-                    // Fetch user from MySQL
+                    // Fetch user from MySQL (Include `semester`)
                     const [rows]: [RowDataPacket[], unknown] = await db.query(
-                        "SELECT id, first_name, last_name, email, password, role_id AS role, department, created_at FROM users WHERE email = ?",
+                        `SELECT id, first_name, last_name, email, password, role_id AS role, 
+                                department, semester, created_at 
+                         FROM users WHERE email = ?`,
                         [credentials.email]
                     );
 
@@ -62,10 +70,13 @@ export const authOptions: NextAuthOptions = {
 
                     return { 
                         id: user.id.toString(), 
+                        first_name: user.first_name,
+                        last_name: user.last_name,
                         name: `${user.first_name} ${user.last_name}`, 
                         email: user.email, 
                         role: user.role,
                         department: user.department,
+                        semester: user.semester,
                     };
                 } catch (error) {
                     console.error("Authentication Error:", error);
@@ -81,6 +92,9 @@ export const authOptions: NextAuthOptions = {
                 token.role = user.role;
                 token.email = user.email;
                 token.department = user.department;
+                token.first_name = user.first_name;
+                token.last_name = user.last_name;
+                token.semester = user.semester;
             }
             return token;
         },
@@ -90,10 +104,12 @@ export const authOptions: NextAuthOptions = {
                 role: token.role as Role || "student",
                 email: token.email || "",
                 department: token.department as string || "",
+                first_name: token.first_name as string || "",
+                last_name: token.last_name as string || "",
+                semester: token.semester as number || 1, // Default to 1
             };
             
-            console.log("Generated Session:", session); // Log session in the terminal
-
+            // console.log("Generated Session:", session); // Log session in the terminal
             return session;
         },
     },

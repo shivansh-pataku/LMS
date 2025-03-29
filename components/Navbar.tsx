@@ -2,14 +2,12 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
-  const router = useRouter(); // Initialize navigate function
+  
 
-  const handleLogin = () => {
-    router.push('/login'); // Navigate to the login page
-  };
+  
 
   return (
     <div className={styles.navbar}>
@@ -17,10 +15,15 @@ export default function Navbar() {
       <Link href="#home" className={styles.navLink}>Home</Link>
       <Link href="#services" className={styles.navLink}>Services</Link>
       <Link href="#contact" className={styles.navLink}>Contact</Link>
+<<<<<<< HEAD
       <Link href="/profile" className={styles.navLink}>Profile</Link>
       {/* About #About */}
       {/* <button onClick={handleLogin} className={styles.SignupLogin}> <b>SignIn</b> </button>
       <Link href="/signup" className={styles.SignupLogin}> <b>Signup</b> </Link> */}
+=======
+      <Link href="#about" className={styles.navLink}>About</Link>
+  
+>>>>>>> c3bd82a02d3de72cd6aba0d8fefc10d8147b67de
       <Link href="/user" className={styles.navLink}>Component</Link>
 
 

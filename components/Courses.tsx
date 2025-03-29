@@ -47,39 +47,27 @@ export default function Courses() {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-
-                // Fetching both datasets in parallel
-
-                const response = await fetch("/api/courses", { method: "POST" });
-
-
-                // // Check if the response is successful ie error handling
-                if (!response.ok) throw new Error("Failed to fetch allotted courses");
-
+                const response = await fetch("/api/courses/get-courses"); // New API endpoint
+                if (!response.ok) throw new Error("Failed to fetch courses");
+    
                 const data = await response.json();
-                // const allottedData = await response.json();
-                // console.log("allottedData",allottedData);
-
-                const alloted = data?.alloted || [];
-                const suggested = data?.suggested || [];
-
-                
-                setSuggestedCourses(alloted);
-                setAllottedCourses(suggested);
-
+    
+                setAllottedCourses(data.approvedCourses || []);
+                setSuggestedCourses(data.pendingCourses || []);
             } catch (error) {
-                console.error('Error fetching courses:', error);
+                console.error("Error fetching courses:", error);
             } finally {
                 setLoading(false);
             }
         };
-
+    
         fetchCourses();
     }, []);
+    
 
     const columnDefs = [
         { 
-        field: "sr", 
+        field: "id", // give normal sr no
         headerName: "Sr.", 
         sortable: true, 
         filter: true,
@@ -142,7 +130,7 @@ export default function Courses() {
         },
         {
             field:"credit",
-            headerName:"Credits",
+            headerName:"Credit",
             sortable: true,
             filter: true,
             headerClass: "custom-header",

@@ -1,12 +1,25 @@
-import DashboardLayout from '../../../components/DashboardLayout';
+import Navbar from '@/components/Navbar';
+import Profile from '@/components/Profile';
+import Dashboard from '@/components/Dashboard';
 
-const TeacherDashboard = () => {
-    return (
-        <DashboardLayout role="teacher">
-            <h1 className="text-2xl font-bold">Teacher Dashboard</h1>
-            <p>Manage your courses, track student performance, and stay updated with notifications.</p>
-        </DashboardLayout>
-    );
-};
+// interface UserProfile {
+//   name: string;
+//   email: string;
+//   role: string;
+//   department?: string;
+//   profileImage?: string;
+// }
 
-export default TeacherDashboard;
+export default function User() {
+  return (
+    <>
+      <Navbar />
+      <Profile />
+      <Dashboard /> 
+    </>
+
+
+  );
+}
+
+
