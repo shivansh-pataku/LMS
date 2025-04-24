@@ -1,5 +1,5 @@
 'use client';
-import AddCourse from './AddCourse';
+import AddCourse from '../AddCourse';
 import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState, useRef } from "react";
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
