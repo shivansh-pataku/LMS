@@ -1,0 +1,96 @@
+  .Container_Classes{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 54px;
+    column-gap: 2px;
+    padding-top: 5px;
+    justify-content: space-evenly;
+  }
+  
+  .selection{
+    margin: 50px 10px 10px 50px;
+    font-family: commissioner;
+  }
+  
+  .item {
+    
+    height: 340px;
+    width: 350px;
+
+    /* max-height: 250px; 
+    max-width: 300px; 
+
+    min-height: 250px; 
+    min-width: 200px;  */
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: rgb(255, 255, 255);
+    font-size: clamp(16px, 2vw, 30px);
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+  }
+  
+  .item:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+
+  }
+  
+  .image{
+
+    width:100%;
+    height: 200px;
+
+    object-fit: cover;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+
+  .image img {
+
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    object-fit: cover; /* Prevents image from stretching */
+    object-position:center;
+
+    border-radius: 3px;
+  }
+  
+  .descriptionBOX {
+    height: 20px;
+    text-align: left;
+    width: 95%;
+    height: 95%;
+    margin: 5px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: baseline;
+    
+  }
+  .description{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    height: 20px;
+    font-family:Atkinson Hyperlegible Next;
+    /* margin: 5px 5px 5px 5px; */
+  }
+
+/* Jost
+Montserrat
+Commissioner
+Open Sans
+Atkinson Hyperlegible Next */

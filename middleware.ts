@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
     };
 
     // Allow public access to these routes
-    const publicPaths = ["/", "/login", "/signup", "/forgot-password", "/reset-password"];
+    const publicPaths = ["/", "/login", "/signup", "/forgot-password", "/reset-password", "user"];
     if (publicPaths.includes(req.nextUrl.pathname)) {
         return NextResponse.next();
     }

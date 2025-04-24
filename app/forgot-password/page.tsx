@@ -117,7 +117,8 @@ export default function ForgotPassword() {
                         <input
                             type="submit"
                             id="submit"
-                            value={loading ? "Processing..." : otpVisible ? "Submit OTP" : "Request OTP"}
+                            style={{ cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.5 : 1, transition: "opacity 0.3s", width:'100px'}}
+                            value={loading ? "Processing..." : otpVisible ? "Submit" : "Request OTP"}
                             disabled={loading}
                         />
                     </form>

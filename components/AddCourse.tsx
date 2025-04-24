@@ -31,9 +31,6 @@ type CourseTemplate = { course_code: string; course_name: string; credit: number
 const Scores = () => {
     // State for modal visibility
     const [isOpen, setIsOpen] = useState(false);
-<<<<<<< HEAD
-
-=======
     const [session, setSession] = useState<SessionData | null>(null);
 
     useEffect(() => {
@@ -44,7 +41,6 @@ const Scores = () => {
             .catch(err => console.error("❌ Session fetch error:", err));
     }, []);
     
->>>>>>> c3bd82a02d3de72cd6aba0d8fefc10d8147b67de
     // State for form data
     // const [formData, setFormData] = useState({
     //     course_name: "",
@@ -200,97 +196,9 @@ const Scores = () => {
                         {/* Form Inside Modal */}
                         {session ? (
                         <form onSubmit={handleSubmit} className={styles.formDibox}>
-<<<<<<< HEAD
-                            <input
-                                type="text"
-                                name="course_name"
-                                placeholder="Course Name"
-                                value={formData.course_name}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                type="text"
-                                name="sem"  // Make sure "sem" exists in formData state
-                                placeholder="Semester"
-                                value={formData.sem}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                type="text"
-                                name="category"
-                                placeholder="Category"
-                                value={formData.category}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                type="text"
-                                name="credits"
-                                placeholder="Credits"
-                                value={formData.credits}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                type="date"
-                                name="start_date" // Removed space
-                                placeholder="Start Date"
-                                value={formData.start_date}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                type="date"
-                                name="end_date" // Removed space
-                                placeholder="End Date"
-                                value={formData.end_date}
-                                onChange={handleChange}
-                                className={styles.ib}
-                            />
-
-                            <input
-                                name="description"
-                                placeholder="Description"
-                                value={formData.description}
-                                onChange={handleChange}
-                                className={styles.ib}
-                                style={{ width: "514px" }}
-                            />
-
-                            <div style={{ height: "40px", width: "250px" }}>
-                                {/* className={styles.ib} */}<input
-                                    type="file"
-                                    accept="image/*"
-                                    // onChange={handleImageChange}
-                                    className="ib"
-                                    id="profile-image"
-                                    style={{ display: 'none' }}
-                                />
-
-                                <label
-                                    htmlFor="profile-image"
-                                    className={styles.ib}
-                                    style={{
-                                        display: 'flex',
-                                        color: 'green',
-                                        cursor: 'pointer'
-
-                                    }}
-                                >
-                                    {formData.profileImage ? 'Image Selected ✓' : 'Upload Class Cover'}
-                                </label>
-                            </div>
-=======
                         
                         {/* Department (Auto-filled) */}
-                    <input className="input" type="text" name="department" value={formData.department} readOnly />
+                    <input className="input"style={{ display:"none"}} type="text" name="department" value={formData.department} readOnly />
 
 
                         <select 
@@ -304,9 +212,9 @@ const Scores = () => {
                     </select>
 
                     {/* Teacher Email */}
-                    <input className="input" type="email" name="teacher_email" value={formData.teacher_email} readOnly />
+                    <input className="input" style={{ display:"none"}} type="email" name="teacher_email" value={formData.teacher_email} readOnly />
                     {/* Teacher Name */}
-                    <input className="input" type="text" name="teacher_name" value={formData.teacher_name} onChange={handleChange} placeholder="Enter your name" required readOnly={!!formData.teacher_name} />
+                    <input className="input" style={{ display:"none"}} type="text" name="teacher_name" value={formData.teacher_name} onChange={handleChange} placeholder="Enter your name" required readOnly={!!formData.teacher_name} />
 
                         <select
                             name="course_category" 
@@ -403,22 +311,15 @@ const Scores = () => {
                                             {formData.course_image ? 'Image Selected ✓' : 'Upload Class Cover'}
                                         </label>
                                     </div>
->>>>>>> c3bd82a02d3de72cd6aba0d8fefc10d8147b67de
 
 
 
                             <br />
                             {/* Buttons */}
                             <div className={styles.DiBUTTONdiv}>
-<<<<<<< HEAD
-                                <button className
-                                    type="button"
-                                    onClick={closeModal}
-=======
                                 <button 
                                     type="button" 
                                     onClick={closeModal} 
->>>>>>> c3bd82a02d3de72cd6aba0d8fefc10d8147b67de
                                     className={styles.DiBUTTON}
                                 >
                                     Cancel

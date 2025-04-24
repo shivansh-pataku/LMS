@@ -15,7 +15,7 @@ body {
     font-size: 30px;
     padding: 2px 15px 6px 15px;
     font-weight: 500;
-    margin-bottom: 5cm;
+    margin-bottom: .2cm;
     background-color: rgba(0, 0, 0, 0.116);
     text-decoration-color: black;
 }
@@ -24,6 +24,7 @@ body {
 .headingsB {
     text-align: center;
     font-weight: 400;
+    margin-top: 4cm;
 }
 
 #role {
@@ -96,6 +97,25 @@ body {
     text-decoration-color: black;
 }
 
+.ibd {
+    padding: 10px;
+    border: 0.5px solid ;
+    font-family: "Jost", serif;
+    font-weight: 500;
+    width: 250PX;
+    border-width: 1.5px;
+    border-radius: 1.8px;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: small;
+    text-decoration-color: black;
+}
+
+/* .ibd:empty:before {
+    content: "Date of Birth";
+  } */
+
+
 #submit {
 
     font-weight: 600;
@@ -109,17 +129,20 @@ body {
     font-weight: 500;
     width: 70PX;
     background-color: rgb(20, 193, 37);
-    border-width: 1px;
-    border-radius: 1.8px;
+    border-width: 0.5px;
+    border-radius: 3px;
     cursor: pointer;
 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+
+
 }
 
-#forgot_password {
-    font-size: small;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 400;
-    color: rgb(66, 66, 169);
+#submit:hover {
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.15);
+    color: white;
 }
+
+

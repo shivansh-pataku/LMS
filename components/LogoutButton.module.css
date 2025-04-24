@@ -1,0 +1,22 @@
+.logout{
+    font-size: 15px;
+    font-weight: normal;
+    cursor: pointer;
+    display: flex;
+    align-items: stretch;
+
+    margin: 0.3px;
+    font-family: commissioner;
+    font-weight: 200;
+    margin: 0.3px;
+
+    color: rgb(52, 25, 25);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+:hover.logout{
+    font-weight:600;
+    color: rgb(148, 0, 10);
+    
+}

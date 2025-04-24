@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         const session = await getServerSession(req, res, authOptions);
         
-        console.log("🚀 Full Session from NextAuth:", session); // Log full session
+        console.log("Full Session from NextAuth:", session); // Log full session
 
         if (!session) {
             return res.status(401).json({ message: "Unauthorized" });

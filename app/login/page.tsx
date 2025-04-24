@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import "../../styles/login_signup.css";
 
+
 export default function Login() {
     const router = useRouter();
     const [email, setEmail] = useState("");
@@ -43,12 +44,16 @@ export default function Login() {
                     <form id="signupForm" onSubmit={handleSubmit}>
                         <input className="ib" placeholder="E-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         <br /><br />
+                        
                         <input className="ib" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <br /><br /><br />
-                        <input style={{ fontWeight: 600, fontSize: "14px" }} type="submit" value="Login" />
+
+                        <input id="submit" type="submit" value="Login" />
                         {error && <p style={{ color: "red" }}>{error}</p>}
                         <br />
-                        <Link id="forgot_password" href="/forgot-password">Forgot password?</Link>
+
+
+                        <Link id="goto" href="/forgot-password">Forgot password?</Link>
                         <br /><br />
                     </form>
                 </div>

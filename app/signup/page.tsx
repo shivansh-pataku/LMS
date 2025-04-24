@@ -2,6 +2,7 @@
 import React, { FormEvent, useState } from "react";
 import '../../styles/login_signup.css';
 import Link from 'next/link';
+import { before } from "node:test";
 
 export default function Signup() {
     const [formData, setFormData] = useState({
@@ -93,7 +94,7 @@ export default function Signup() {
                             maxLength={10}
                             required value={formData.contact} />
                         <input className="ib" placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} required />
-                        <input className="ib" placeholder="Date of Birth" type="date" name="DOB" value={formData.DOB} onChange={handleChange} style={{ cursor: 'pointer' }} />
+                        <input className="ibd" placeholder="Date of Birth" type="date" name="DOB" value={formData.DOB} onChange={handleChange} style={{ cursor: 'pointer', content:"Date Of Birth" }} />
                         <select name="role" className="ib" value={formData.role} onChange={handleChange}>
                             <option value="" defaultValue="">Signup as</option>
                             <option value="student">student</option>

@@ -1,12 +1,23 @@
-import DashboardLayout from '../../../components/DashboardLayout'; // Ensure this path is correct
+import Navbar from '@/components/Navbar';
+import Profile from '@/components/DASHBOARD/Profile';
+import DashboardSTUDENT from '@/components/DASHBOARD/DashboardSTUDENT';
 
-const StudentDashboard = () => {
-    return (
-        <DashboardLayout role="student">
-            <h1 className="text-2xl font-bold">Student Dashboard</h1>
-            <p>Welcome to the student portal. Here you can manage your courses and view your exam results.</p>
-        </DashboardLayout>
-    );
-};
+// interface UserProfile {
+//   name: string;
+//   email: string;
+//   role: string;
+//   department?: string;
+//   profileImage?: string;
+// }
 
-export default StudentDashboard;
+export default function User() {
+  return (
+    <>
+      <Navbar />
+      {/* <Profile /> */}
+      <DashboardSTUDENT /> 
+    </>
+  );
+}
+
+

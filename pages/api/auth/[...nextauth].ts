@@ -5,7 +5,7 @@ import { RowDataPacket } from "mysql2";
 import db from "@/utils/db";
 import { Role } from "@/types";
 
-// Define ApprovedUser type
+// Define ApprovedUser type : Defines the structure of the user object expected from the DB; matches the structure of a user record returned from the MySQL database
 type ApprovedUser = {
     id: number;
     first_name: string;
@@ -19,26 +19,33 @@ type ApprovedUser = {
 };
 
 // Extend NextAuth types for session & user role
+// customizing the default session or user data/objects returned by NextAuth
+// extending it to include extra fields like role, first_name, semester, etc., so frontend can access them
+
 declare module "next-auth" {
     interface Session {
-        user: {
-            id: string;
-            role: Role;
-            first_name: string;
-            last_name: string;
-            email?: string;
-            department?: string;
-            semester: number;
-        };
-    }
-    interface User {
-        role: Role;
-        department: string;
-        first_name: string;
-        last_name: string;
-        semester: number;
-    }
+                user: {
+                    id: string;
+                    role: Role;
+                    first_name: string;
+                    last_name: string;
+                    email?: string;
+                    department?: string;
+                    semester: number;
+                    };
+                    }
+
+                interface User {
+                    role: Role;
+                    department: string;
+                    first_name: string;
+                    last_name: string;
+                    semester: number;
+                    }
 }
+
+
+
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -56,16 +63,16 @@ export const authOptions: NextAuthOptions = {
                 try {
                     // Fetch user from MySQL (Include `semester`)
                     const [rows]: [RowDataPacket[], unknown] = await db.query(
-                        `SELECT id, first_name, last_name, email, password, role_id AS role, 
-                                department, semester, created_at 
-                         FROM users WHERE email = ?`,
+                         `SELECT id, first_name, last_name, email, password, role_id AS role, department, semester, created_at FROM users WHERE email = ?`,
                         [credentials.email]
+                        //Uses ? and [credentials.email] to safely pass in the user's email thus prevents SQL injection.
                     );
 
                     if (rows.length === 0) throw new Error("No user found!");
 
-                    const user = rows[0] as ApprovedUser;
+                    const user = rows[0] as ApprovedUser; //Typecasts the returned USER DATA row into custom ApprovedUser type
                     const isValidPassword = await bcrypt.compare(credentials.password, user.password);
+                    //credentials.password IS The password the user just entered in the form.
                     if (!isValidPassword) throw new Error("Invalid password!");
 
                     return { 
@@ -76,7 +83,7 @@ export const authOptions: NextAuthOptions = {
                         email: user.email, 
                         role: user.role,
                         department: user.department,
-                        semester: user.semester,
+                        semester: user.semester, 
                     };
                 } catch (error) {
                     console.error("Authentication Error:", error);
@@ -95,6 +102,10 @@ export const authOptions: NextAuthOptions = {
                 token.first_name = user.first_name;
                 token.last_name = user.last_name;
                 token.semester = user.semester;
+
+                //token: This is the JWT token object used to store data like ID, email, etc.
+
+                //user: This is only available during login — it holds user data returned from the authorize() function.
             }
             return token;
         },
