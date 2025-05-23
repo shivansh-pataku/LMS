@@ -4,9 +4,13 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== 'GET') {
+    if (req.method !== 'GET') { 
         return res.status(405).json({ error: 'Method not allowed' });
     }
+
+        const selectedDate = req.query.month 
+            ? new Date(req.query.month + '-01')  // Add -01 to make it a valid date
+            : new Date();
 
     try {
         const session = await getServerSession(req, res, authOptions);
@@ -15,13 +19,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const [courses] = await db.query(`SELECT * FROM courses WHERE semester = ?`, [session.user.semester]);
-        const [attendance] = await db.query(`SELECT * FROM ATTENDANCE WHERE roll_no = 'CUHP23MCA30'`);
+        const [monthsRows] = await db.query(`SELECT DISTINCT DATE_FORMAT(attendance_date, '%Y-%m') as month FROM attendance ORDER BY month DESC`);
+        const [attendance] = await db.query(`SELECT * FROM ATTENDANCE WHERE MONTH(attendance_date) = MONTH(?) AND YEAR(attendance_date) = YEAR(?) `, [selectedDate, selectedDate]);
+        // const [attendance] = await db.query(`SELECT * FROM ATTENDANCE WHERE teacher_name = 'Ajay Kumar'`);
+
         const [scores] = await db.query(`SELECT * FROM COURSE_SCORES`);
+        const [teacherCourses ] = await db.query(`SELECT * FROM courses WHERE teacher_email = "rakesh.sharma@university.edu"`);
+        // `SELECT * FROM courses WHERE teacher_email = ?`,[session.user.email]
+
         return res.status(200).json({ 
-            AllCourses: courses,
+            AllCourses: teacherCourses, 
+
             AllAttendance: attendance,
+            DoneMonths: (monthsRows as Array<{ month: string }>).map((row) => row.month), // Extracting month strings from the result
+
             AllScores: scores
+
    
         });
 
@@ -30,3 +43,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+

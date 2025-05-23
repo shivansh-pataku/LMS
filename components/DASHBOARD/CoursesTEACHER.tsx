@@ -49,7 +49,8 @@ export default function Courses() {
         // Fetching courses from the API when the component mounts
     useEffect(() => {  //runs when the component mounts and when the dependencies change. In this case, it runs only once when the component mounts because the dependency array is empty.
 
-        const fetchCourses = async () => {
+        const fetchCourses = async () => 
+        {
             try {
                 const response = await fetch("/api/courses/get-courses"); // New API endpoint
                 if (!response.ok) throw new Error("Failed to fetch courses");
@@ -163,9 +164,9 @@ export default function Courses() {
 
     return (
         <>
-        <h3>Courses</h3> <AddCourse />
+        <span className="classic_heading">Courses</span> <AddCourse />
 
-        <h4 className="classic_heading">Alloted Courses</h4>
+        <h4 className="classic_SUBheading" style={{marginTop:"0px", width:"auto"}}>Alloted Courses</h4>
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
             <AgGridReact
 
@@ -187,7 +188,7 @@ export default function Courses() {
             />
         </div>
 
-        <h4 className="classic_heading">Suggested Courses</h4>
+        <h4 className="classic_SUBheading" style={{width: "50%" }}>Suggested Courses</h4>
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
             <AgGridReact
                 ref={gridRefSuggested}

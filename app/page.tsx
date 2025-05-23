@@ -1,18 +1,21 @@
+'use client';
 import Navbar from '@/components/Navbar';
 import Container_Subjects from '@/components/HOME/Container_Subjects';
 import Container_Classes from '@/components/HOME/Container_Classes';
+import { use, useState } from 'react';
+
 
 export default function Home() {
+  const [selectedItem, setSelectedItem] = useState<string>('All Courses'); // Default selected item
+    
   return (
-    <>        
-    <Navbar />
+    <>
+      <Navbar />
       <div className="container">
-        <Container_Subjects />
-        <Container_Classes />
+        <Container_Subjects onselect={setSelectedItem} />
+        <Container_Classes selectedItem={selectedItem} />
       </div>
     </>
-
-
   );
 }
 

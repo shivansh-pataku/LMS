@@ -181,11 +181,15 @@ const Scores = () => {
     return (
         <div>
             {/* Button to open form */}
-            <button className={styles.textButton}
-                onClick={openModal}
-            >
-                Add New Course
-            </button>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button
+                    className={styles.button30}
+                    style={{ alignItems: "right", margin: "0px 0px 0px 0px" }}
+                    onClick={openModal}
+                >
+                    Add New Course
+                </button>
+            </div>
 
             {/* Modal (Form Popup) */}
             {isOpen && (

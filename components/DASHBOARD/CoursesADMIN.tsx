@@ -1,5 +1,5 @@
 'use client';
-import AddCourse from './AddCourse';
+import AddCourse from '../AddCourse';
 import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState, useRef } from "react";
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
@@ -37,22 +37,27 @@ export default function Courses() {
     const [suggestedCourses, setSuggestedCourses] = useState<Course[]>([]);
     const [allottedCourses, setAllottedCourses] = useState<Course[]>([]);
     
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); //  stores data that can change over time (due to user interaction, API calls, etc.) and causes the component to re-render when updated.
+
 
     // now creating grid references for both datasets
-    const gridRefAllotted = useRef<AgGridReact>(null);
+    const gridRefAllotted = useRef<AgGridReact>(null); // help to access the grid API and properties directly from the component
+    // gridRefAllotted is a reference to the AgGridReact component for the allotted courses grid.
+    // It allows you to programmatically interact with the grid, such as refreshing data or changing grid properties.
     const gridRefSuggested = useRef<AgGridReact>(null);
 
+        // Fetching courses from the API when the component mounts
+    useEffect(() => {  //runs when the component mounts and when the dependencies change. In this case, it runs only once when the component mounts because the dependency array is empty.
 
-    useEffect(() => {
-        const fetchCourses = async () => {
+        const fetchCourses = async () => 
+        {
             try {
-                const response = await fetch("/api/courses/get-courses"); // New API endpoint
+                const response = await fetch("/api/courses/get-dashboardADMIN"); // New API endpoint
                 if (!response.ok) throw new Error("Failed to fetch courses");
     
-                const data = await response.json();
+                const data = await response.json(); // Fetching data from the API
     
-                setAllottedCourses(data.approvedCourses || []);
+                setAllottedCourses(data.approvedCourses || []);   // Set the allotted courses from the API response initially as an empty array whose interface is already created
                 setSuggestedCourses(data.pendingCourses || []);
             } catch (error) {
                 console.error("Error fetching courses:", error);
@@ -159,29 +164,31 @@ export default function Courses() {
 
     return (
         <>
-        <h3>Courses</h3> <AddCourse />
+        <span className="classic_heading">Courses</span> <AddCourse />
 
-        <h4 className="classic_heading">Alloted Courses</h4>
+        <h4 className="classic_SUBheading" style={{marginTop:"0px", width:"auto"}}>Alloted Courses</h4>
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
             <AgGridReact
-                ref={gridRefAllotted}
-                rowData={allottedCourses}
-                columnDefs={columnDefs}
-                headerHeight={40}
-                pagination={true}
-                paginationPageSize={10}
-                // domLayout="autoHeight"
-                rowHeight={35} // Set row height to 50px
-                defaultColDef={{
-                    flex: 1,
-                    minWidth: 100,
-                    resizable: true
-                }
-                
-                } />
+
+                    ref={gridRefAllotted}
+                    rowData={allottedCourses}
+                    columnDefs={columnDefs}
+                    headerHeight={40}
+                    pagination={true}
+                    paginationPageSize={10}
+                    // domLayout="autoHeight"
+                    rowHeight={35} // Set row height to 50px
+
+                    defaultColDef={{
+                        flex: 1,
+                        minWidth: 100,
+                        resizable: true
+                    }}
+                    
+            />
         </div>
 
-        <h4 className="classic_heading">Suggested Courses</h4>
+        <h4  style={{width: "50%" }}className="classic_SUBheading">Suggested Courses</h4>
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
             <AgGridReact
                 ref={gridRefSuggested}

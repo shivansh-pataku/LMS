@@ -22,15 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        // ✅ Fix: Correctly destructure `rows`
-        const [rows] = await db.query(
-            `SELECT * FROM courses WHERE teacher_email = ?`,
-            [session.user.email]
-        );
-
-        const courses: Course[] = rows as Course[]; // ✅ Enforce the correct type
-
-        // ✅ Separate pending and approved courses
+        const [rows] = await db.query(`SELECT * FROM courses where department = "mca"`,);
+        const courses: Course[] = rows as Course[];  
         const pendingCourses = courses.filter(course => course.status === 'pending');
         const approvedCourses = courses.filter(course => course.status === 'approved');
 

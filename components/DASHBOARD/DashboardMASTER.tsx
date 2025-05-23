@@ -5,12 +5,14 @@ import Menu from './Menu';
 import CoursesMASTER from '@/components/DASHBOARD/CoursesMASTER';
 import AttandanceMASTER from '@/components/DASHBOARD/AttandanceMASTER';
 import ScoresMASTER from '@/components/DASHBOARD/ScoresMASTER';
+import ApprovalsMASTER from '@/components/DASHBOARD/ApprovalsMASTER'; // Placeholder for Approvals component
 
 export default function Dashboard() {
   const [selectedComponent, setSelectedComponent] = useState<string>('Courses'); // Default selection
 
   const renderComponent = () => {
     switch (selectedComponent) {
+      case 'Approvals': return <ApprovalsMASTER />; // Placeholder for Approvals component
       case 'Courses': return <CoursesMASTER />;
       case 'Attandance': return <AttandanceMASTER />;
       case 'Scores': return <ScoresMASTER />;

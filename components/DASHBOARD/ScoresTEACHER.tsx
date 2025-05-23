@@ -8,7 +8,7 @@ ModuleRegistry.registerModules([AllCommunityModule]); // Register AG Grid Module
 
 
 interface Scores {
-    // course_code: string;            
+    course_code: string;            
     // course_NAME: string;           
     ROLL_NO: string;                
     internal : number;                 
@@ -78,16 +78,16 @@ export default function ScoresTEACHER() {
 
 return (
     <>
+        <h4 className="classic_heading">Score Records & Management</h4>
 
-        <select value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)}>
+        <select className="ibCLASSIC" style={{ margin: "10px 0px 10px 10px"}} value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)}>
         <option value="">Select Course</option>
         {courseOptions.map((code) => (
             <option key={code} value={code}>{code}</option>
         ))}
         </select>
 
-        <h3>Scores Management</h3>
-        <h4 className="classic_heading">Score Records</h4>
+
         
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
             <AgGridReact
@@ -118,6 +118,9 @@ return (
 
 
 }
+
+
+
 
 
 
