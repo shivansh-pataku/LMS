@@ -17,15 +17,15 @@ export default function Dashboard() {
       default: return <CoursesSTUDENT />;
     }
   };
-
+//setSelectedComponent in onSelect prop is used to update the selected component when a menu item is clicked which was passed from the Menu component by the onSelect prop with value item.id
   return (
     <div className={styles.boxB}>
         <div className={styles.boxB1}>  {/*   // menubox */}
           <h4 className={styles.boxB1_headings}>Menu</h4>
-          <Menu onSelect={setSelectedComponent} />  {/* Pass the function correctly */}
+          <Menu onSelect={setSelectedComponent} />  {/* Pass the function correctly  */}
         </div>
 
-
+ 
         <div className={styles.boxB2}>  {/*   // contentbox */}
           <h2>{}</h2>
           {renderComponent()}  {/* Display the selected component */}

@@ -49,7 +49,7 @@ export default function Login() {
                         <br /><br /><br />
 
                         <input id="submit" type="submit" value="Login" />
-                        {error && <p style={{ color: "red" }}>{error}</p>}
+                        {error && <p id="error">{error}</p>}
                         <br />
 
 

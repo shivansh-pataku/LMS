@@ -9,7 +9,9 @@
     padding-top: 85px;
   }
   
-  .Container_Subjects li a{
+
+  /* .Container_Subjects li a{ */
+  .Subject {
     text-decoration: none;
     color: rgb(0, 0, 0);
     font-size: 20px;
@@ -22,18 +24,20 @@
     margin: -3px 4px 2px -6px;
   }
   
-  .Container_Subjects li a:hover
-  {  
+  /* .Container_Subjects li a:hover */
+  .Subject:hover {
     background-color: #92929273;
     font-weight: 500;
     transition: background-color 0.6s ease;
     transition: color 0.3s ease;
     transition: font-weight 0.3s ease;
     color: black;
-    /* margin: 0px 1px 0px 1px;
-    transition: margin 1s ease; 
-    outline: 1px solid rgba(0, 0, 0, 0.3);*/
+    cursor: pointer;
+    /* margin: 0px 1px 0px 1px; */
+    /* transition: margin 1s ease; */
+    /* outline: 1px solid rgba(0, 0, 0, 0.3); */
   }
+  
   
   
   .Container_Subjects ul {

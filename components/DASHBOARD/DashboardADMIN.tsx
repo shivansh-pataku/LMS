@@ -1,20 +1,22 @@
 'use client';
 import React, { useState } from 'react';
 import styles from './Dashboard.module.css';
-import Menu from './Menu';
-import Courses from '@/components/DASHBOARD/Courses';
-import Attandance from '@/components/DASHBOARD/Attandance';
-import Scores from '@/components/DASHBOARD/Scores';
+import Menu from './Menu'; 
+import ApprovalsADMIN from '@/components/DASHBOARD/ApprovalsADMIN';
+import CoursesADMIN from '@/components/DASHBOARD/CoursesADMIN';
+import AttandanceADMIN from '@/components/DASHBOARD/AttandanceADMIN';
+import ScoresADMIN from '@/components/DASHBOARD/ScoresADMIN';
 
 export default function Dashboard() {
   const [selectedComponent, setSelectedComponent] = useState<string>('Courses'); // Default selection
 
   const renderComponent = () => {
     switch (selectedComponent) {
-      case 'Courses': return <Courses />;
-      case 'Attandance': return <Attandance />;
-      case 'Scores': return <Scores />;
-      default: return <Courses />;
+      case 'Approvals': return <ApprovalsADMIN />;
+      case 'Courses': return <CoursesADMIN />;
+      case 'Attandance': return <AttandanceADMIN />;
+      case 'Scores': return <ScoresADMIN />;
+      default: return <CoursesADMIN />;
     }
   };
 

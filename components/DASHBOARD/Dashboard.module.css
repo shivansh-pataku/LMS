@@ -1,48 +1,51 @@
+.boxB {
+  /* align-items: baseline; */
 
-.boxB{
-    display: flex;
-    /* align-items: baseline; */
-
-    height: 80%;
-    width: 98%;
-    padding: 10px;
-    margin: 10px;
-    background-color: #fdfdfd;
-    row-gap: 20px;
-    margin-top: 10px;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 4px;
-    box-shadow: rgb(255, 255, 255) 0px 0px 10px;
-    /* border: solid rgb(0, 0, 0);
+  height: 85%;
+  width: 98%;
+  padding: 10px;
+  margin: 10px;
+  zoom: 80%;
+  background-color: #fdfdfd;
+  row-gap: 20px;
+  margin-top: 10px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 10px;
+  /* border: solid rgb(0, 0, 0);
     border-width: 2px;
     border-radius: 10px; */
 }
 
 
-.boxB1{
-    height: 100%;
-    width: 150px;
-    /* width: 8%; */
-    background-color: snow;
-    border-radius: 10px;
-    padding: 6px;
-    margin: 3px;
-    margin-top: 10px;
-    border-radius: 3px;
-    box-shadow: 0 0 10px #00000078;
+.boxB1 {
+  /* width: 8%; */
+
+  height: 100%;
+  width: 150px;
+  padding: 6px;
+  margin: 3px;
+  /* margin-top: 10px; */
+
+  background-color: snow;
+  border-radius: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #00000078;
 }
 
-.boxB2{
-    height: 100%;
-    width: 100%;
-    background-color: snow;
-    padding: 10px;
-    margin: 7px;
-    border-radius: 3px;
-    box-shadow: 0 0 10px #00000070;
-    height: 100%;
+.boxB2 {
+  height: 100%;
+  width: 100%;
+  padding: 6px;
+  margin: 3px;
+  background-color: snow;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #00000070;
+  height: 100%;
 
+  overflow: scroll;
 
 }
 
@@ -80,20 +83,20 @@
   transition: all .3s;
 }
 
-.Menu li:hover {  
+.Menu li:hover {
   background-color: #92929273;
   font-weight: 500;
   color: black;
 }
 
-.boxB1_headings{
-  margin: 0px 0px 5px 0px;  
+.boxB1_headings {
+  margin: 18px 7px 5px 6px;
   padding: 0px 0px 0px 0px;
   font-size: 25px;
 }
 
-.boxB2_headings{
-  margin: 0px 0px 5px 0px;  
+.boxB2_headings {
+  margin: 0px 0px 5px 0px;
   padding: 0px 0px 0px 0px;
   font-size: 25px;
 }

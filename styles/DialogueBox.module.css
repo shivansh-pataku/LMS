@@ -118,3 +118,52 @@
   align-content: center;
   flex-wrap: wrap;
 }
+
+
+ 
+.button30 {
+  align-items: center;
+  /* appearance: none; */
+  background-color: #f6f6fe;
+  border-radius: 4px;
+  border-width: 0;
+box-shadow: 0 0px 2px #2d234266, 0 -2px 13px -11px #2d23424d, inset 0px 1px #d6d6e7;
+  /* border:solid 1.5px #36395A; */
+  /* box-sizing: border-box; */
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: jost;
+  height: 40px;
+  justify-content: center;
+  /* line-height: 1; */
+  list-style: none;
+  /* overflow: hidden; */
+  margin: 5px 5px 0px 5px;
+  padding: 0px 25px 0.5px 25px;
+  position: relative;
+  /* text-align: left; */
+  /* text-decoration: none; */
+  transition: box-shadow .15s,transform .15s;
+  /* user-select: none; */
+  /* -webkit-user-select: none; */
+  /* touch-action: manipulation; */
+  /* white-space: nowrap; */
+  /* will-change: box-shadow,transform; */
+  font-size: 18px;
+}
+
+/* .button30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+} */
+
+.button30:hover {
+  box-shadow: rgba(45, 35, 66, 0.204) 0 4px 8px, rgba(45, 35, 66, 0.151) 0 7px 13px -3px, #D6D6E7 0 1px 0 inset;
+  transform: translateY(-1px);
+  color: rgb(15, 111, 13);
+}
+
+.button30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

@@ -95,12 +95,22 @@ html, body, #__next {
 
 .classic_heading{
     color: #184e10;
+    font-family: Montserrat;
+    font-weight: 670;
+    font-size:xx-large;
+    margin: 0px 0px 15px 15px;
+    padding: 0px 0px 0px 0px;
+}
+
+.classic_SUBheading{
+    color: #184e10;
     font-family: jost;
     font-weight: 500;
-    font-size:x-large;
-    margin-top: 12px;
-    margin-bottom: 1px;
-    padding: 1px;
+    font-size: x-large;
+    margin-top: 19px;
+    margin-bottom: 12px;
+    margin: 30px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 .row{
@@ -123,7 +133,31 @@ html, body, #__next {
 }
 
 
+.GridButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 10px 4px 10px;
+    padding: 8px 15px 8px 15px;
+    padding: auto;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(21, 209, 21, 0.633);
+    border: none;
+    font-family: Commissioner;
+    font-weight: 600;
+    color: #09428dcd;
+    border-radius: 3px;
+}
 
+
+.GridButtons:hover {
+    background-color:rgba(12, 120, 12, 0.633);
+    color: white;
+    font-weight: 600;
+    text-shadow: 0px 0px 8px #74747932;
+    transition: all 0.3s ease;
+}
 
 .TV ,.TA{
     height: 17px;
@@ -162,6 +196,16 @@ font-weight: 500;
 background-color: #10264e62;
 }
 
+#error{
+    height: 17px;
+    font-family: Commissioner;
+    font-weight: 500;
+    text-decoration: none;
+    color: #b94015;
+    display: block;
+    text-align: center;
+}
+
 
 #goto{
     height: 17px;
@@ -179,6 +223,47 @@ background-color: #10264e62;
     transition: all 0.3s ease;
 }
 
+.ibCLASSIC {
+    padding: 6px;
+    border: .5px solid;
+    font-family: Jost, serif;
+    font-weight: 500;
+    width: 163px;
+    border-width: 1.5px;
+    border-radius: 8.8px;
+    box-sizing: border-box;
+    background-color: #fff0;
+    font-size: small;
+    text-decoration-color: #000;
+}
+
+
+.JUSTbutton {
+  align-items: center;
+ 
+  background-color: #f6f6fe;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: 0 0px 2px #2d234266, 0 -2px 13px -11px #2d23424d, inset 0px 1px #d6d6e7;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: jost;
+  height: 40px;
+  justify-content: center;
+   list-style: none;
+  margin: 5px 0px 0px 5px;
+  padding: 0px 20px 0px 20px;
+  position: relative;
+    transition: box-shadow .15s,transform .15s;
+  font-size: 18px;
+}
+
+.JUSTbutton:hover {
+  box-shadow: rgba(45, 35, 66, 0.204) 0 4px 8px, rgba(45, 35, 66, 0.151) 0 7px 13px -3px, #D6D6E7 0 1px 0 inset;
+  transform: translateY(-1px);
+  color: rgb(15, 111, 13);
+}
 
 /* //////////////////////////////////////////////// NOT USED /////////////////////////////////////////////////  */
 
@@ -229,16 +314,24 @@ background-color: #10264e62;
 /* /////////////////////////////////////////////////////// AG GRIDS CSS /////////////////////////////////////////////////////// */
 
 
+.ag-header-cell {
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #00c40d9c;
+}
+
 /* Custom AG Grid Styling */
 .ag-theme-alpine {
     font-family: comissioner;
     font-size: 14px;
     /* height: 50px; */
-    height: 60px !important;
+    height: 80px !important;
   }
-.div.ag-viewport.ag-center-cols-viewport{
+/* .div.ag-viewport.ag-center-cols-viewport{
 
-}
+} */
+
+
   /* Header Styling */
   .ag-header {
     /* background-color: #007bff !important;  */
@@ -287,8 +380,13 @@ background-color: #10264e62;
     /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); */
   }
 
+/* //////////////hdfh//////hhdhdhh////hfghdhd///////////////////////////////// */
+
+.ag-center-cols-viewport {
+    min-height: unset !important;
+}
   .ag-root-wrapper.ag-layout-normal {
-    height: 100%;
+    height: 70%;
     width: 100%;
     border-radius: 5px;}
   
@@ -310,6 +408,9 @@ background-color: #10264e62;
     font-size: small;
 
   }
+
+
+  
   
 element.style {
     left: 0px;
@@ -373,3 +474,10 @@ element.style {
 
 /* /////////////////////////////////////////////////////////////////////////// */
 
+ag-theme-params-3 ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-checkboxStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 {
+
+  height: 80%; 
+  --ag-internal-row-border-width: 1px; 
+  --ag-line-height: 35px;
+
+}
