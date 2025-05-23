@@ -1,0 +1,200 @@
+/* filepath: c:\next_js_projects\LMS\app\[courseId]\page.module.css */
+.pageContainer {
+  padding: 1.5rem; /* p-6 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* space-y-6 */
+}
+
+.pageTitle {
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+}
+
+.tabsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* space-y-6 */
+}
+
+.card {
+  padding: 1rem; /* p-4 */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+}
+
+.iconButton {
+  margin-right: 0.5rem; /* mr-2 */
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-width: 1px;
+  padding: 0.5rem; /* p-2 */
+  border-radius: 0.375rem; /* rounded-md */
+  background-color: hsl(var(--muted)); /* bg-muted */
+}
+
+.listItemContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+.gripIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.videoIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+  color: #3b82f6; /* text-blue-500 */
+}
+
+.hiddenText {
+  color: #9ca3af; /* text-gray-400 */
+  font-style: italic;
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 */
+}
+
+.iconOnlyButton {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+}
+
+.detailsTabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+}
+
+.detailsTitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 500; /* font-medium */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+}
+
+.formField {
+    display: flex;
+    flex-direction: column; /* Stack label on top of field */
+    gap: 0.25rem; /* Small gap between label and field */
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem; /* mb-1 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  font-weight: 500; /* font-medium */
+}
+
+.textareaField {
+    /* Add any specific styles for your textarea if needed */
+    /* For example, if using a standard <textarea> or a custom Textarea component */
+    min-height: 80px; /* Example height */
+    padding: 0.5rem 0.75rem;
+    border: 1px solid hsl(var(--input));
+    border-radius: 0.375rem;
+    width: 100%; /* Make it full width */
+    font-size: 0.875rem;
+  }
+
+  .readOnlyField {
+    padding: 0.5rem 0.75rem; /* Similar to input padding */
+    border: 1px solid hsl(var(--input)); /* Similar to input border */
+    border-radius: 0.375rem; /* rounded-md */
+    background-color: hsl(var(--muted)); /* A slightly different background to indicate read-only */
+    font-size: 0.875rem; /* text-sm */
+    min-height: 2.5rem; /* Ensure similar height to input */
+    display: flex;
+    align-items: center;
+  }
+
+.editForm {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+}
+
+.formFieldInline {
+  display: flex;
+  flex-direction: column; /* Stack label and input */
+  margin-bottom: 12px;
+}
+
+.formFieldInline label {
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.formActions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+.formTitle {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+/* ... existing styles ... */
+
+.loadingText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.errorText {
+  padding: 15px;
+  background-color: #ffebee; /* Light red */
+  color: #c62828; /* Darker red */
+  border: 1px solid #ef9a9a; /* Red border */
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.emptyStateTextSmall {
+  font-size: 0.9em;
+  color: #777;
+  padding: 10px 0px 10px 20px; /* Adjusted padding */
+  font-style: italic;
+}
