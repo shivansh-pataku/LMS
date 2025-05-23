@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        const [rows] = await db.query(`SELECT * FROM courses where department = "mca"`,);
+        const [rows] = await db.query(`SELECT * FROM courses where department = ?`,[session.user.department]);
         const courses: Course[] = rows as Course[];  
         const pendingCourses = courses.filter(course => course.status === 'pending');
         const approvedCourses = courses.filter(course => course.status === 'approved');
