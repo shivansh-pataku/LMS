@@ -2,7 +2,7 @@
 import Navbar from '@/components/Navbar';
 import Container_Subjects from '@/components/HOME/Container_Subjects';
 import Container_Classes from '@/components/HOME/Container_Classes';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 
 export default function Home() {
