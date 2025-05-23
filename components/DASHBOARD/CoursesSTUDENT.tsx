@@ -46,6 +46,7 @@ export default function Container_Classes() {
     
   }, []); //Empty dependency array means this effect runs once when the component mounts
 
+  
 
   // if (isLoading) return <div>Loading courses...</div>;
   if (error) return <div>Error: {error}</div>;

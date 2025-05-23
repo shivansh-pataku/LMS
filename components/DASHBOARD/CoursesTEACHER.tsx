@@ -52,7 +52,7 @@ export default function Courses() {
         const fetchCourses = async () => 
         {
             try {
-                const response = await fetch("/api/courses/get-courses"); // New API endpoint
+                const response = await fetch("/api/courses/get-dashboardTEACHER"); // New API endpoint
                 if (!response.ok) throw new Error("Failed to fetch courses");
     
                 const data = await response.json(); // Fetching data from the API

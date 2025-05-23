@@ -68,7 +68,7 @@ export default function ScoresTEACHER() {
                     console.error("Error fetching scores:", error); // Log the error if any occurs during fetch
                         }
 
-        }
+        } 
 
     fetchCourses(); // Call the function to fetch scores data
 
