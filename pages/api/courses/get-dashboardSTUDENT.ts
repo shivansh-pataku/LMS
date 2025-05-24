@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const [monthsRows] = await db.query(`SELECT DISTINCT DATE_FORMAT(attendance_date, '%Y-%m') as month FROM attendance ORDER BY month DESC`);
 
-        const [courses] = await db.query(`SELECT * FROM COURSES WHERE semester = ?`, [session.user.semester]);
+        const [courses] = await db.query(`SELECT * FROM COURSES WHERE semester = ? and status= "approved"`, [session.user.semester]);
         const [attendance] = await db.query(`SELECT * FROM ATTENDANCE WHERE MONTH(attendance_date) = MONTH(?) AND YEAR(attendance_date) = YEAR(?)`, [selectedDate, selectedDate]);
         const [scores] = await db.query(`SELECT * FROM COURSE_SCORES WHERE roll_no = 'CUHP23MCA30'`);
         return res.status(200).json({ 
