@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import styles from "../HOME/Container_Classes.module.css";
 import Image from "next/image";
 import StudentCourses from "./StudentCourses"; // Verify this path and filename are correct
+import {
+  processImageSrc,
+  CourseImageObject as UtilCourseImageObject,
+} from "@/utils/imageUtils"; // Added import
 
 // Type for image data that might come as an object (e.g., from a buffer)
-interface CourseImageObject {
-  type: string;
-  data: number[];
-}
+// Use the imported CourseImageObject type
+type CourseImageObject = UtilCourseImageObject;
 
 // Type for the raw course object directly from the API
 type CourseFromAPI = {
@@ -39,45 +41,6 @@ export type Course = {
   course_end_date?: string;
   course_image?: string | CourseImageObject | null; // Updated type
 };
-
-// Helper function to convert various image data formats to a usable image source string
-function processCourseImage(
-  imageData: CourseImageObject | string | null | undefined,
-  defaultPath: string = "/no-image.png" // Default if processing fails or no data
-): string {
-  if (!imageData) return defaultPath;
-
-  if (typeof imageData === "string") {
-    // If it's already a data URI or an HTTP/HTTPS URL, use it directly
-    if (imageData.startsWith("data:") || imageData.startsWith("http")) {
-      return imageData;
-    }
-    // If it's a non-empty relative path, use it. Otherwise, fallback.
-    return imageData.trim() !== "" ? imageData : defaultPath;
-  }
-
-  if (
-    typeof imageData === "object" &&
-    imageData.data &&
-    Array.isArray(imageData.data)
-  ) {
-    try {
-      let binary = "";
-      const bytes = new Uint8Array(imageData.data);
-      const len = bytes.byteLength;
-      for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
-      }
-      const base64String = window.btoa(binary);
-      // Assuming jpeg, adjust mimeType if necessary or pass it from CourseImageObject.type
-      return `data:image/jpeg;base64,${base64String}`;
-    } catch (e) {
-      console.error("Error converting image buffer to base64:", e);
-      return defaultPath;
-    }
-  }
-  return defaultPath; // Fallback for unrecognized formats
-}
 
 export default function Container_Classes() {
   const [allCourses, setAllCourses] = useState<Course[]>([]);
@@ -186,7 +149,7 @@ export default function Container_Classes() {
       <div className={styles.Container_Classes}>
         {allCourses.map((course) => {
           // Process the course_image using the helper function
-          const imageSrcForComponent = processCourseImage(course.course_image);
+          const imageSrcForComponent = processImageSrc(course.course_image); // Use imported utility
 
           return (
             <div key={course.id} className={styles.item}>

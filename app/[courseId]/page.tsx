@@ -100,15 +100,6 @@ const initialNewLessonData = {
   resourceFile: null as File | null, // Added for client-side file handling
 };
 
-const convertToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
 function CourseDetailsPageContent() {
   const pathParams = useParams();
   const courseIdFromPath = pathParams?.courseId as string | undefined;
