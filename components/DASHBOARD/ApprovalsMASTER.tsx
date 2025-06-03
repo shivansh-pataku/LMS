@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import DashboardLayout from "@/components/DashboardLayout";
-import Image from 'next/image';
 import { AgGridReact } from 'ag-grid-react';
-import sytyles from "@/components/Approvals.module.css";
-
 
 type PendingAdmin = {
     id: number;
@@ -20,26 +16,107 @@ type PendingAdmin = {
     created_at: string;
     role_name: string;
 };
- 
+
+interface ImageCellRendererParams {
+    value: string | null;
+}
+
+interface ActionsCellRendererParams {
+    data: { id: number };
+    onApprove: (id: number) => void;
+    onReject: (id: number) => void;
+}
+
+const ImageCellRenderer = (params: ImageCellRendererParams) => {
+    const imageUrl = params.value || '/no-image.png';
+    return (
+        <img 
+            src={imageUrl} 
+            alt="Profile" 
+            style={{ width: '80px', height: '80px', borderRadius: '10px', margin: '5px' }}
+        />
+    );
+};
+
+const ActionsCellRenderer = (params: ActionsCellRendererParams) => {
+    if (!params.data) return null;
+    
+    return (
+        <div>
+            <button 
+                className="GridButtons"
+                onClick={() => params.onApprove(params.data.id)}
+            >
+                Approve
+            </button>
+            <button 
+                className="GridButtons"
+                onClick={() => params.onReject(params.data.id)}
+            >
+                Reject
+            </button>
+        </div>
+    );
+};
+
 export default function MasterAdminDashboard() {
     const [pendingAdmins, setPendingAdmins] = useState<PendingAdmin[]>([]);
-    const [loading, setLoading] = useState(true);
+    
+    const [adminColumnDefs] = useState([
+        { 
+            field: 'profile_image', 
+            headerName: 'Profile', 
+            cellRenderer: ImageCellRenderer,
+            width: 80,
+            sortable: false,
+            filter: false,
+            suppressMenu: true,
+        },
+        { 
+            field: 'name', 
+            headerName: 'Name',
+            valueGetter: (params: any) => {
+                if (!params.data) return '';
+                return `${params.data.first_name} ${params.data.last_name}`;
+            },
+            flex: 1
+        },
+        { field: 'email', headerName: 'Email', flex: 1 },
+        { field: 'contact', headerName: 'Contact', flex: 1 },
+        { field: 'department', headerName: 'Department', flex: 1 },
+        { field: 'role_name', headerName: 'Role', flex: 1 },
+        { 
+            field: 'created_at', 
+            headerName: 'Joined On',
+            valueFormatter: (params: any) => {
+                if (!params.value) return '';
+                return new Date(params.value).toLocaleDateString();
+            },
+            flex: 1
+        },
+        {
+            headerName: 'Actions',
+            cellRenderer: ActionsCellRenderer,
+            cellRendererParams: {
+                onApprove: (id: number) => handleApproval(id, true),
+                onReject: (id: number) => handleApproval(id, false)
+            },
+            minWidth: 200
+        }
+    ]);
 
-    const fetchPendingAdmins = useCallback(async () => {
+    useEffect(() => {
+        fetchPendingAdmins();
+    }, []);
+
+    const fetchPendingAdmins = async () => {
         try {
-            setLoading(true);
             const response = await axios.get<PendingAdmin[]>("/api/admin/get-pending-users");
             setPendingAdmins(response.data);
         } catch (err) {
             console.error("Error fetching pending admins:", err);
-        } finally {
-            setLoading(false);
         }
-    }, []);
-
-    useEffect(() => {
-        fetchPendingAdmins();
-    }, [fetchPendingAdmins]);
+    };
 
     const handleApproval = async (userId: number, approve: boolean) => {
         try {
@@ -54,62 +131,43 @@ export default function MasterAdminDashboard() {
 
     return (
         <>
-        {/* <DashboardLayout role="master-admin"> */}
+            <h4 className="classic_heading" style={{ position: "sticky" }}>
+                Approve Administrators
+            </h4>
+            
+            <button 
+                className="JUSTbutton"
+                onClick={fetchPendingAdmins}
+            >
+                Refresh List
+            </button>
 
-            {loading ? (
-                <p className="mt-4 text-gray-600">Loading pending admins...</p>
-            ) : pendingAdmins.length === 0 ? (
-                <p className="mt-4 text-gray-600">No pending admins to approve.</p>
-            ) : (
-                <table className="mt-4 w-full border-collapse border border-gray-200">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="border p-2">Profile</th>
-                            <th className="border p-2">Name</th>
-                            <th className="border p-2">Email</th>
-                            <th className="border p-2">Contact</th>
-                            <th className="border p-2">Department</th>
-                            <th className="border p-2">Role</th>
-                            <th className="border p-2">Joined On</th>
-                            <th className="border p-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pendingAdmins.map(user => (
-                            <tr key={user.id} className="border">
-                                <td className="p-2">
-                                    {user.profile_image ? (
-                                        <Image src={user.profile_image} alt="Profile" width={40} height={40} className="rounded-full" />
-                                    ) : (
-                                        <Image src="/no-image.png" alt="No Profile Image" width={40} height={40} className="rounded-full" />
-                                    )}
-                                </td>
-                                <td className="p-2">{user.first_name} {user.last_name}</td>
-                                <td className="p-2">{user.email}</td>
-                                <td className="p-2">{user.contact || "N/A"}</td>
-                                <td className="p-2">{user.department || "N/A"}</td>
-                                <td className="p-2">{user.role_name}</td>
-                                <td className="p-2">{new Date(user.created_at).toLocaleDateString()}</td>
-                                <td className="p-2">
-                                    <button 
-                                        className="bg-green-500 text-white px-4 py-1 mr-2"
-                                        onClick={() => handleApproval(user.id, true)}
-                                    >
-                                        Approve
-                                    </button>
-                                    <button 
-                                        className="bg-red-500 text-white px-4 py-1"
-                                        onClick={() => handleApproval(user.id, false)}
-                                    >
-                                        Reject
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
-        {/* </DashboardLayout>  */}
+            <h4 className="classic_SUBheading" style={{ position: "sticky" }}>
+                Pending Admin Approvals
+            </h4>
+            
+            <div className="ag-theme-quartz" style={{ height: 500, width: '100%' }}>
+                <AgGridReact
+                    rowData={pendingAdmins}
+                    columnDefs={adminColumnDefs}
+                    defaultColDef={{
+                        sortable: true,
+                        filter: true,
+                        resizable: true,
+                        minWidth: 100,
+                        cellStyle: { 
+                            display: 'flex', 
+                            justifyContent: 'left', 
+                            alignItems: 'center', 
+                            padding: "10px", 
+                            innerHeight: "100px", 
+                            fontSize: "14px" 
+                        },
+                    }}
+                    rowHeight={100}
+                    suppressCellFocus={true}
+                />
+            </div>
         </>
     );
 }

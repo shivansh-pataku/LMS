@@ -8,7 +8,7 @@ import {
   ColDef,
   ICellRendererParams,
 } from "ag-grid-community";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // npm install next/navigation
 import Image from "next/image"; // Import next/image
 
 // Register AG Grid Modules

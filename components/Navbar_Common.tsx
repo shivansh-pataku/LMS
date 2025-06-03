@@ -5,7 +5,7 @@ import styles from './Navbar_Common.module.css';
 export default function Scores() {
     return (
         <nav className={styles.logo}>
-        <Link href="/" style={{ textDecoration: "none", color: "black" }}>Jupyter</Link>
+        <Link href="/" style={{ textDecoration: "none", color: "black" }}>EduSphere</Link>
         </nav>
     );
 }

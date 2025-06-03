@@ -1,0 +1,65 @@
+.contactContainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: #184e10;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.contactCard {
+    background: #f8f9ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    transition: transform 0.2s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.contactCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contactInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Jost', sans-serif;
+    color: #36395A;
+    font-size: 1.1rem;
+}
+
+.icon {
+    color: #14c125;
+    font-size: 1.5rem;
+}
+
+.description {
+    text-align: center;
+    color: #666;
+    margin: 1.5rem 0;
+    font-family: 'Jost', sans-serif;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -3,17 +3,20 @@
 
   height: 85%;
   width: 98%;
-  padding: 10px;
-  margin: 10px;
+  /* padding: 10px; */
+  margin: 5px;
   zoom: 80%;
   background-color: #fdfdfd;
   row-gap: 20px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   flex-direction: row;
+  row-gap: 20px;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   border-radius: 4px;
-  box-shadow: rgb(255, 255, 255) 0px 0px 10px;
+  /* box-shadow: rgb(255, 255, 255) 0px 0px 10px; */
+
+
   /* border: solid rgb(0, 0, 0);
     border-width: 2px;
     border-radius: 10px; */
@@ -21,31 +24,30 @@
 
 
 .boxB1 {
-  /* width: 8%; */
-
   height: 100%;
   width: 150px;
   padding: 6px;
   margin: 3px;
-  /* margin-top: 10px; */
-
   background-color: snow;
-  border-radius: 10px;
+  border-radius: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 10px;
+  border: solid rgba(0, 0, 0, 0.171);
+  border-width: 3px;
   border-radius: 3px;
-  box-shadow: 0 0 10px #00000078;
 }
 
 .boxB2 {
   height: 100%;
   width: 100%;
-  padding: 6px;
+  padding: 20px;
   margin: 3px;
   background-color: snow;
-  border-radius: 3px;
-  box-shadow: 0 0 10px #00000070;
   height: 100%;
-
   overflow: scroll;
+  box-shadow: rgb(255, 255, 255) 0px 0px 10px;
+  border: solid rgba(0, 0, 0, 0.171);
+  border-width: 3px;
+  border-radius: 4px;
 
 }
 
@@ -53,7 +55,7 @@
 
 .Menu {
   height: auto;
-  width: auto;
+  width: 100px;
   display: flex;
   flex-direction: column;
   /* padding: 0; */

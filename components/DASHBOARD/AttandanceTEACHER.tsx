@@ -2,7 +2,9 @@
 import { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+
+import AddAttendance from "../AddAttendance";
 ModuleRegistry.registerModules([AllCommunityModule]);
 interface Attendance {
     course_name: string;
@@ -149,7 +151,7 @@ useEffect(() => {
 
                 return (
         <>
-            <h4 className="classic_heading">Attendance Overview</h4>
+            <h4 className="classic_heading">Attendance Overview</h4> 
             <div style={{ display: 'flex', gap: '10px', margin: '10px 0' }}>
                 {availableMonths.length > 0 ? (
                     <select 
@@ -193,6 +195,9 @@ useEffect(() => {
                     rowHeight={35}
                 />
             </div>
+
+            <AddAttendance />
+
         </>
     );
 }

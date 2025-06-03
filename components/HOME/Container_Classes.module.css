@@ -13,7 +13,7 @@
   
   .selection{
     margin: 50px 10px 10px 50px;
-    font-family:jost;
+    font-family:"jost";
     font-size: 30px;
     font-weight: 600;
     color:#549e5ef5;
@@ -24,7 +24,7 @@
   
   .item {
     
-    height: 340px;
+    height: 380px;
     width: 350px;
 
     /* max-height: 250px; 
@@ -89,12 +89,14 @@
     
   }
   .description{
+    height: 5px;
     font-size: 18px;
     font-weight: 600;
     text-align: left;
-    height: 20px;
-    font-family:Atkinson Hyperlegible Next;
-    /* margin: 5px 5px 5px 5px; */
+    font-family: Commissioner;
+    margin: 5px 4px 5px 5px;
+      text-overflow: ellipsis;  
+    /* margin: 1px 1px 1px 1px; */
   }
 
 /* Jost

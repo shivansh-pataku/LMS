@@ -55,7 +55,7 @@ useEffect(() => {
         if (!selectedMonth) return; // Don't fetch if no month selected
 
         try {
-            setLoading(true);
+            setLoading(true); 
             console.log('Fetching data for month:', selectedMonth); // Debug log
 
             // Update URL to include month parameter properly
@@ -179,7 +179,7 @@ useEffect(() => {
                 </select>
             </div>
 
-            <div className="ag-theme-alpine" style={{ height: 500, width: "100%" }}>
+            <div className="ag-theme-alpine" style={{ height: 800, width: "100%" }}>
                 <AgGridReact
                     rowData={rowData}
                     columnDefs={columnDefs}

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { LiveClass } from "@/types/live-class"; // Ensure this path is correct
+import styles from './CreateLiveClassForm.module.css';
 
 interface CreateLiveClassFormProps {
   courseId: string;
@@ -71,22 +72,12 @@ const CreateLiveClassForm: React.FC<CreateLiveClassFormProps> = ({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        marginBottom: "20px",
-        padding: "15px",
-        border: "1px solid #eee",
-        borderRadius: "5px",
-      }}
-    >
-      <h4>Create New Live Class</h4>
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
-      <div style={{ marginBottom: "10px" }}>
-        <label
-          htmlFor="topic"
-          style={{ display: "block", marginBottom: "5px" }}
-        >
+    <form onSubmit={handleSubmit} className={styles.formContainer}>
+      <h4 className={styles.title}>Create New Live Class</h4>
+      {error && <p className={styles.errorMessage}>Error: {error}</p>}
+      
+      <div className={styles.formGroup}>
+        <label htmlFor="topic" className={styles.label}>
           Topic:
         </label>
         <input
@@ -95,14 +86,12 @@ const CreateLiveClassForm: React.FC<CreateLiveClassFormProps> = ({
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           required
-          style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+          className={styles.input}
         />
       </div>
-      <div style={{ marginBottom: "10px" }}>
-        <label
-          htmlFor="description"
-          style={{ display: "block", marginBottom: "5px" }}
-        >
+
+      <div className={styles.formGroup}>
+        <label htmlFor="description" className={styles.label}>
           Description (Optional):
         </label>
         <textarea
@@ -110,28 +99,27 @@ const CreateLiveClassForm: React.FC<CreateLiveClassFormProps> = ({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={3}
-          style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+          className={styles.textarea}
         />
       </div>
-      <div style={{ marginBottom: "10px" }}>
-        <label
-          htmlFor="scheduledAt"
-          style={{ display: "block", marginBottom: "5px" }}
-        >
+
+      <div className={styles.formGroup}>
+        <label htmlFor="scheduledAt" className={styles.label}>
           Schedule Date & Time (Optional):
         </label>
         <input
-          type="datetime-local" // HTML5 input for date and time
+          type="datetime-local"
           id="scheduledAt"
           value={scheduledAt}
           onChange={(e) => setScheduledAt(e.target.value)}
-          style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+          className={styles.datetimeInput}
         />
       </div>
+
       <button
         type="submit"
         disabled={isSubmitting}
-        style={{ padding: "10px 15px", cursor: "pointer" }}
+        className={styles.submitButton}
       >
         {isSubmitting ? "Creating..." : "Create Class"}
       </button>

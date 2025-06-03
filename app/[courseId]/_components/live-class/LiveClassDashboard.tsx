@@ -5,6 +5,10 @@ import { useParams } from "next/navigation";
 import { LiveClass } from "@/types/live-class"; // Ensure this path is correct
 import CreateLiveClassForm from "./CreateLiveClassForm";
 import JitsiMeetEmbed from "./JitsiMeetEmbed";
+import styles from './LiveClassDashboard.module.css';
+import AddAttendance from "@/components/AddAttendance";
+
+
 
 const LiveClassDashboard = () => {
   const params = useParams();
@@ -53,89 +57,61 @@ const LiveClassDashboard = () => {
     setLiveClasses((prevClasses) => [newClass, ...prevClasses]);
     setSelectedRoom(newClass.roomName); // Auto-join new class
   };
-
-  if (!courseId) {
-    return <p>Course ID not found. Cannot load live class features.</p>;
+ if (!courseId) {
+    return <p className={styles.errorMessage}>Course ID not found. Cannot load live class features.</p>;
   }
 
-  if (loading) return <p>Loading live classes...</p>;
-  if (error) return <p>Error loading live classes: {error}</p>;
+  if (loading) return <p className={styles.loadingMessage}>Loading live classes...</p>;
+  if (error) return <p className={styles.errorMessage}>Error loading live classes: {error}</p>;
 
   if (selectedRoom) {
-    // const userName = "User"; // Replace with actual user name if available
     return (
-      <>
+      <div className={styles.container}>
         <button
           onClick={() => setSelectedRoom(null)}
-          style={{
-            marginBottom: "10px",
-            padding: "8px 12px",
-            cursor: "pointer",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
+          className={styles.backButton}
         >
           Back to Classes List
         </button>
         <JitsiMeetEmbed roomName={selectedRoom} displayName={"User"} />
-      </>
+        <AddAttendance />
+      </div>
     );
   }
 
   return (
-    <div>
-      <h3 style={{ marginBottom: "20px" }}>Live Classes</h3>
+    <div className={styles.container}>
+      <h3 className={styles.title}>Live Classes</h3>
       <CreateLiveClassForm
         courseId={courseId}
         onClassCreated={handleClassCreated}
       />
-      <hr style={{ margin: "20px 0" }} />
-      <h4>Scheduled/Existing Classes:</h4>
+      <hr className={styles.divider} />
+      <h4 className={styles.subtitle}>Scheduled/Existing Classes:</h4>
       {liveClasses.length === 0 ? (
-        <p>No live classes scheduled yet.</p>
+        <p className={styles.emptyMessage}>No live classes scheduled yet.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <ul className={styles.classList}>
           {liveClasses.map((cls) => (
-            <li
-              key={cls.id}
-              style={{
-                marginBottom: "15px",
-                border: "1px solid #ddd",
-                padding: "15px",
-                borderRadius: "5px",
-              }}
-            >
-              <strong>{cls.topic}</strong>
+            <li key={cls.id} className={styles.classCard}>
+              <h5 className={styles.classTopic}>{cls.topic}</h5>
               {cls.description && (
-                <p style={{ margin: "5px 0" }}>{cls.description}</p>
+                <p className={styles.classDescription}>{cls.description}</p>
               )}
-              <p style={{ margin: "5px 0" }}>Room: {cls.roomName}</p>
+              <p className={styles.classInfo}>Room: {cls.roomName}</p>
               {cls.scheduledAt && (
-                <p style={{ margin: "5px 0" }}>
+                <p className={styles.classInfo}>
                   Scheduled: {new Date(cls.scheduledAt).toLocaleString()}
                 </p>
               )}
               <button
                 onClick={() => setSelectedRoom(cls.roomName)}
-                style={{
-                  marginTop: "10px",
-                  padding: "8px 12px",
-                  cursor: "pointer",
-                  backgroundColor: "#007bff",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                }}
+                className={styles.joinButton}
               >
                 Join Class
               </button>
-              <p
-                style={{ marginTop: "10px", fontSize: "0.8em", color: "#555" }}
-              >
-                <small>
-                  Created: {new Date(cls.createdAt).toLocaleString()}
-                </small>
+              <p className={styles.timestamp}>
+                Created: {new Date(cls.createdAt).toLocaleString()}
               </p>
             </li>
           ))}

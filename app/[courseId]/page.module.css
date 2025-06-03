@@ -1,200 +1,195 @@
-/* filepath: c:\next_js_projects\LMS\app\[courseId]\page.module.css */
+
+body {
+    /* background-color: #1c1c1c;
+    color: #000000; */
+    /*font-family: 'Commissioner', sans-serif;
+    font-size: 16px;
+    line-height: 1.5; */
+    background-color: snow;
+}
+
 .pageContainer {
-  padding: 1.5rem; /* p-6 */
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* space-y-6 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #757575;
+
 }
 
 .pageTitle {
-  font-size: 1.5rem; /* text-2xl */
-  line-height: 2rem;
-  font-weight: 600; /* font-semibold */
+    color: #1cb305;
+    font-family: montserrat;
+    font-size: 3.5rem;
+    font-weight: 800; 
+    margin-bottom: 24px;
+    padding: 16px;
+    border-bottom: 4px solid#1cb305;;
+    background-color: #1c1c1c;
+    border-radius: 4px;
 }
 
-.tabsContent {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* space-y-6 */
+.detilsTitle {
+    color: #6483f2;
+    background-color: #1c1c1c;
+    border-bottom: 4px solid #8fa6fc;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    padding: 16px;
+    font-family: montserrat;
+    font-size: 2rem;
+    font-weight: 800;
 }
 
-.card {
-  padding: 1rem; /* p-4 */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* space-y-4 */
+.card 
+{
+    background-color: #54565459;
+    border-radius: 4px;
+    border: 3px solid #070707;
+    margin-bottom: 25px;
+    padding: 20px;
+    box-shadow: 0 2px 4px #0000000d;
 }
 
+
+.newSectionName{
+    color: rgb(0, 0, 0);
+    margin-bottom: 2px;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 500;
+    display: block;
+}
+
+.newSectionName, .newSectionDesc{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(255, 252, 246);
+    border: 2.5px solid rgb(3, 3, 3);
+    border-radius: 3px;
+    padding: 12px;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    transition: border-color 0.2s;
+}
 .cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
 }
 
 .cardTitle {
-  font-size: 1.125rem; /* text-lg */
-  line-height: 1.75rem;
-  font-weight: 600; /* font-semibold */
-}
-
-.iconButton {
-  margin-right: 0.5rem; /* mr-2 */
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-}
-
-.listItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-width: 1px;
-  padding: 0.5rem; /* p-2 */
-  border-radius: 0.375rem; /* rounded-md */
-  background-color: hsl(var(--muted)); /* bg-muted */
-}
-
-.listItemContent {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* space-x-2 */
-}
-
-.gripIcon {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-  color: #6b7280; /* text-gray-500 */
-}
-
-.videoIcon {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-  color: #3b82f6; /* text-blue-500 */
-}
-
-.hiddenText {
-  color: #9ca3af; /* text-gray-400 */
-  font-style: italic;
-}
-
-.buttonGroup {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* gap-2 */
-}
-
-.iconOnlyButton {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-}
-
-.detailsTabContent {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* space-y-4 */
-}
-
-.detailsTitle {
-  font-size: 1.125rem; /* text-lg */
-  line-height: 1.75rem;
-  font-weight: 500; /* font-medium */
+    color: rgb(157, 197, 215);
+    background-color: rgba(210, 139, 139, 0);
+    margin-bottom: 20px;
+    font-family: montserrat;
+    font-size: 2rem;
+    font-weight: 800;
+    border-bottom: 5px solid rgb(157, 197, 215);
+    padding: 10px;
+    width: 100%;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* space-y-4 */
+    background-color: #5846614d;
+    padding: 24px;
+    border-radius: 4px;
+    border: 3px solid #070707;
 }
 
 .formField {
-    display: flex;
-    flex-direction: column; /* Stack label on top of field */
-    gap: 0.25rem; /* Small gap between label and field */
+    margin-bottom: 16px;
 }
 
 .label {
-  display: block;
-  margin-bottom: 0.25rem; /* mb-1 */
-  font-size: 0.875rem; /* text-sm */
-  line-height: 1.25rem;
-  font-weight: 500; /* font-medium */
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500;
+    color: #374151;
+        font-family: jost;
+    color: black;
+    font-size: 20px;
 }
 
 .textareaField {
-    /* Add any specific styles for your textarea if needed */
-    /* For example, if using a standard <textarea> or a custom Textarea component */
-    min-height: 80px; /* Example height */
-    padding: 0.5rem 0.75rem;
-    border: 1px solid hsl(var(--input));
-    border-radius: 0.375rem;
-    width: 100%; /* Make it full width */
-    font-size: 0.875rem;
-  }
-
-  .readOnlyField {
-    padding: 0.5rem 0.75rem; /* Similar to input padding */
-    border: 1px solid hsl(var(--input)); /* Similar to input border */
-    border-radius: 0.375rem; /* rounded-md */
-    background-color: hsl(var(--muted)); /* A slightly different background to indicate read-only */
-    font-size: 0.875rem; /* text-sm */
-    min-height: 2.5rem; /* Ensure similar height to input */
-    display: flex;
-    align-items: center;
-  }
-
-.editForm {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-top: 10px;
-  background-color: #f9f9f9;
+    width: 98%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
 }
 
-.formFieldInline {
-  display: flex;
-  flex-direction: column; /* Stack label and input */
-  margin-bottom: 12px;
+.textareaField:focus {
+    outline: none;
+    border-color: #14c125;
+    box-shadow: 0 0 0 3px rgba(20, 193, 37, 0.1);
 }
 
-.formFieldInline label {
-  margin-bottom: 4px;
-  font-weight: 500;
-  font-size: 0.9em;
+.readOnlyField {
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: commissioner;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgb(205, 202, 195);
 }
 
 .formActions {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
 }
-.formTitle {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #333;
-}
-/* ... existing styles ... */
 
-.loadingText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  font-size: 1.1em;
-  color: #555;
+.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-jost);
+}
+
+.primaryButton {
+    background-color: #14c125;
+    color: white;
+    border: none;
+}
+
+.primaryButton:hover {
+    background-color: #0f9d1f;
+}
+
+.secondaryButton {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.secondaryButton:hover {
+    background-color: #f3f4f6;
 }
 
 .errorText {
-  padding: 15px;
-  background-color: #ffebee; /* Light red */
-  color: #c62828; /* Darker red */
-  border: 1px solid #ef9a9a; /* Red border */
-  border-radius: 4px;
-  margin: 10px 0;
+    color: #dc2626;
+    background-color: #b7acac;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 1.35rem;
 }
 
-.emptyStateTextSmall {
-  font-size: 0.9em;
-  color: #777;
-  padding: 10px 0px 10px 20px; /* Adjusted padding */
-  font-style: italic;
+.loadingText {
+    text-align: center;
+    color: #6b7280;
+    padding: 24px;
 }

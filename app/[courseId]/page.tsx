@@ -1,5 +1,5 @@
 "use client";
-
+                              // Add New Lesson to &quot;{section.name}&quot;
 import {
   useEffect,
   useState,
@@ -39,7 +39,8 @@ import {
 import styles from "./page.module.css";
 import Image from "next/image";
 import LiveClassDashboard from "./_components/live-class/LiveClassDashboard";
-
+import Navbar from "@/components/Navbar";
+import Navbar_Comon from "@/components/Navbar_Common";
 // Interfaces
 interface CourseData {
   id: number;
@@ -1042,7 +1043,8 @@ function CourseDetailsPageContent() {
     );
 
   return (
-    <div className={styles.pageContainer}>
+    <><Navbar_Comon/>
+    <div className={styles.pageContainer}> 
       <h1 className={styles.pageTitle}>
         {courseData.course_name || "Course Details"}
       </h1>
@@ -1051,7 +1053,7 @@ function CourseDetailsPageContent() {
           <TabsTrigger value="lessons">Lessons</TabsTrigger>
           <TabsTrigger value="details">Details</TabsTrigger>
           <TabsTrigger value="Announcement">Announcement</TabsTrigger>
-          <TabsTrigger value="Live_class">Live_Class</TabsTrigger>
+          <TabsTrigger value="Live_class">Live Class</TabsTrigger>
         </TabsList>
 
         <TabsContent value="lessons" className={styles.tabsContent}>
@@ -1075,13 +1077,14 @@ function CourseDetailsPageContent() {
               <form
                 onSubmit={handleSaveNewSection}
                 className={styles.editForm}
-                style={{ marginBottom: "20px" }}
+                style={{ marginBottom: "20px", margin:"50px", padding:"50px"}}
               >
                 <h3 className={styles.formTitle}>Add New Section</h3>
                 <div className={styles.formFieldInline}>
                   <label htmlFor="newSectionName">Name:</label>
                   <Input
-                    id="newSectionName"
+                    // id="newSectionName"
+                    className={styles.newSectionName}
                     name="name"
                     value={newSectionData.name}
                     onChange={handleNewSectionFormChange}
@@ -1092,7 +1095,8 @@ function CourseDetailsPageContent() {
                 <div className={styles.formFieldInline}>
                   <label htmlFor="newSectionDesc">Description:</label>
                   <Textarea
-                    id="newSectionDesc"
+                    // id="newSectionDesc"
+                    className={styles.newSectionDesc}
                     name="description"
                     value={newSectionData.description}
                     onChange={handleNewSectionFormChange}
@@ -1569,7 +1573,14 @@ function CourseDetailsPageContent() {
                                   Edit Lesson
                                 </h3>
                                 <div className={styles.formFieldInline}>
-                                  <label htmlFor={`lessonName-${lesson.id}`}>
+                                  <label style={{
+    fontFamily: "jost",
+    color: "#000",
+    marginBottom: "5px",
+    fontSize: "50px",
+    fontWeight: 500,
+    display: "block"
+}} htmlFor={`lessonName-${lesson.id}`}>
                                     Name:
                                   </label>
                                   <Input
@@ -1991,7 +2002,17 @@ function CourseDetailsPageContent() {
         </TabsContent>
 
         <TabsContent value="details" className={styles.detailsTabContent}>
-          <h2 className={styles.detailsTitle}>Course Details</h2>
+    <h2 className={styles.detailsTitle} style={{
+    color: "#6483f2",
+    backgroundColor: "#1c1c1c",
+    borderBottom: "4px solid #8fa6fc",
+    borderRadius: "4px",
+    marginBottom: "24px",
+    padding: "16px",
+    fontFamily: "montserrat",
+    fontSize: "2rem",
+    fontWeight: 800
+}}>Course Details</h2>
           <form className={styles.form} onSubmit={handleDetailsSubmit}>
             <div className={styles.formField}>
               <label className={styles.label}>Course Name</label>
@@ -2130,7 +2151,7 @@ function CourseDetailsPageContent() {
           )}
         </TabsContent>
       </Tabs>
-    </div>
+    </div> </>
   );
 }
 

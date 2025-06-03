@@ -1,17 +1,15 @@
 .textarea {
-    display: flex; /* Maintained from original 'flex' for consistency, though might not be strictly needed for a single textarea */
-    min-height: 60px;
-    width: 100%;
-    border-radius: 0.375rem; /* Corresponds to rounded-md */
-    border: 1px solid var(--input, #e5e7eb); /* border-input, with a fallback color */
-    background-color: transparent; /* bg-transparent */
-    padding: 0.5rem 0.75rem; /* px-3 py-2 */
-    font-size: 1rem; /* text-base */
-    line-height: 1.5rem; /* text-base line height */
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
-    transition-property: border-color, box-shadow;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+  width: 100%;
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
+    
   }
   
   .textarea::placeholder {

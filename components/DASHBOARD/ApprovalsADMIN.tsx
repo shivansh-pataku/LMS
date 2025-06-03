@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AgGridReact } from 'ag-grid-react';
@@ -57,7 +56,7 @@ const ImageCellRenderer = (params: ImageCellRendererParams) => {
         <img 
             src={imageUrl} 
             alt="Profile" 
-            style={{ width: '80px', height: '80px', borderRadius: '10px', margin: '5px' }}
+            style={{ width: '110px', height: '80px', borderRadius: '10px', margin: '5px' }}
         />
     );
 };
@@ -146,7 +145,7 @@ export default function AdminDashboard() {
             field: 'course_image',
             headerName: 'Image',
             cellRenderer: ImageCellRenderer,
-            width: 80
+            width: 150
         },
         { field: 'course_code', headerName: 'Code', flex: 1 },
         { field: 'course_name', headerName: 'Name', flex: 1 },
@@ -242,7 +241,7 @@ export default function AdminDashboard() {
             </button>
 
             <h4 className="classic_SUBheading" style={{ position: "sticky" }}>Pending User Approvals</h4>
-            <div className="ag-theme-quartz" style={{ height: 500, width: '100%' }}>
+            <div className="ag-theme-airplane" style={{ height: 500, width: '100%' }}>
  
                     <AgGridReact
                         rowData={pendingUsers}
@@ -273,7 +272,7 @@ export default function AdminDashboard() {
                             resizable: true,
                             // maxWidth: 200,
                             minWidth: 100,
-                             cellStyle: { display: 'flex', justifyContent: 'left', alignItems: 'center', padding:"10px", padding:"10px", innerHeight:"100px" },
+                             cellStyle: { display: 'flex', justifyContent: 'left', alignItems: 'center', padding:"10px", innerHeight:"100px" },
      
                         }}
                         rowHeight={100}

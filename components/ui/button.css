@@ -1,24 +1,24 @@
-/* Base button styles */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* 8px if base font is 16px, from gap-2 */
+  gap: 0.5rem;
   white-space: nowrap;
-  border-radius: 0.375rem; /* from rounded-md */
-  font-size: 0.875rem; /* from text-sm */
-  font-weight: 500; /* from font-medium */
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms; /* from transition-colors */
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  /* focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring */
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: jost;
+  background-color: #34ec46;
+  padding: 10px 16px;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1px hsl(var(--ring)); /* Assuming --ring is defined elsewhere */
+  box-shadow: 0 0 0 2px rgba(52, 236, 70, 0.3);
 }
 
 .button:disabled {
@@ -27,88 +27,91 @@
 }
 
 .button svg {
-  pointer-events: none;
-  width: 1rem; /* from size-4 */
-  height: 1rem; /* from size-4 */
+  width: 1rem;
+  height: 1rem;
   flex-shrink: 0;
 }
 
-/* Variants */
 .button-default {
-  background-color: hsl(var(--primary)); /* from bg-primary */
-  color: hsl(var(--primary-foreground)); /* from text-primary-foreground */
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* from shadow */
+  font-size: 1rem;
+  border : solid 1.5px black;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px 10px 20px ;
+  background-color: #374151;
+  color: white;
 }
+
 .button-default:hover {
-  background-color: hsl(var(--primary) / 0.9); /* from hover:bg-primary/90 */
+  background-color: #2dd43e;
 }
 
 .button-destructive {
-  background-color: hsl(var(--destructive)); /* from bg-destructive */
-  color: hsl(var(--destructive-foreground)); /* from text-destructive-foreground */
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* from shadow-sm */
+  background-color: #dc2626;
+  color: white;
 }
+
 .button-destructive:hover {
-  background-color: hsl(var(--destructive) / 0.9); /* from hover:bg-destructive/90 */
+  background-color: #b91c1c;
 }
 
 .button-outline {
-  border: 1px solid hsl(var(--input)); /* from border border-input */
-  background-color: hsl(var(--background)); /* from bg-background */
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* from shadow-sm */
+  border: 1.5px solid #d1d5db;
+  background-color: white;
 }
+
 .button-outline:hover {
-  background-color: hsl(var(--accent)); /* from hover:bg-accent */
-  color: hsl(var(--accent-foreground)); /* from hover:text-accent-foreground */
+  background-color: #f3f4f6;
+  color: #374151;
 }
 
 .button-secondary {
-  background-color: hsl(var(--secondary)); /* from bg-secondary */
-  color: hsl(var(--secondary-foreground)); /* from text-secondary-foreground */
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* from shadow-sm */
+  background-color: #f3f4f6;
+  color: #374151;
 }
+
 .button-secondary:hover {
-  background-color: hsl(var(--secondary) / 0.8); /* from hover:bg-secondary/80 */
+  background-color: #e5e7eb;
 }
 
 .button-ghost:hover {
-  background-color: hsl(var(--accent)); /* from hover:bg-accent */
-  color: hsl(var(--accent-foreground)); /* from hover:text-accent-foreground */
+  background-color: #f3f4f6;
 }
 
 .button-link {
-  color: hsl(var(--primary)); /* from text-primary */
+  color: #34ec46;
   text-underline-offset: 4px;
 }
+
 .button-link:hover {
   text-decoration-line: underline;
 }
 
-/* Sizes */
 .button-size-default {
-  height: 2.25rem; /* from h-9 */
-  padding-left: 1rem; /* from px-4 */
-  padding-right: 1rem; /* from px-4 */
-  padding-top: 0.5rem; /* from py-2 */
-  padding-bottom: 0.5rem; /* from py-2 */
+  height: 46px;
+  font-size: 1rem;
 }
 
 .button-size-sm {
-  height: 2rem; /* from h-8 */
-  border-radius: 0.375rem; /* from rounded-md */
-  padding-left: 0.75rem; /* from px-3 */
-  padding-right: 0.75rem; /* from px-3 */
-  font-size: 0.75rem; /* from text-xs */
+  font-size: 1rem;
+  border : solid 1.5px black;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px 10px 20px ;
+  background-color: #374151;
+  color: white;
+}
+
+.button-size-sm :hover {
+  color: #374151;
 }
 
 .button-size-lg {
-  height: 2.5rem; /* from h-10 */
-  border-radius: 0.375rem; /* from rounded-md */
-  padding-left: 2rem; /* from px-8 */
-  padding-right: 2rem; /* from px-8 */
+  height: 44px;
+  padding: 0 24px;
+  font-size: 1.125rem;
 }
 
 .button-size-icon {
-  height: 2.25rem; /* from h-9 */
-  width: 2.25rem; /* from w-9 */
+  height: 36px;
+  width: 36px;
+  padding: 0;
 }
