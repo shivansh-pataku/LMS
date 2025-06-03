@@ -10,10 +10,24 @@ import AddAttendance from "@/components/AddAttendance";
 
 
 
-const LiveClassDashboard = () => {
+// 1. Define and Export the Props Interface
+export interface LiveClassDashboardProps {
+  courseId?: string; // Optional: if it can also get it from useParams
+  isStudentView?: boolean; // Optional: if it has a default or different behavior
+}
+
+// 2. Use the props interface in your component definition
+const LiveClassDashboard = (props: LiveClassDashboardProps) => {
   const params = useParams();
-  const courseId =
-    typeof params?.courseId === "string" ? params.courseId : undefined;
+
+  // Determine the effective courseId:
+  // Priority: 1. Passed prop, 2. From URL params
+  const effectiveCourseId =
+    props.courseId ||
+    (typeof params?.courseId === "string" ? params.courseId : undefined);
+
+  // Determine the view mode (default to false if not provided)
+  const isStudent = props.isStudentView === true;
 
   const [liveClasses, setLiveClasses] = useState<LiveClass[]>([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +35,7 @@ const LiveClassDashboard = () => {
   const [selectedRoom, setSelectedRoom] = useState<string | null>(null);
 
   const fetchLiveClasses = useCallback(async () => {
-    if (!courseId) {
+    if (!effectiveCourseId) {
       setLoading(false);
       setError("Course ID is not available to fetch live classes.");
       return;
@@ -29,7 +43,9 @@ const LiveClassDashboard = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/courses/${courseId}/live-class`);
+      const response = await fetch(
+        `/api/courses/${effectiveCourseId}/live-class`
+      );
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({
           message: "Failed to fetch live classes and parse error response.",
@@ -45,20 +61,26 @@ const LiveClassDashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, [courseId]);
+  }, [effectiveCourseId]);
 
   useEffect(() => {
-    if (courseId) {
+    if (effectiveCourseId) {
       fetchLiveClasses();
     }
-  }, [fetchLiveClasses, courseId]);
+  }, [fetchLiveClasses, effectiveCourseId]);
 
   const handleClassCreated = (newClass: LiveClass) => {
     setLiveClasses((prevClasses) => [newClass, ...prevClasses]);
     setSelectedRoom(newClass.roomName); // Auto-join new class
   };
+<<<<<<< HEAD
  if (!courseId) {
     return <p className={styles.errorMessage}>Course ID not found. Cannot load live class features.</p>;
+=======
+
+  if (!effectiveCourseId) {
+    return <p>Course ID not found. Cannot load live class features.</p>;
+>>>>>>> b8af2b37a2ba5daa8a9f97dcfeaefbc5856decb2
   }
 
   if (loading) return <p className={styles.loadingMessage}>Loading live classes...</p>;
@@ -73,13 +95,19 @@ const LiveClassDashboard = () => {
         >
           Back to Classes List
         </button>
+<<<<<<< HEAD
         <JitsiMeetEmbed roomName={selectedRoom} displayName={"User"} />
         <AddAttendance />
       </div>
+=======
+        <JitsiMeetEmbed roomName={selectedRoom} displayName={"Student"} />
+      </>
+>>>>>>> b8af2b37a2ba5daa8a9f97dcfeaefbc5856decb2
     );
   }
 
   return (
+<<<<<<< HEAD
     <div className={styles.container}>
       <h3 className={styles.title}>Live Classes</h3>
       <CreateLiveClassForm
@@ -88,6 +116,21 @@ const LiveClassDashboard = () => {
       />
       <hr className={styles.divider} />
       <h4 className={styles.subtitle}>Scheduled/Existing Classes:</h4>
+=======
+    <div>
+      <h3 style={{ marginBottom: "20px" }}>Live Classes</h3>
+      {/* Conditionally render CreateLiveClassForm based on isStudentView */}
+      {!isStudent && effectiveCourseId && (
+        <>
+          <CreateLiveClassForm
+            courseId={effectiveCourseId}
+            onClassCreated={handleClassCreated}
+          />
+          <hr style={{ margin: "20px 0" }} />
+        </>
+      )}
+      <h4>Scheduled/Existing Classes:</h4>
+>>>>>>> b8af2b37a2ba5daa8a9f97dcfeaefbc5856decb2
       {liveClasses.length === 0 ? (
         <p className={styles.emptyMessage}>No live classes scheduled yet.</p>
       ) : (

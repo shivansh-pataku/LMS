@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar';
-import Profile from '@/components/DASHBOARD/Profile';
+// import Profile from '@/components/DASHBOARD/Profile';
 import DashboardSTUDENT from '@/components/DASHBOARD/DashboardSTUDENT';
 
 // interface UserProfile {

@@ -1,6 +1,5 @@
-import Navbar from '@/components/Navbar';
-import Profile from '@/components/DASHBOARD/Profile';
-import DashboardTEACHER from '@/components/DASHBOARD/DashboardTEACHER';
+import Navbar from "@/components/Navbar";
+import DashboardTEACHER from "@/components/DASHBOARD/DashboardTEACHER";
 
 // interface UserProfile {
 //   name: string;
@@ -15,11 +14,7 @@ export default function User() {
     <>
       <Navbar />
       {/* <Profile /> */}
-      <DashboardTEACHER /> 
+      <DashboardTEACHER />
     </>
-
-
   );
 }
-
-
