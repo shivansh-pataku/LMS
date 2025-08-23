@@ -355,36 +355,43 @@ const ManageButtonRenderer = (params: ICellRendererParams<Course>) => {
 };
 
 export default function Courses() {
-  const [suggestedCourses, setSuggestedCourses] = useState<Course[]>([]);
-  const [allottedCourses, setAllottedCourses] = useState<Course[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  const gridRefAllotted = useRef<AgGridReact<Course>>(null);
-  const gridRefSuggested = useRef<AgGridReact<Course>>(null);
+    // creatin two datasets for alloted and suggested courses
+    const [suggestedCourses, setSuggestedCourses] = useState<Course[]>([]);
+    const [allottedCourses, setAllottedCourses] = useState<Course[]>([]);
+    
+    const [loading, setLoading] = useState(true); //  stores data that can change over time (due to user interaction, API calls, etc.) and causes the component to re-render when updated.
 
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch("/api/courses/get-dashboardTEACHER");
-        if (!response.ok) throw new Error("Failed to fetch courses");
-        const data = await response.json();
-        console.log("Data from /api/courses/get-courses:", data);
-        setAllottedCourses(data.approvedCourses || []);
-        setSuggestedCourses(data.pendingCourses || []);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCourses();
-  }, []);
 
-  // Explicitly type the elements of initialBaseCols to include optional sortable/filter
-  type BaseColDefType = Omit<ColDef<Course>, "sortable" | "filter"> & {
-    sortable?: boolean;
-    filter?: boolean;
-  };
+    // now creating grid references for both datasets
+    const gridRefAllotted = useRef<AgGridReact>(null); // help to access the grid API and properties directly from the component
+    // gridRefAllotted is a reference to the AgGridReact component for the allotted courses grid.
+    // It allows you to programmatically interact with the grid, such as refreshing data or changing grid properties.
+    const gridRefSuggested = useRef<AgGridReact>(null);
+
+        // Fetching courses from the API when the component mounts
+    useEffect(() => {  //runs when the component mounts and when the dependencies change. In this case, it runs only once when the component mounts because the dependency array is empty.
+
+        const fetchCourses = async () => 
+        {
+            try {
+                const response = await fetch("/api/courses/get-courses"); // New API endpoint
+                if (!response.ok) throw new Error("Failed to fetch courses");
+    
+                const data = await response.json(); // Fetching data from the API
+    
+                setAllottedCourses(data.approvedCourses || []);   // Set the allotted courses from the API response initially as an empty array whose interface is already created
+                setSuggestedCourses(data.pendingCourses || []);
+            } catch (error) {
+                console.error("Error fetching courses:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchCourses();
+    }, []);
+    
 
   const initialBaseCols: readonly BaseColDefType[] = [
     {
