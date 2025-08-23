@@ -1,5 +1,5 @@
-'use client';
-import AddCourse from '../AddCourse';
+"use client";
+import AddCourse from "../AddCourse";
 import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState, useRef } from "react";
 import {
@@ -10,14 +10,16 @@ import {
 } from "ag-grid-community";
 import { useRouter } from "next/navigation"; // npm install next/navigation
 import Image from "next/image"; // Import next/image
+import {
+  processImageSrc,
+  CourseImageObject as UtilCourseImageObject,
+} from "@/utils/imageUtils"; // Added import
 
 // Register AG Grid Modules
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-interface CourseImageObject {
-  type: string;
-  data: number[];
-}
+// Use the imported CourseImageObject type
+type CourseImageObject = UtilCourseImageObject;
 
 interface Course {
   id: number;
@@ -36,39 +38,9 @@ interface Course {
   created_at?: string;
 }
 
-// Helper function to convert buffer-like data array to Base64 Data URI
-function arrayBufferToImageSrc(
-  imageData: CourseImageObject | string | null | undefined,
-  mimeType: string = "image/jpeg"
-): string {
-  if (!imageData) return "/no-image.png";
-  if (typeof imageData === "string") {
-    if (imageData.startsWith("data:") || imageData.startsWith("http")) {
-      return imageData;
-    }
-    return imageData; // For relative paths like "/no-image.png"
-  }
-
-  if (
-    typeof imageData === "object" &&
-    imageData.data &&
-    Array.isArray(imageData.data)
-  ) {
-    let binary = "";
-    const bytes = new Uint8Array(imageData.data);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    const base64String = window.btoa(binary);
-    return `data:${mimeType};base64,${base64String}`;
-  }
-  return "/no-image.png";
-}
-
 // Cell Renderer for the Course Image using next/image
 const CourseImageRenderer = (params: ICellRendererParams<Course>) => {
-  const imageSrc = arrayBufferToImageSrc(params.data?.course_image);
+  const imageSrc = processImageSrc(params.data?.course_image); // Use imported utility
   const courseName = params.data?.course_name || "Course Image";
   const isBase64 = imageSrc.startsWith("data:");
 
@@ -129,7 +101,8 @@ const ManageButtonRenderer = (params: ICellRendererParams<Course>) => {
               "data" in value &&
               Array.isArray((value as CourseImageObject).data)
             ) {
-              imageValueToConsider = arrayBufferToImageSrc(
+              imageValueToConsider = processImageSrc(
+                // Use imported utility
                 value as CourseImageObject
               );
             }

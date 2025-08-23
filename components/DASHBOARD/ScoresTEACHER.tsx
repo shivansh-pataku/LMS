@@ -38,7 +38,7 @@ const UpdateButtonRenderer = (props: any) => {
   const handleUpdate = async () => {
     const data = props.node.data;
     try {
-      const response = await fetch('/api/courses/update', {
+      const response = await fetch('/api/courses/update-scores', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
