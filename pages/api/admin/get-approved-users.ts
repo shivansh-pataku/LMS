@@ -9,7 +9,7 @@ type PendingUser = RowDataPacket & {
     first_name: string;
     last_name: string;
     email: string;
-    role_id: number;
+    role_id: number; 
     department: string;
     profile_image: Buffer;
     created_at: string;
@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Fetch user from pending_users
         const [rows]: [PendingUser[], unknown] = await db.query(
             "SELECT * FROM pending_users WHERE id = ?",
-            [userId]
+            [userId] /////////
         );
 
         const user = rows[0];

@@ -1,0 +1,37 @@
+.textarea {
+  width: 100%;
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
+    
+  }
+  
+  .textarea::placeholder {
+    color: var(--muted-foreground, #6b7280); /* placeholder:text-muted-foreground, with a fallback */
+  }
+  
+  .textarea:focus-visible {
+    outline: 2px solid transparent; /* focus-visible:outline-none (part of ring setup) */
+    outline-offset: 2px;
+    border-color: var(--ring, #3b82f6); /* Simulate ring color on border */
+    box-shadow: 0 0 0 1px var(--ring, #3b82f6); /* focus-visible:ring-1 focus-visible:ring-ring, with a fallback */
+  }
+  
+  .textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  /* Responsive text size (md:text-sm) */
+  @media (min-width: 768px) {
+    .textarea {
+      font-size: 0.875rem; /* text-sm */
+      line-height: 1.25rem; /* text-sm line height */
+    }
+  }

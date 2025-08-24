@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Commissioner:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Commissioner:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 /* Jost
 Montserrat
 Commissioner
@@ -7,9 +7,20 @@ Open Sans
 Atkinson Hyperlegible Next */
 
 
+/* @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet'); */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');  */
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap'); */
+
 
 /* :root {
     margin: 0;
@@ -33,6 +44,8 @@ Atkinson Hyperlegible Next */
     padding: 2rem;
     text-align: center;
   } */
+
+  
 
 
 body {
@@ -98,7 +111,7 @@ html, body, #__next {
     font-family: Montserrat;
     font-weight: 670;
     font-size:xx-large;
-    margin: 0px 0px 15px 15px;
+    /* margin: 0px 0px 15px 15px; */
     padding: 0px 0px 0px 0px;
 }
 
@@ -109,7 +122,7 @@ html, body, #__next {
     font-size: x-large;
     margin-top: 19px;
     margin-bottom: 12px;
-    margin: 30px 0px 10px 0px;
+    /* margin: 30px 0px 10px 0px; */
     padding: 0px 0px 0px 0px;
 }
 
@@ -327,10 +340,6 @@ background-color: #10264e62;
     /* height: 50px; */
     height: 80px !important;
   }
-/* .div.ag-viewport.ag-center-cols-viewport{
-
-} */
-
 
   /* Header Styling */
   .ag-header {
@@ -347,6 +356,7 @@ background-color: #10264e62;
     font-size: 14px;
     /* padding: 10px; */
     text-transform: uppercase;
+    font-weight: 500 !important;
     /* border-right: 1px solid #ccc; */
     /* height: 50px; */
   }
@@ -380,8 +390,7 @@ background-color: #10264e62;
     /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); */
   }
 
-/* //////////////hdfh//////hhdhdhh////hfghdhd///////////////////////////////// */
-
+/* //////////////hdfh//////hhdhdhh////hfghdhd///////////////////////////////// 
 .ag-center-cols-viewport {
     min-height: unset !important;
 }
@@ -393,7 +402,7 @@ background-color: #10264e62;
   /* Grid Height and Width */
   .ag-theme-alpine {
     /* height: 350px  !important; */
-    height:70%  !important;
+    height:50%  !important;
     width: 100%;
     border-radius: 8px;
   }
@@ -401,10 +410,11 @@ background-color: #10264e62;
   /* Centering Cell Content */
   .ag-cell {
     text-align: left;
-    padding: 2px;
+    padding: auto;
+        /* padding: 5px; */
     font-family: commissioner;
     color: rgb(18, 70, 106);
-    font-weight: 400;
+    font-weight: 500;
     font-size: small;
 
   }
@@ -472,12 +482,13 @@ element.style {
 
 }
 
+.GridButtons{
+    margin: 10px 10px 10px 10px;
+    padding: 8px 15px 8px 15px;
+    cursor: pointer;
+}
+
+
+
 /* /////////////////////////////////////////////////////////////////////////// */
 
-ag-theme-params-3 ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-checkboxStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 {
-
-  height: 80%; 
-  --ag-internal-row-border-width: 1px; 
-  --ag-line-height: 35px;
-
-}

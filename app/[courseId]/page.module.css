@@ -1,0 +1,195 @@
+
+body {
+    /* background-color: #1c1c1c;
+    color: #000000; */
+    /*font-family: 'Commissioner', sans-serif;
+    font-size: 16px;
+    line-height: 1.5; */
+    background-color: snow;
+}
+
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #757575;
+
+}
+
+.pageTitle {
+    color: #1cb305;
+    font-family: montserrat;
+    font-size: 3.5rem;
+    font-weight: 800; 
+    margin-bottom: 24px;
+    padding: 16px;
+    border-bottom: 4px solid#1cb305;;
+    background-color: #1c1c1c;
+    border-radius: 4px;
+}
+
+.detilsTitle {
+    color: #6483f2;
+    background-color: #1c1c1c;
+    border-bottom: 4px solid #8fa6fc;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    padding: 16px;
+    font-family: montserrat;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.card 
+{
+    background-color: #54565459;
+    border-radius: 4px;
+    border: 3px solid #070707;
+    margin-bottom: 25px;
+    padding: 20px;
+    box-shadow: 0 2px 4px #0000000d;
+}
+
+
+.newSectionName{
+    color: rgb(0, 0, 0);
+    margin-bottom: 2px;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 500;
+    display: block;
+}
+
+.newSectionName, .newSectionDesc{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(255, 252, 246);
+    border: 2.5px solid rgb(3, 3, 3);
+    border-radius: 3px;
+    padding: 12px;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    transition: border-color 0.2s;
+}
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.cardTitle {
+    color: rgb(157, 197, 215);
+    background-color: rgba(210, 139, 139, 0);
+    margin-bottom: 20px;
+    font-family: montserrat;
+    font-size: 2rem;
+    font-weight: 800;
+    border-bottom: 5px solid rgb(157, 197, 215);
+    padding: 10px;
+    width: 100%;
+}
+
+.form {
+    background-color: #5846614d;
+    padding: 24px;
+    border-radius: 4px;
+    border: 3px solid #070707;
+}
+
+.formField {
+    margin-bottom: 16px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500;
+    color: #374151;
+        font-family: jost;
+    color: black;
+    font-size: 20px;
+}
+
+.textareaField {
+    width: 98%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: jost;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
+}
+
+.textareaField:focus {
+    outline: none;
+    border-color: #14c125;
+    box-shadow: 0 0 0 3px rgba(20, 193, 37, 0.1);
+}
+
+.readOnlyField {
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    font-family: commissioner;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgb(205, 202, 195);
+}
+
+.formActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-jost);
+}
+
+.primaryButton {
+    background-color: #14c125;
+    color: white;
+    border: none;
+}
+
+.primaryButton:hover {
+    background-color: #0f9d1f;
+}
+
+.secondaryButton {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.secondaryButton:hover {
+    background-color: #f3f4f6;
+}
+
+.errorText {
+    color: #dc2626;
+    background-color: #b7acac;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 1.35rem;
+}
+
+.loadingText {
+    text-align: center;
+    color: #6b7280;
+    padding: 24px;
+}

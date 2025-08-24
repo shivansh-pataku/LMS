@@ -65,7 +65,7 @@ export default function Courses() {
                 setLoading(false);
             }
         };
-    
+     
         fetchCourses();
     }, []);
     

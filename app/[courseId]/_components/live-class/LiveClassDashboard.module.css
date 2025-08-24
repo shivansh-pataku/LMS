@@ -1,0 +1,154 @@
+.container {
+    max-width: 1200px;
+    margin: 10px;
+}
+
+.title {
+    color: rgb(100, 131, 242);
+    background-color: rgb(28, 28, 28);
+    border-bottom: 4px solid rgb(143, 166, 252);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    padding: 16px;
+    font-family: montserrat;
+    font-size: 2rem;
+    font-weight: 800;
+
+    
+}
+
+.subtitle {
+    color: #333;
+    font-family: Commissioner;
+    font-size: 1.4rem;
+    margin: 20px 0;
+    font-weight: 800;
+}
+
+.divider {
+    border: none;
+    border-top: 6px solid #afafaf;
+    margin: 24px 0;
+}
+
+.backButton {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-jost);
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.backButton:hover {
+    background-color: #e5e7eb;
+}
+
+.classList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.classCard {
+    font-family: commissioner;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* width: 100%; */
+    border: solid 3px rgb(0, 0, 0); /* Replaces border */
+    background-color: rgb(42, 51, 82); /* Replaces bg-white */
+}
+
+.classCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.classTopic {
+    color: #41c32d;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: montserrat;
+    font-weight: 800;
+    margin-top: 5px;
+
+    
+}
+
+.classDescription {
+    margin: 8px 0;
+    /* line-height: 1.5; */
+    font-family:montserrat;
+    color: #dfe22f;
+    font-size: 22px;
+}
+
+.classInfo {
+    color: #c5c5c5;
+    font-size: 0.95rem;
+    margin: 6px 0;
+    font-family: monospace
+}
+
+.joinButton {
+    background-color: #14c125;
+    color: white;
+    padding: 8px 17px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    margin-top: 12px;
+    font-family:montserrat;
+    font-size: 13px;
+}
+
+.joinButton:hover {
+    background-color: #0f9d1f;
+}
+
+.timestamp {
+    color: #c5c5c5;
+    font-size: 0.95rem;
+    margin: 6px 0;
+    font-family: monospace
+}
+
+.emptyMessage {
+    color: #6b7280;
+    text-align: center;
+    padding: 40px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.loadingMessage, .errorMessage {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.errorMessage {
+    color: #dc2626;
+    background-color: #fee2e2;
+}
+
+
+/* Jost
+Montserrat
+Commissioner
+Open Sans
+Atkinson Hyperlegible Next */

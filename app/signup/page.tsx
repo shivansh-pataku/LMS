@@ -76,7 +76,7 @@ export default function Signup() {
     return (
         <>
             <nav className="logo">
-                <Link href="/" style={{ textDecoration: "none", color: "black" }}>Jupyter</Link>
+                <Link href="/" style={{ textDecoration: "none", color: "black" }}>EduSphere</Link>
             </nav>
 
             <h2 className="headingsB">Signing you up</h2>

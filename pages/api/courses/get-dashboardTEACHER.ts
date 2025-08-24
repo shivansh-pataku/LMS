@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!session) { return res.status(401).json({ error: 'Unauthorized' });}
 
 
-        const [rows] = await db.query(`SELECT * FROM courses where department = "mca"`,);
+        const [rows] = await db.query("SELECT * FROM courses where department = 'mca'");
         const courses: Course[] = rows as Course[];  
         const pendingCourses = courses.filter(course => course.status === 'pending');
         const approvedCourses = courses.filter(course => course.status === 'approved');
@@ -55,4 +55,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 }
-

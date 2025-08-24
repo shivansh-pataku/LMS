@@ -1,0 +1,149 @@
+.ib {
+  padding: 0px 10px 0px 10px;
+  margin: 5px;
+  border: 0.5px solid;
+  font-family: "Jost", serif;
+  font-weight: 500;
+  height: 36px;
+  width: 250PX;
+  border-width: 1.5px;
+  border-radius: 1.8px;
+  box-sizing: border-box;
+  background-color: white;
+  font-size: small;
+  text-decoration-color: black;
+}
+
+.DiBUTTON {
+  font-size: 17px;
+  font-family: Jost, serif;
+  font-weight: 500;
+  width: 81px;
+  height: 36px;
+  background-color: #14c125;
+  border-width: 0.5px;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.rolls{
+    margin: 5px;
+    padding: 2px;
+    /* border: 0.5px solid; */
+    font-family: consolas, serif;
+    font-weight: 800;
+    /* background-color: white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.roll{
+    margin: 3px;
+    padding: 6px;
+    border: 0.5px solid;
+    font-family: commissioner, serif;
+    font-weight: 800;
+    background-color: rgba(239, 240, 239, 0.681);
+    width: 200px;
+    border: 0.5px solid #0000006d;
+    border-radius: 2px;
+}
+.roll:hover {
+    background-color: rgb(229, 229, 229);
+    /* color: white; */
+    cursor: pointer;
+    transition: 0.1s;
+    border-width: 0.3px;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.343); */
+}
+
+:hover.textButton {
+  border: none;
+  font-weight: 700;
+  transition: 500ms;
+  color: rgb(9, 168, 38);
+
+
+}
+
+.DiBUTTONdiv {
+  display: flex;
+  justify-content: right;
+  margin-top: 33px;
+  margin-left: 527px;
+
+}
+
+
+:hover.DiBUTTON {
+  background-color: #0f9d0fd7;
+  color: white;
+  cursor: pointer;
+  transition: 0.1s;
+  border-width: 0.3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.343);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formDibox {
+    justify-content: baseline;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 13px;
+    padding: 20px;
+    display: flex;
+    
+    /* Animation properties */
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+
+ 
+.button30 {
+  align-items: center;
+  background-color: #f6f6fe;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: 0 0px 2px #2d234266, 0 -2px 13px -11px #2d23424d, inset 0px 1px #d6d6e7;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: jost;
+  height: 40px;
+  justify-content: center;
+  list-style: none;
+  margin: 5px 5px 0px 5px;
+  padding: 0px 25px 0.5px 25px;
+  position: relative;
+  transition: box-shadow .15s,transform .15s;
+  font-size: 18px;
+}
+
+
+.button30:hover {
+  box-shadow: rgba(45, 35, 66, 0.204) 0 4px 8px, rgba(45, 35, 66, 0.151) 0 7px 13px -3px, #D6D6E7 0 1px 0 inset;
+  transform: translateY(-1px);
+  color: rgb(15, 111, 13);
+}
+
+.button30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

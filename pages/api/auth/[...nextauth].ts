@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth"; // NextAuth is a library for authentication in Next.js applications. It provides a way to manage user sessions and authentication flows. Solutions NextAuth provides include OAuth, email/password authentication, and JWT-based authentication. It also supports various databases for session storage and user management.
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { RowDataPacket } from "mysql2";
@@ -24,7 +24,8 @@ type ApprovedUser = {
 
 declare module "next-auth" {
     interface Session {
-                user: {
+            user: {
+                    name: any;
                     id: string;
                     role: Role;
                     first_name: string;
@@ -33,9 +34,9 @@ declare module "next-auth" {
                     department?: string;
                     semester: number;
                     };
-                    }
+                       }
 
-                interface User {
+    interface User {
                     role: Role;
                     department: string;
                     first_name: string;
@@ -93,7 +94,7 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user }) { 
             if (user) {
                 token.id = user.id;
                 token.role = user.role;

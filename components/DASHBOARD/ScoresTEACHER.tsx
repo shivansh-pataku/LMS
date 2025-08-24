@@ -4,6 +4,8 @@ import { useEffect, useState, useRef, use } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { ColDef } from "ag-grid-community";
+import { CellValueChangedEvent } from 'ag-grid-community';
+
 ModuleRegistry.registerModules([AllCommunityModule]); // Register AG Grid Modules
 
 
@@ -31,15 +33,145 @@ interface Scores {
 // Columns to be displayed (Should match rowData properties)
 
 // const columnDefs: ColDef<Scores>[] = [
+
+const UpdateButtonRenderer = (props: any) => {
+  const handleUpdate = async () => {
+    const data = props.node.data;
+    try {
+      const response = await fetch('/api/courses/update-scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ROLL_NO: data.ROLL_NO,
+          course_code: data.course_code,
+          internal: data.internal,
+          midterm: data.midterm,
+          endterm: data.endterm,
+          total: data.internal + data.midterm + data.endterm
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to update score');
+      alert('Scores updated successfully!');
+    } catch (error) {
+      console.error('Error updating scores:', error);
+      alert('Failed to update scores');
+    }
+  };
+
+  return (
+    <button 
+      onClick={handleUpdate}
+    //   className="GridButtons"
+      style={{
+        backgroundColor: '#14c125',
+        color: 'white',
+        padding: '8px 15px',
+        borderRadius: '4px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '12px'
+      }}
+    >
+      Update
+    </button>
+  );
+};
+
+
+// const columnDefs = [
+//     // { field: "course_code", headerName : "Code",    sortable: true, filter: true, headerClass: "custom-header",}, //minWidth: 0, maxWidth: 90
+//     // { field: "course_NAME", headerName : "Course",  sortable: true, filter: true, headerClass: "custom-header",}, // minWidth: 0, maxWidth: 90},
+//     { field: "ROLL_NO",     headerName : "RollNo",  sortable: true, filter: true, headerClass: "custom-header",}, // minWidth: 0, maxWidth: 90},
+//     { field: "internal",    headerName : "Internal",sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
+//     { field: "midterm",     headerName : "Midterm", sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
+//     { field: "endterm",     headerName : "Endterm", sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
+//     { field: "total",       headerName : "Total",   sortable: true, filter: true, headerClass: "custom-header",}  // minWidth: 0, maxWidth: 90}
+//   ]
+
+
 const columnDefs = [
-    // { field: "course_code", headerName : "Code",    sortable: true, filter: true, headerClass: "custom-header",}, //minWidth: 0, maxWidth: 90
-    // { field: "course_NAME", headerName : "Course",  sortable: true, filter: true, headerClass: "custom-header",}, // minWidth: 0, maxWidth: 90},
-    { field: "ROLL_NO",     headerName : "RollNo",  sortable: true, filter: true, headerClass: "custom-header",}, // minWidth: 0, maxWidth: 90},
-    { field: "internal",    headerName : "Internal",sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
-    { field: "midterm",     headerName : "Midterm", sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
-    { field: "endterm",     headerName : "Endterm", sortable: true, filter: true, headerClass: "custom-header", editable: true }, // minWidth: 0, maxWidth: 90},
-    { field: "total",       headerName : "Total",   sortable: true, filter: true, headerClass: "custom-header",}  // minWidth: 0, maxWidth: 90}
-  ]
+    { 
+        field: "ROLL_NO",     
+        headerName: "RollNo",  
+        sortable: true, 
+        filter: true, 
+        headerClass: "custom-header"
+    },
+    { 
+        field: "internal",    
+        headerName: "Internal",
+        sortable: true, 
+        filter: true, 
+        headerClass: "custom-header", 
+        editable: true,
+        valueParser: (params: any) => Number(params.newValue),
+        valueSetter: (params: any)  => {
+            const value = Number(params.newValue);
+            if (value >= 0 && value <= 20) {
+                params.data.internal = value;
+                return true;
+            }
+            return false;
+        }
+    },
+    { 
+        field: "midterm",     
+        headerName: "Midterm", 
+        sortable: true, 
+        filter: true, 
+        headerClass: "custom-header", 
+        editable: true,
+        valueParser: (params: any)  => Number(params.newValue),
+        valueSetter: (params: any)  => {
+            const value = Number(params.newValue);
+            if (value >= 0 && value <= 30) {
+                params.data.midterm = value;
+                return true;
+            }
+            return false;
+        }
+    },
+    { 
+        field: "endterm",     
+        headerName: "Endterm", 
+        sortable: true, 
+        filter: true, 
+        headerClass: "custom-header", 
+        editable: true,
+        valueParser: (params: any)  => Number(params.newValue),
+        valueSetter: (params: any) => {
+            const value = Number(params.newValue);
+            if (value >= 0 && value <= 50) {
+                params.data.endterm = value;
+                return true;
+            }
+            return false;
+        }
+    },
+    { 
+        field: "total",       
+        headerName: "Total",   
+        sortable: true, 
+        filter: true, 
+        headerClass: "custom-header",
+        valueGetter: (params: any)  => {
+            return (params.data.internal || 0) + 
+                   (params.data.midterm || 0) + 
+                   (params.data.endterm || 0);
+        }
+    },
+    {
+        headerName: "Actions",
+        cellRenderer: UpdateButtonRenderer,
+        width: 100,
+        sortable: false,
+        filter: false,
+        resizable: false
+    }
+];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,7 +187,7 @@ export default function ScoresTEACHER() {
 
     const fetchCourses = async () => { // Function to fetch scores data from the API
                 try{     
-                        const response = await fetch("/api/courses/get-dashboardTEACHER"); // Fetching data from the API endpoint
+                        const response = await fetch("/api/courses/get-dashboardADMIN"); // Fetching data from the API endpoint
                         if (!response.ok) throw new Error("Failed to fetch scores"); // Check if the response is ok, if not throw an error}
                         
                         const data = await response.json(); // Convert the response to JSON and store in data
@@ -78,6 +210,7 @@ export default function ScoresTEACHER() {
 
 return (
     <>
+
         <h4 className="classic_heading">Score Records & Management</h4>
 
         <select className="ibCLASSIC" style={{ margin: "10px 0px 10px 10px"}} value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)}>
@@ -99,7 +232,7 @@ return (
                     pagination={true}
                     paginationPageSize={10}
                     // domLayout="autoHeight"
-                    rowHeight={35} // Set row height to 50px
+                    rowHeight={40} // Set row height to 50px
 
                     defaultColDef={{
                         flex: 1,
@@ -109,8 +242,6 @@ return (
                     
             />
         </div>
-    
-    
     
     </>
 )

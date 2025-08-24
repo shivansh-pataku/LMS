@@ -93,9 +93,9 @@ const filteredCourses = selectedItem === 'All Courses'
 
                             <div className={styles.descriptionBOX}>
                               <span className={styles.description} style={{ fontWeight: "400", fontSize:"17px", color:"black"}}> {course.teacher_name}</span> 
-                              <span className={styles.description} style={{ fontWeight: "400", fontSize:"15px", color:"grey",  width:"155px",  marginLeft:"auto", textAlign:"right"}}>{course.course_code}</span>
-                              <span className={styles.description} style={{ fontWeight: "700", fontSize:"22px", color:"black", height:"auto", marginTop:"", marginBottom:"1px"}}  >{course.course_name}</span>
-                              <p    className={styles.description} style={{ fontWeight: "500", fontSize:"17px", color:"grey" , height:"auto", marginTop:"3px", paddingBottom:"1px"}}  >{course.description}</p> 
+                              <span className={styles.description} style={{ fontWeight: "400", fontSize:"15px", color:"grey",  width:"155px",  marginTop:"", marginLeft:"auto", textAlign:"right"}}>{course.course_code}</span>
+                              <span className={styles.description} style={{ fontWeight: "700", fontSize:"22px", color:"black", height:"auto", marginTop:"15px", marginBottom:"1px"}}  >{course.course_name}</span>
+                              <p    className={styles.description} style={{ fontWeight: "500", fontSize:"17px", color:"grey" , height:"auto", marginTop:"10px", paddingBottom:"1px"}}  >{course.description}</p> 
                               {/* <span><strong>Department:</strong> {course.department}</span><br />
                               <span><strong>Credits:</strong> {course.credit}</span><br />
                               <span><strong>Category:</strong> {course.course_category}</span> */}
