@@ -47,11 +47,6 @@
 - **Score Management**: Assignment and exam grading system
 - **Performance Insights**: Data-driven learning insights
 
-### 🎨 **Modern User Experience**
-- **Responsive Design**: Mobile-first, cross-device compatibility
-- **Dark/Light Themes**: Customizable interface themes
-- **Accessibility**: WCAG 2.1 compliant design
-- **Progressive Web App**: Offline capabilities and app-like experience
 
 ### 🔧 **Advanced Technical Features**
 - **Hybrid Routing**: Next.js App Router + Pages Router
@@ -59,6 +54,90 @@
 - **File Management**: Secure file upload and storage
 - **Email Integration**: Automated notifications and communications
 - **API-First**: RESTful API architecture
+
+---
+
+## 🔄 Key Workflows
+
+### **Student Journey**
+1. **Registration** → Admin approval required
+2. **Login** → Access student dashboard
+3. **Course Browsing** → View available courses
+4. **Enrollment** → Join courses
+5. **Learning** → Access materials, attend live classes
+6. **Progress Tracking** → Monitor completion status
+
+### **Teacher Journey**
+1. **Course Creation** → Build comprehensive courses
+2. **Content Upload** → Add videos, PDFs, resources
+3. **Live Classes** → Schedule and conduct sessions
+4. **Student Management** → Track attendance and scores
+5. **Analytics** → Review student performance
+
+### **Admin Journey**
+1. **User Management** → Approve/reject registrations
+2. **Course Oversight** → Monitor course quality
+3. **System Analytics** → Platform usage insights
+4. **User Support** → Handle platform issues
+
+---
+
+## 🎯 Core Features Deep Dive
+
+### **Course Management System**
+- Hierarchical content organization (Courses → Sections → Lessons)
+- Multiple content types: Video, PDF, Links, Live streams
+- Draft/Published status management
+- Bulk operations and templates
+
+### **Live Class Integration**
+- Jitsi Meet embedded video conferencing
+- Real-time participant management
+- Screen sharing and recording capabilities
+- Automated attendance tracking
+
+### **Authentication & Security**
+- NextAuth.js with custom credential provider
+- Role-based middleware protection
+- Secure password hashing with bcryptjs
+- Session management and CSRF protection
+
+### **File Upload System**
+- AWS S3 integration for scalable storage
+- Image processing and optimization
+- Secure presigned URL generation
+- Multiple file format support
+
+---
+
+## 📸 Screenshots
+
+### Homepage
+![Educational platform dashboard displaying course catalog; each course card shows instructor name, course code, and brief description with modern tech-themed style.](public/screenshots/home.png)
+
+### Course Creation Interface
+![Admin dashboard showing course creation form with input fields.](public/screenshots/add_course.png)
+
+### Pending Users and Course Approval
+![Users of any role are first approved by admins after signup and courses created by teachers first approved by admins.](public/screenshots/approval_student.png)
+
+### Courses Management Dashboard
+![Academic dashboard showing alloted courses table with multiple columns including course code, name, semester, teacher assigned, description, category and credit hours. Interface includes navigation menu and add new course button at the top.](public/screenshots/courses.png)
+
+### Course management : Creating Units and Lessons 
+![Course management interface showing hierarchical structure has view, edit, and manage buttons for administrative control.](public/screenshots/course_management.png)
+
+### Live Class Interface
+![Taking live class with attendance.](public/screenshots/live_class.png)
+
+### Course Content
+![Allows to add pdf, images, links, text and videos](public/screenshots/approval_student.png)
+
+### Scores Management
+![Academic dashboard interface displaying score records and management system. Shows a data table with columns for Internal, Midterm, Endterm and Total scores. Dropdown menu at top allows course selection between alloted courses.](public/screenshots/scores.png)
+
+### Accessing the course at student dashboard
+![Student dashboard displaying a course content page with Operating System course title, navigation tabs for Lessons, Details, Announcements, and Live Class. Course content section shows expandable modules including Introduction to Operating Systems, Process Management, and Memory Management with nested topics and resource links.](public/screenshots/access_course.png)
 
 ---
 
@@ -202,91 +281,6 @@ lms/
 ```
 
 ---
-
-## 🔄 Key Workflows
-
-### **Student Journey**
-1. **Registration** → Admin approval required
-2. **Login** → Access student dashboard
-3. **Course Browsing** → View available courses
-4. **Enrollment** → Join courses
-5. **Learning** → Access materials, attend live classes
-6. **Progress Tracking** → Monitor completion status
-
-### **Teacher Journey**
-1. **Course Creation** → Build comprehensive courses
-2. **Content Upload** → Add videos, PDFs, resources
-3. **Live Classes** → Schedule and conduct sessions
-4. **Student Management** → Track attendance and scores
-5. **Analytics** → Review student performance
-
-### **Admin Journey**
-1. **User Management** → Approve/reject registrations
-2. **Course Oversight** → Monitor course quality
-3. **System Analytics** → Platform usage insights
-4. **User Support** → Handle platform issues
-
----
-
-## 🎯 Core Features Deep Dive
-
-### **Course Management System**
-- Hierarchical content organization (Courses → Sections → Lessons)
-- Multiple content types: Video, PDF, Links, Live streams
-- Draft/Published status management
-- Bulk operations and templates
-
-### **Live Class Integration**
-- Jitsi Meet embedded video conferencing
-- Real-time participant management
-- Screen sharing and recording capabilities
-- Automated attendance tracking
-
-### **Authentication & Security**
-- NextAuth.js with custom credential provider
-- Role-based middleware protection
-- Secure password hashing with bcryptjs
-- Session management and CSRF protection
-
-### **File Upload System**
-- AWS S3 integration for scalable storage
-- Image processing and optimization
-- Secure presigned URL generation
-- Multiple file format support
-
----
-
-## 📸 Screenshots
-
-### Homepage
-![Educational platform dashboard displaying course catalog; each course card shows instructor name, course code, and brief description with modern tech-themed style.](public/screenshots/home.png)
-
-### Course Creation Interface
-![Admin dashboard showing course creation form with input fields.](public/screenshots/add_course.png)
-
-### Pending Users and Course Approval
-![Users of any role are first approved by admins after signup and courses created by teachers first approved by admins.](public/screenshots/approval_student.png)
-
-### Courses Management Dashboard
-![Academic dashboard showing alloted courses table with multiple columns including course code, name, semester, teacher assigned, description, category and credit hours. Interface includes navigation menu and add new course button at the top.](public/screenshots/courses.png)
-
-### Course management : Creating Units and Lessons 
-![Course management interface showing hierarchical structure has view, edit, and manage buttons for administrative control.](public/screenshots/course_management.png)
-
-### Live Class Interface
-![Taking live class with attendance.](public/screenshots/live_class.png)
-
-### Course Content
-![Allows to add pdf, images, links, text and videos](public/screenshots/approval_student.png)
-
-### Scores Management
-![Academic dashboard interface displaying score records and management system. Shows a data table with columns for Internal, Midterm, Endterm and Total scores. Dropdown menu at top allows course selection between alloted courses.](public/screenshots/scores.png)
-
-### Accessing the course at student dashboard
-![Student dashboard displaying a course content page with Operating System course title, navigation tabs for Lessons, Details, Announcements, and Live Class. Course content section shows expandable modules including Introduction to Operating Systems, Process Management, and Memory Management with nested topics and resource links.](public/screenshots/access_course.png)
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these steps:
