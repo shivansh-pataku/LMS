@@ -256,14 +256,6 @@ lms/
 
 ---
 
-## 📸 How to Add Screenshots
-
-### Method 1: Direct File Addition
-1. Take screenshots of your application
-2. Save them in the `public/screenshots/` directory
-3. Add them to README using:
-
-```markdown
 ## 📸 Screenshots
 
 ### Homepage
@@ -292,10 +284,6 @@ lms/
 
 ### Accessing the course at student dashboard
 ![Student dashboard displaying a course content page with Operating System course title, navigation tabs for Lessons, Details, Announcements, and Live Class. Course content section shows expandable modules including Introduction to Operating Systems, Process Management, and Memory Management with nested topics and resource links.](public/screenshots/access_course.png)
-
-```
-
-
 
 ---
 
