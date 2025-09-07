@@ -7,7 +7,7 @@ import { randomUUID } from 'crypto'; // For generating UUIDs
 interface SectionFromDB extends RowDataPacket {
   id: string;
   course_id: number;
-  name: string;
+  title: string;
   description: string | null;
   order_val: number; // 'order' is a reserved keyword in SQL
   status: 'public' | 'private';
@@ -17,7 +17,7 @@ interface LessonFromDB extends RowDataPacket {
   id: string;
   section_id: string;
   course_id: number;
-  name: string;
+  title: string;
   description: string | null;
   resource_type: string | null;
   resource_url: string | null;
@@ -62,7 +62,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { courseId: string } }
 ) {
-  const { courseId } = params;
+  const { courseId } = await params;
   const numericCourseId = parseInt(courseId, 10);
 
   if (isNaN(numericCourseId)) {
@@ -71,7 +71,7 @@ export async function GET(
 
   try {
     const [sectionsFromDb] = await db.query<SectionFromDB[]>(
-      'SELECT id, name, description, order_val, status FROM course_sections WHERE course_id = ? ORDER BY order_val ASC',
+      'SELECT id, title, description, order_val, status FROM course_sections WHERE course_id = ? ORDER BY order_val ASC',
       [numericCourseId]
     );
 
@@ -79,13 +79,13 @@ export async function GET(
 
     for (const section of sectionsFromDb) {
       const [lessonsFromDb] = await db.query<LessonFromDB[]>(
-        'SELECT id, name, description, resource_type, resource_url, content, order_val, status FROM course_lessons WHERE section_id = ? AND course_id = ? ORDER BY order_val ASC',
+        'SELECT id, title, description, resource_type, resource_url, content, order_val, status FROM course_lessons WHERE section_id = ? AND course_id = ? ORDER BY order_val ASC',
         [section.id, numericCourseId]
       );
 
       const lessonsFE: LessonFE[] = lessonsFromDb.map(l => ({
         id: l.id,
-        name: l.name,
+        name: l.title,
         description: l.description,
         resourceType: l.resource_type as ResourceTypeFE,
         resourceUrl: l.resource_url,
@@ -96,7 +96,7 @@ export async function GET(
       
       sectionsWithLessons.push({
         id: section.id,
-        name: section.name,
+        name: section.title,
         description: section.description || '', // Ensure description is not null
         lessons: lessonsFE,
         status: section.status,
@@ -116,7 +116,7 @@ export async function POST(
   request: NextRequest,
   { params }: { params: { courseId: string } }
 ) {
-  const { courseId } = params;
+  const { courseId } = await params;
   const numericCourseId = parseInt(courseId, 10);
 
   if (isNaN(numericCourseId)) {

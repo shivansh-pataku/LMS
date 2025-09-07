@@ -6,13 +6,13 @@ export default function About() {
     const teamMembers = [
         {
             name: "Gaurav Gupta",
-            role: "Lead Developer",
+            role: "Full-stack Developer and Database designer.",
             description: "Full-stack developer with expertise in educational technology."
         },
         {
             name: "Shivansh Pataku",
-            role: "UI/UX Designer",
-            description: "Passionate about creating intuitive learning experiences."
+            role: "UI/UX Designer and Full-stack developer.",
+            description: "Passionate about creating intuitive learning experiences. "
         }
     ];
 

@@ -41,6 +41,7 @@ import Image from "next/image";
 import LiveClassDashboard from "./_components/live-class/LiveClassDashboard";
 import Navbar from "@/components/Navbar";
 import Navbar_Comon from "@/components/Navbar_Common";
+import { convertToBase64 } from "@/utils/imageUtils";
 // Interfaces
 interface CourseData {
   id: number;
@@ -1068,7 +1069,7 @@ function CourseDetailsPageContent() {
               <form
                 onSubmit={handleSaveNewSection}
                 className={styles.editForm}
-                style={{ marginBottom: "20px", margin:"50px", padding:"50px"}}
+                // style={{ marginBottom: "20px", margin:"50px", padding:"50px"}}
               >
                 <h3 className={styles.formTitle}>Add New Section</h3>
                 <div className={styles.formFieldInline}>
@@ -1553,11 +1554,11 @@ function CourseDetailsPageContent() {
                                 onSubmit={handleSaveLessonEdit}
                                 className={styles.editForm}
                                 style={{
-                                  marginLeft: "20px",
-                                  padding: "10px",
-                                  border: "1px solid #ccc",
-                                  borderRadius: "4px",
-                                  marginTop: "5px",
+                                  // marginLeft: "20px",
+                                  // padding: "10px",
+                                  // border: "1px solid #ccc",
+                                  // borderRadius: "4px",
+                                  // marginTop: "5px",
                                 }}
                               >
                                 <h3 className={styles.formTitle}>
@@ -1565,12 +1566,12 @@ function CourseDetailsPageContent() {
                                 </h3>
                                 <div className={styles.formFieldInline}>
                                   <label style={{
-    fontFamily: "jost",
-    color: "#000",
-    marginBottom: "5px",
-    fontSize: "50px",
-    fontWeight: 500,
-    display: "block"
+    // fontFamily: "jost",
+    // color: "#000",
+    // marginBottom: "5px",
+    // fontSize: "50px",
+    // fontWeight: 500,
+    // display: "block"
 }} htmlFor={`lessonName-${lesson.id}`}>
                                     Name:
                                   </label>

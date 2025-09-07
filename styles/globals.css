@@ -492,3 +492,55 @@ element.style {
 
 /* /////////////////////////////////////////////////////////////////////////// */
 
+/* For all scrollbars on the page */
+*::-webkit-scrollbar {
+  width: 2px;                    /* How wide the scrollbar is */
+  height: 8px;                   /* How tall horizontal scrollbars are */
+}
+
+/* The track (background) of the scrollbar */
+*::-webkit-scrollbar-track {
+  background: #f0f0f0;           /* Light gray background */
+  border-radius: 0.5px;            /* Rounded corners */
+}
+
+/* The draggable part of the scrollbar */
+*::-webkit-scrollbar-thumb {
+  background: #549e5ef5;         /* Your green color */
+  border-radius: 0.5px;            /* Rounded corners */
+}
+
+/* When you hover over the scrollbar */
+*::-webkit-scrollbar-thumb:hover {
+  background: #4a8c54;           /* Darker green when hovering */
+}
+
+/* For Firefox browsers */
+* {
+  scrollbar-width: thin;         /* Make scrollbar thin */
+  scrollbar-color: #549e5ef5 #f0f0f0;  /* Green thumb, gray track */
+}
+
+/* Make scrollbars smaller on phones and tablets */
+@media (max-width: 768px) {
+  *::-webkit-scrollbar {
+    width: 2px;                  /* Smaller on mobile */
+    height: 2px;
+  }
+}
+
+/* Hide scrollbars completely (add this class to any element) */
+.no-scrollbar {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* Internet Explorer */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari, Edge */
+}
+
+/* Make scrollbars extra thin (add this class to any element) */
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}

@@ -1,39 +1,45 @@
 .formContainer {
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 20px;
-    padding: 24px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border: 1px solid #000000;
-    padding: 50px;
-    background-color: rgb(22 20 67 / 8%);
-        border-radius: 4px;
-    border: 3px solid #070707;
+    padding: clamp(20px, 4vw, 50px);
+    border: 3px solid rgba(0, 0, 0, 0.171);
+    border-radius: 6px;
+    background-color: snow;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .title {
-    color: #9dc5d7;
+    color: #549e5ef5;
     margin-bottom: 20px;
-    border-bottom: #9dc5d7 solid 5px;
-    font-family: montserrat;
-    font-size: 2rem;
+    border-bottom: 3px solid #549e5ef5;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 800;
-    background-color: rgba(210, 139, 139, 0);
-    padding: 10px;
+    background-color: transparent;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
 }
 
 .errorMessage {
-    color: #dc2626;
-    background-color: #fee2e2;
-    padding: 10px;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
     border-radius: 4px;
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    font-family: jost, sans-serif;
+    word-wrap: break-word;
 }
 
 .formGroup {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .label {
@@ -41,74 +47,88 @@
     margin-bottom: 8px;
     color: #374151;
     font-weight: 500;
-    font-family: var(--font-jost);
-    color: #000;
-    margin-bottom: 2px;
-    font-family: jost;
-    font-size: 20px;
-    font-weight: 500;
-    display: block;
+    font-family: jost, sans-serif;
+    font-size: clamp(16px, 2.5vw, 20px);
 }
 
+.input, .textarea, .datetimeInput {
+    font-family: jost, sans-serif;
+    width: 100%;
+    padding: 12px;
+    border: 2.5px solid #030303;
+    border-radius: 4px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
 
-
-.input:focus, .textarea:focus {
+.input:focus, .textarea:focus, .datetimeInput:focus {
     outline: none;
-    border-color: #14c125;
-    box-shadow: 0 0 0 3px rgba(20, 193, 37, 0.1);
+    border-color: #549e5ef5;
+    box-shadow: 0 0 0 3px rgba(84, 158, 94, 0.1);
 }
 
 .textarea {
     resize: vertical;
     min-height: 100px;
+    max-height: 300px;
 }
 
 .submitButton {
     background-color: #14c125;
     color: white;
-    border: solid .1rem #000000;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: 500;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: commissioner;
-    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-family: commissioner, sans-serif;
+    font-size: clamp(16px, 2.5vw, 1.2rem);
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(20, 193, 37, 0.3);
 }
 
 .submitButton:hover {
     background-color: #0f9d1f;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(20, 193, 37, 0.4);
 }
 
 .submitButton:disabled {
     background-color: #9ca3af;
     cursor: not-allowed;
     transform: none;
+    opacity: 0.6;
 }
 
-
-
-.input, .textarea , .datetimeInput{
-    font-family: commissioner, sans-serif;
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease;
-    box-sizing: border-box;
-    font-family: var(--font-commissioner);
-
-    padding: 12px;
-    border: 2.5px solid #030303;
-    border-radius: 3px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease;
-    font-family: jost;
-    font-size: 20px;
-    font-weight: 400;
-    background-color: rgb(255, 252, 246);
-
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 20px;
+        margin-bottom: 15px;
+    }
     
+    .formGroup {
+        margin-bottom: 16px;
+    }
+    
+    .submitButton {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .formContainer {
+        padding: 15px;
+    }
+    
+    .title {
+        margin-bottom: 15px;
+        padding: 8px 0;
+    }
 }

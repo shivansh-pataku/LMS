@@ -1,154 +1,270 @@
 .container {
-    max-width: 1200px;
-    margin: 10px;
+    /* width: 100%; */
+    max-width: none; 
+    margin: 0;
+    padding: 20px;
+    background-color: #fdfdfd; 
+    min-height: 100vh;
 }
 
 .title {
-    color: rgb(100, 131, 242);
-    background-color: rgb(28, 28, 28);
-    border-bottom: 4px solid rgb(143, 166, 252);
+    color: #6483f2;
+    background-color: #1c1c1c;
+    border-bottom: 4px solid #8fa6fc;
     border-radius: 4px;
     margin-bottom: 24px;
-    padding: 16px;
-    font-family: montserrat;
-    font-size: 2rem;
+    padding: 16px 20px;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); 
     font-weight: 800;
-
-    
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .subtitle {
-    color: #333;
-    font-family: Commissioner;
-    font-size: 1.4rem;
+    color: #549e5ef5; 
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     margin: 20px 0;
     font-weight: 800;
+    padding: 10px 0;
+    border-bottom: 2px solid #549e5ef5;
+    width: 100%;
 }
 
 .divider {
     border: none;
-    border-top: 6px solid #afafaf;
-    margin: 24px 0;
+    border-top: 4px solid #afafaf; 
+    width: 100%;
 }
 
 .backButton {
-    background-color: #f3f4f6;
+    background-color: snow; 
     color: #374151;
-    border: 1px solid #d1d5db;
-    padding: 10px 16px;
-    border-radius: 6px;
+    border: 2.5px solid #030303; 
+    padding: 12px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    font-family: var(--font-jost);
-    transition: all 0.2s ease;
+    font-family: jost, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
     margin-bottom: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .backButton:hover {
-    background-color: #e5e7eb;
+    background-color: #92929273; 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
 .classList {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .classCard {
-    font-family: commissioner;
-    font-weight: 600;
-    font-size: 30px;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    /* width: 100%; */
-    border: solid 3px rgb(0, 0, 0); /* Replaces border */
-    background-color: rgb(42, 51, 82); /* Replaces bg-white */
+    font-family: commissioner, sans-serif;
+    /* font-weight: 600; */
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    border-radius: 6px; 
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease; 
+    width: auto;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0.171); 
+    background-color: #2a3352; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
 }
 
 .classCard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); 
 }
 
 .classTopic {
     color: #41c32d;
-    font-size: 2rem;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-family: montserrat;
+    font-size: clamp(1.5rem, 3vw, 2.2rem); 
+    margin-bottom: 12px;
     font-weight: 800;
-    margin-top: 5px;
-
-    
+    font-family: montserrat, sans-serif;
+    margin-top: 0;
+    line-height: 1.2;
 }
 
 .classDescription {
-    margin: 8px 0;
-    /* line-height: 1.5; */
-    font-family:montserrat;
+    margin: 12px 0;
+    line-height: 1.5;
+    font-family: montserrat, sans-serif;
     color: #dfe22f;
-    font-size: 22px;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 500;
 }
 
 .classInfo {
     color: #c5c5c5;
-    font-size: 0.95rem;
-    margin: 6px 0;
-    font-family: monospace
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    margin: 8px 0;
+    font-family: jost, sans-serif; 
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 .joinButton {
-    background-color: #14c125;
+    background-color: #14c125; 
     color: white;
-    padding: 8px 17px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px; 
     cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.2s ease;
-    margin-top: 12px;
-    font-family:montserrat;
-    font-size: 13px;
+    transition: all 0.3s ease; 
+    margin-top: 15px;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    box-shadow: 0 2px 8px rgba(20, 193, 37, 0.3); 
 }
 
 .joinButton:hover {
     background-color: #0f9d1f;
+    transform: translateY(-1px); 
+    box-shadow: 0 4px 12px rgba(20, 193, 37, 0.4);
 }
 
 .timestamp {
     color: #c5c5c5;
-    font-size: 0.95rem;
-    margin: 6px 0;
-    font-family: monospace
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    margin: 8px 0;
+    font-family: jost, sans-serif; 
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 .emptyMessage {
-    color: #6b7280;
+    color: #6c757d; 
     text-align: center;
-    padding: 40px;
-    background-color: #f9fafb;
-    border-radius: 8px;
+    padding: 40px 20px;
+    background-color: snow; 
+    border-radius: 6px;
     margin: 20px 0;
+    border: 3px solid rgba(0, 0, 0, 0.171); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    font-family: jost, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
 }
 
 .loadingMessage, .errorMessage {
     text-align: center;
-    padding: 40px;
-    color: #6b7280;
-    background-color: #f9fafb;
-    border-radius: 8px;
+    padding: 40px 20px;
+    color: #6c757d;
+    background-color: snow; 
+    border-radius: 6px;
     margin: 20px 0;
+    border: 3px solid rgba(0, 0, 0, 0.171);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    font-family: jost, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 500;
 }
 
 .errorMessage {
-    color: #dc2626;
-    background-color: #fee2e2;
+    color: #dc3545; 
+    background-color: #f8d7da; 
+    border-color: #f5c6cb; 
 }
 
+.loadingMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
-/* Jost
-Montserrat
-Commissioner
-Open Sans
-Atkinson Hyperlegible Next */
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .classCard {
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .title {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .joinButton {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .classCard {
+        padding: 15px;
+    }
+    
+    .title {
+        padding: 10px 12px;
+    }
+    
+    .emptyMessage,
+    .loadingMessage,
+    .errorMessage {
+        padding: 30px 15px;
+    }
+}
+
+/* Animation for loading state */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loadingMessage::after {
+    content: "...";
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Accessibility improvements */
+.joinButton:focus {
+    outline: 3px solid rgba(20, 193, 37, 0.5);
+    outline-offset: 2px;
+}
+
+.backButton:focus {
+    outline: 3px solid rgba(84, 158, 94, 0.5);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .joinButton,
+    .backButton {
+        display: none;
+    }
+    
+    .classCard {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #000;
+    }
+}
+

@@ -200,8 +200,11 @@ export async function DELETE(
   }
 
   try {
-    // Optional: Check if lesson exists before attempting delete (or rely on affectedRows)
-    const [lessonCheck] = await db.query<LessonFromDB[]>('SELECT id FROM course_lessons WHERE id = ? AND section_id = ? AND course_id = ?', [lessonId, sectionId, numericCourseId]);
+    // Check if lesson exists before attempting delete
+    const [lessonCheck] = await db.query<LessonFromDB[]>(
+      'SELECT id FROM course_lessons WHERE id = ? AND section_id = ? AND course_id = ?',
+      [lessonId, sectionId, numericCourseId]
+    );
     if (lessonCheck.length === 0) {
         return NextResponse.json({ message: 'Lesson not found' }, { status: 404 });
     }

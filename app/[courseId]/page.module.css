@@ -1,195 +1,394 @@
-
 body {
-    /* background-color: #1c1c1c;
-    color: #000000; */
-    /*font-family: 'Commissioner', sans-serif;
-    font-size: 16px;
-    line-height: 1.5; */
     background-color: snow;
 }
 
 .pageContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-    background-color: #757575;
 
+    max-width: none; /* Remove max-width constraint for full width */
+    margin: 0;
+    padding: 20px;
+    background-color: #fdfdfd; /* Match Dashboard background */
+    min-height: 100vh;
+    /* border: 2px solid #030303; */
+    border-radius: 4px;
+    box-shadow: #0303033b 0px 0px 8px 1px;
+    background-color: inherit;
+    align-items: center;
+}
+
+/* Full width container for students */
+.pageContainerStudent {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 15px;
+    background-color: #fdfdfd;
+    min-height: 100vh;
 }
 
 .pageTitle {
     color: #1cb305;
-    font-family: montserrat;
-    font-size: 3.5rem;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem); /* Responsive font size */
     font-weight: 800; 
-    margin-bottom: 24px;
-    padding: 16px;
-    border-bottom: 4px solid#1cb305;;
-    background-color: #1c1c1c;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-bottom: 4px solid #1cb305;
+    background-color: #262626;
     border-radius: 4px;
+    text-align: center;
 }
 
-.detilsTitle {
-    color: #6483f2;
-    background-color: #1c1c1c;
-    border-bottom: 4px solid #8fa6fc;
+.detailsTitle {
+    width: 100%;
+    color: #3661fc;
+    font-size:x-large;
+    /* background-color: #1c1c1c; */
+    border-bottom: 4px solid #3661fc;
     border-radius: 4px;
     margin-bottom: 24px;
-    padding: 16px;
-    font-family: montserrat;
-    font-size: 2rem;
+    padding: 16px 20px;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
+    /* text-align: center; */
 }
 
-.card 
-{
-    background-color: #54565459;
+/* Tabs styling to match your design */
+.tabsContent {
+    width: 100%;
+    background-color: snow;
     border-radius: 4px;
-    border: 3px solid #070707;
+    padding: 0;
+}
+
+.detailsTabContent {
+    /* width: 100%; */
+    background-color: snow;
+    border-radius: 4px;
+    padding: 20px;
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); */
+    /* border: 3px solid rgba(0, 0, 0, 0.171); */
+}
+
+.card {
+    background-color: snow;
+    border-radius: 4px;
+    border: 3px solid rgba(0, 0, 0, 0.171);
     margin-bottom: 25px;
     padding: 20px;
-    box-shadow: 0 2px 4px #0000000d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
-
-.newSectionName{
-    color: rgb(0, 0, 0);
-    margin-bottom: 2px;
-    font-family: jost;
-    font-size: 20px;
-    font-weight: 500;
-    display: block;
+.card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
-.newSectionName, .newSectionDesc{
-    box-sizing: border-box;
-    width: 100%;
-    background-color: rgb(255, 252, 246);
-    border: 2.5px solid rgb(3, 3, 3);
-    border-radius: 3px;
-    padding: 12px;
-    font-family: jost;
-    font-size: 20px;
-    font-weight: 400;
-    transition: border-color 0.2s;
-}
 .cardHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .cardTitle {
-    color: rgb(157, 197, 215);
-    background-color: rgba(210, 139, 139, 0);
-    margin-bottom: 20px;
-    font-family: montserrat;
-    font-size: 2rem;
-    font-weight: 800;
-    border-bottom: 5px solid rgb(157, 197, 215);
-    padding: 10px;
     width: 100%;
-}
-
-.form {
-    background-color: #5846614d;
-    padding: 24px;
+    color: #3661fc;
+    font-size:x-large;
+    /* background-color: #1c1c1c; */
+    border-bottom: 4px solid #3661fc;
     border-radius: 4px;
-    border: 3px solid #070707;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    font-family: montserrat, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    /* text-align: center; */
 }
 
-.formField {
+/* Section containers */
+.sectionContainer {
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 5px;
+}
+
+.listItem {
+    background-color: #f8f9fa;
+    /* border-bottom: 1px solid #1e5790; */
+    /* padding: 15px 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    /* border: 2px solid rgba(0, 0, 0, 0.987); */
+    border-radius: 8px;
+}
+
+.listItem:hover {
+    background-color: #92929249; /* Match your hover color */
+}
+
+.listItemContent {
+    display: flex;
+    align-items: center;
+    /* flex-grow: 1; */
+    gap: 12px;
+    color: #376b11;
+    /* border: 2px solid rgba(0, 0, 0, 0.987); */
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Lesson items */
+.lessonItemContainer {
+    margin-left: 10px;
+    border-left: 3px solid #549e5ef5;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Forms styling */
+.editForm {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    border: 3px solid rgba(0, 0, 0, 0.171);
+    margin: 15px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    width: auto;
+}
+
+.formTitle {
+    color: #549e5ef5;
+    font-family: jost, sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #549e5ef5;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.formFieldInline {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 16px;
+    gap: 8px;
+    width: 80%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.label {
-    display: block;
-    margin-bottom: 2px;
+.formFieldInline label {
+    font-family: jost, sans-serif;
+    font-size: clamp(14px, 2.5vw, 16px);
     font-weight: 500;
     color: #374151;
-        font-family: jost;
-    color: black;
-    font-size: 20px;
-}
-
-.textareaField {
-    width: 98%;
-    min-height: 100px;
-    padding: 12px;
-    border: 2.5px solid #030303;
-    border-radius: 3px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease;
-    font-family: jost;
-    font-size: 20px;
-    font-weight: 400;
-    background-color: rgb(255, 252, 246);
-}
-
-.textareaField:focus {
-    outline: none;
-    border-color: #14c125;
-    box-shadow: 0 0 0 3px rgba(20, 193, 37, 0.1);
-}
-
-.readOnlyField {
-    padding: 12px;
-    border: 2.5px solid #030303;
-    border-radius: 3px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease;
-    font-family: commissioner;
-    font-size: 20px;
-    font-weight: 500;
-    background-color: rgb(205, 202, 195);
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
+    /* margin-bottom: 4px; */
 }
 
 .formActions {
     display: flex;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.button {
-    padding: 10px 20px;
-    border-radius: 6px;
+.newSectionName,
+.newSectionDesc {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    background-color: rgb(255, 252, 246);
+    border: 2.5px solid rgb(3, 3, 3);
+    border-radius: 4px;
+    padding: clamp(10px, 2.5vw, 12px);
+    font-family: jost, sans-serif;
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-weight: 400;
+    transition: border-color 0.3s ease;
+    min-height: 44px;
+    resize: vertical;
+    overflow-wrap: break-word;
+}
+
+.newSectionName:focus,
+.newSectionDesc:focus {
+    outline: none;
+    border-color: #549e5ef5;
+    box-shadow: 0 0 0 3px rgba(84, 158, 94, 0.1);
+}
+
+.newSectionDesc {
+    min-height: clamp(80px, 15vw, 120px);
+    max-height: 200px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: var(--font-jost);
-}
-
-.primaryButton {
-    background-color: #14c125;
-    color: white;
-    border: none;
-}
-
-.primaryButton:hover {
-    background-color: #0f9d1f;
-}
-
-.secondaryButton {
-    background-color: white;
+    font-family: jost, sans-serif;
     color: #374151;
-    border: 1px solid #d1d5db;
+    font-size: clamp(16px, 2.5vw, 18px);
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
 }
 
-.secondaryButton:hover {
-    background-color: #f3f4f6;
+.textareaField {
+    width: 100%;
+    max-width: 100%;
+    min-height: clamp(100px, 20vw, 120px);
+    max-height: 300px;
+    padding: clamp(12px, 2.5vw, 15px);
+    border: 2.5px solid #030303;
+    border-radius: 4px;
+    font-size: clamp(14px, 2.5vw, 16px);
+    transition: border-color 0.2s ease;
+    font-family: jost, sans-serif;
+    font-weight: 400;
+    background-color: rgb(255, 252, 246);
+    box-sizing: border-box;
+    resize: vertical;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-.errorText {
-    color: #dc2626;
-    background-color: #b7acac;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 16px;
-    font-size: 1.35rem;
+.textareaField:focus {
+    outline: none;
+    border-color: #549e5ef5;
+    box-shadow: 0 0 0 3px rgba(84, 158, 94, 0.1);
 }
 
-.loadingText {
-    text-align: center;
-    color: #6b7280;
-    padding: 24px;
+.readOnlyField {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(12px, 2.5vw, 15px);
+    border: 2.5px solid #dee2e6;
+    border-radius: 4px;
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-family: commissioner, sans-serif;
+    font-weight: 500;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .editForm {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .formFieldInline {
+        margin-bottom: 14px;
+        gap: 6px;
+    }
+    
+    .formActions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .formTitle {
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+    
+    .newSectionName,
+    .newSectionDesc {
+        padding: 10px;
+        min-height: 40px;
+    }
+    
+    .newSectionDesc {
+        min-height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .editForm {
+        padding: 12px;
+        margin: 8px 0;
+    }
+    
+    .formFieldInline {
+        margin-bottom: 12px;
+        gap: 4px;
+    }
+    
+    .formTitle {
+        margin-bottom: 12px;
+    }
+    
+    .newSectionName,
+    .newSectionDesc,
+    .textareaField {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .label,
+    .formFieldInline label {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 320px) {
+    .editForm {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+    .formFieldInline {
+        margin-bottom: 10px;
+    }
+    
+    .newSectionName,
+    .newSectionDesc,
+    .textareaField {
+        padding: 6px;
+        font-size: 13px;
+        min-height: 36px;
+    }
+    
+    .newSectionDesc {
+        min-height: 70px;
+    }
 }

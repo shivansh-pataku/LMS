@@ -1,55 +1,258 @@
 .tabsList {
   display: inline-flex;
-  height: 2.25rem;
+  height: auto; /* Allow flexible height */
   align-items: center;
   justify-content: center;
-  border-radius: 0.5rem;
-  padding: 0.25rem;
+  border-radius: 8px; /* Match your modern border radius */
+  padding: 8px;
+  background-color: #f8f9fa; /* Light background container */
+  border: 3px solid rgba(0, 0, 0, 0.171); /* Match your border style */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle container shadow */
+  gap: 4px; /* Modern gap instead of margins */
+  flex-wrap: wrap; /* Allow wrapping on mobile */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .tabsTrigger {
-  font-family: commissioner;
+  font-family: jost, sans-serif; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  border: solid 2.5px #010616;
-  border-radius: 5px;
-  font-size: 20px;
-  background-color: thistle;
+  border: 2.5px solid #030303; /* Match your consistent border style */
+  border-radius: 6px; /* Consistent with your design */
+  font-size: clamp(16px, 2.5vw, 20px); /* Responsive font size */
+  background-color: snow; /* Match your card background */
+  color: #374151; /* Consistent text color */
   cursor: pointer;
-  margin: 5px;
   font-weight: 600;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 10px 20px 10px 20px;
-  /* width: 150px; */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Match your transition timing */
+  padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px); /* Responsive padding */
+  min-width: clamp(120px, 20vw, 160px); /* Responsive min-width */
+  position: relative;
+  overflow: hidden;
+  
+  /* Prevent text overflow */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  
+  /* Modern shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Add subtle gradient background */
+.tabsTrigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .tabsTrigger:hover {
-  background-color: rgb(201, 142, 201);
+  background-color: #92929273; /* Match your hover color */
+  transform: translateY(-1px); /* Subtle lift effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+  border-color: #549e5ef5; /* Green tint on hover */
+}
+
+.tabsTrigger:hover::before {
+  opacity: 1;
 }
 
 .tabsTrigger:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #6483f2;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 0 0 3px rgba(84, 158, 94, 0.5); /* Match your green theme for focus */
+  border-color: #549e5ef5;
 }
 
 .tabsTrigger:disabled {
   pointer-events: none;
   opacity: 0.5;
-  background-color: indianred;
+  background-color: #e9ecef; /* Subtle disabled state */
+  color: #6c757d;
+  transform: none;
+  box-shadow: none;
 }
 
 .tabsTrigger[data-state="active"] {
-  background-color: rgb(157, 197, 215);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #549e5ef5; /* Your green theme for active state */
+  color: white;
+  border-color: #549e5ef5;
+  box-shadow: 
+    0 4px 12px rgba(84, 158, 94, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2); /* Inner highlight */
+  transform: translateY(-1px);
+}
+
+.tabsTrigger[data-state="active"]::before {
+  opacity: 0.3;
+}
+
+.tabsTrigger[data-state="active"]:hover {
+  background-color: #4a8c54; /* Darker green on hover when active */
+  transform: translateY(-2px);
 }
 
 .tabsContent {
-  margin-top: 0.5rem;
+  margin-top: 1rem; /* Better spacing */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  /* Match your content container style */
+  background-color: snow;
+  border-radius: 6px;
+  padding: 24px;
+  border: 3px solid rgba(0, 0, 0, 0.171);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  
+  /* Prevent overflow */
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 .tabsContent:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #6483f2;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.08),
+    0 0 0 3px rgba(84, 158, 94, 0.5); /* Match your focus color */
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .tabsList {
+    padding: 6px;
+    flex-direction: row; /* Stack tabs vertically on small screens */
+    gap: 6px;
+  }
+  
+  .tabsTrigger {
+    width: 100%; /* Full width on mobile */
+    min-width: unset;
+    font-size: clamp(14px, 3vw, 18px);
+    padding: 10px 16px;
+  }
+  
+  .tabsContent {
+    margin-top: 12px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabsList {
+    padding: 4px;
+  }
+  
+  .tabsTrigger {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  .tabsContent {
+    padding: 12px;
+  }
+}
+
+/* Large screen optimization */
+@media (min-width: 1200px) {
+  .tabsList {
+    justify-content: flex-start; /* Left align on large screens */
+    padding: 10px;
+  }
+  
+  .tabsTrigger {
+    min-width: 180px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tabsTrigger {
+    border: 3px solid #000;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .tabsTrigger[data-state="active"] {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .tabsTrigger {
+    transition: none;
+  }
+  
+  .tabsTrigger:hover,
+  .tabsTrigger[data-state="active"] {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .tabsList {
+    display: none; /* Hide tabs in print */
+  }
+  
+  .tabsContent {
+    box-shadow: none;
+    border: 1px solid #000;
+    background: white;
+    margin-top: 0;
+  }
+}
+
+/* Animation for tab content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tabsContent[data-state="active"] {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading state */
+.tabsTrigger[data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.7;
+  position: relative;
+}
+
+.tabsTrigger[data-loading="true"]::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

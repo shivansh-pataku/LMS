@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/cypress/screenshots/
+/cypress/videos/
 
 # next.js
 /.next/
@@ -23,6 +27,12 @@ out/
 # misc
 .DS_Store
 *.pem
+tempCodeRunnerFile.*
+.conflicts.*
+*.txt
+*.text
+notes.md
+TODO.md
 
 # debug
 npm-debug.log*
@@ -35,6 +45,8 @@ yarn-error.log*
 .env.local
 .env.production
 .env.development
+.env.staging
+.env.test
 !.env.example  # Keep .env.example in Git for reference
 *.env
 *.env.*

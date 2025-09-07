@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import styles from "../HOME/Container_Classes.module.css";
 import Image from "next/image";
 import StudentCourses from "./StudentCourses"; // Verify this path and filename are correct
@@ -110,6 +111,7 @@ export default function Container_Classes() {
     return (
       <div>
         <button
+          type="button"
           onClick={handleBackToList}
           style={{
             margin: "20px",
