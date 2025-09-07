@@ -182,7 +182,7 @@ export default function Courses() {
     }, []);
     
 
-  const initialBaseCols: readonly BaseColDefType[] = [
+  const initialBaseCols: readonly ColDef<Course>[] = [
     {
       field: "id",
       headerName: "Sr.",

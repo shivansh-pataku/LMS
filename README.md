@@ -14,7 +14,7 @@
 
 *Empowering educators and learners with a comprehensive digital learning platform*
 
-[🚀 Live Demo](#) | [📖 Documentation](#) | [🐛 Report Bug](#) | [💡 Request Feature](#)
+<!-- [🚀 Live Demo](#) | [📖 Documentation](#) | [🐛 Report Bug](#) | [💡 Request Feature](#) -->
 
 </div>
 
@@ -266,33 +266,36 @@ lms/
 ```markdown
 ## 📸 Screenshots
 
-### Dashboard Overview
-![Dashboard](public/screenshots/dashboard.png)
+### Homepage
+![Educational platform dashboard displaying course catalog; each course card shows instructor name, course code, and brief description with modern tech-themed style.](public/screenshots/home.png)
 
-### Course Management
-![Course Management](public/screenshots/course-management.png)
+### Course Creation Interface
+![Admin dashboard showing course creation form with input fields.](public/screenshots/add_course.png)
+
+### Pending Users and Course Approval
+![Users of any role are first approved by admins after signup and courses created by teachers first approved by admins.](public/screenshots/approval_student.png)
+
+### Courses Management Dashboard
+![Academic dashboard showing alloted courses table with multiple columns including course code, name, semester, teacher assigned, description, category and credit hours. Interface includes navigation menu and add new course button at the top.](public/screenshots/courses.png)
+
+### Course management : Creating Units and Lessons 
+![Course management interface showing hierarchical structure has view, edit, and manage buttons for administrative control.](public/screenshots/course_management.png)
 
 ### Live Class Interface
-![Live Classes](public/screenshots/live-classes.png)
+![Taking live class with attendance.](public/screenshots/live_class.png)
+
+### Course Content
+![Allows to add pdf, images, links, text and videos](public/screenshots/approval_student.png)
+
+### Scores Management
+![Academic dashboard interface displaying score records and management system. Shows a data table with columns for Internal, Midterm, Endterm and Total scores. Dropdown menu at top allows course selection between alloted courses.](public/screenshots/scores.png)
+
+### Accessing the course at student dashboard
+![Student dashboard displaying a course content page with Operating System course title, navigation tabs for Lessons, Details, Announcements, and Live Class. Course content section shows expandable modules including Introduction to Operating Systems, Process Management, and Memory Management with nested topics and resource links.](public/screenshots/access_course.png)
+
 ```
 
-### Method 2: GitHub Images
-1. Create an issue in your GitHub repository
-2. Drag and drop images into the issue description
-3. Copy the generated URLs and use them in README
 
-### Method 3: Third-party Hosting
-Use services like:
-- [Imgur](https://imgur.com/)
-- [Cloudinary](https://cloudinary.com/)
-- [GitHub Pages](https://pages.github.com/)
-
-### Best Practices for Screenshots
-- **Resolution**: Use high-resolution images (1920x1080 or higher)
-- **Format**: PNG for UI screenshots, JPG for photos
-- **Naming**: Use descriptive names (dashboard-overview.png)
-- **Size**: Optimize images to keep them under 500KB each
-- **Annotations**: Add arrows or highlights to important features
 
 ---
 
@@ -328,31 +331,6 @@ npx cypress open
 npx cypress run
 ```
 
----
-
-## 🚀 Deployment
-
-### **Vercel (Recommended)**
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically on every push
-
-### **Manual Deployment**
-```bash
-# Build the application
-npm run build
-
-# Start production server
-npm run start
-```
-
-### **Environment Configuration**
-Ensure all environment variables are properly set in your deployment platform:
-- Database connection strings
-- Authentication secrets
-- AWS credentials (if using S3)
-- Email service credentials
 
 ---
 
@@ -403,36 +381,6 @@ PUT    /api/courses/[id]/live-class    # Update live class
 
 ---
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Database Connection Error**
-```bash
-Error: connect ECONNREFUSED 127.0.0.1:3306
-```
-**Solution**: Ensure MySQL is running and credentials are correct
-
-**NextAuth Configuration Error**
-```bash
-Error: Please define a NEXTAUTH_SECRET environment variable
-```
-**Solution**: Add NEXTAUTH_SECRET to your .env.local file
-
-**File Upload Issues**
-```bash
-Error: AWS credentials not found
-```
-**Solution**: Configure AWS credentials or use local file storage
-
-### Performance Optimization
-- Enable database indexing for frequently queried fields
-- Implement caching for static content
-- Optimize images using Next.js Image component
-- Use lazy loading for large data sets
-
----
-
 ## � Project Statistics
 
 - **Lines of Code**: ~15,000+
@@ -442,25 +390,7 @@ Error: AWS credentials not found
 - **Test Coverage**: 85%+
 - **Performance Score**: 95/100
 
----
 
-## 🔮 Roadmap
-
-### **Version 2.0 (Upcoming)**
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] AI-powered content recommendations
-- [ ] Multi-language support
-- [ ] Offline mode for mobile
-
-### **Version 2.1**
-- [ ] Video streaming optimization
-- [ ] Advanced quiz builder
-- [ ] Gamification features
-- [ ] Social learning features
-- [ ] API rate limiting
-
----
 
 ## � License
 
@@ -480,18 +410,9 @@ This project is under ownership.
 
 ## 👨‍💻 Author
 
-**dkooloperator**
-- GitHub: [@dkooloperator](https://github.com/dkooloperator)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-
----
-
-## 📞 Support
-
-Need help? We're here for you!
-
-- 🐛 **Issues**: [GitHub Issues](https://github.com/dkooloperator/lms/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/dkooloperator/lms/discussions)
+**Shivansh Pataku & Gourav Gupta**
+- GitHub: [@Shivansh_Pataku](https://github.com/dkooloperator)
+- LinkedIn: [Shivansh_Pataku](https://linkedin.com/in/shivansh-pataku-511611165)
 
 ---
 
