@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![EduSphere Logo](public/forest1.jpg)
+<!-- ![EduSphere Logo](public/forest1.jpg) -->
 
 **A modern, full-featured Learning Management System built with Next.js 15, React 19, and TypeScript**
 
@@ -284,41 +284,6 @@ lms/
 
 ### Accessing the course at student dashboard
 ![Student dashboard displaying a course content page with Operating System course title, navigation tabs for Lessons, Details, Announcements, and Live Class. Course content section shows expandable modules including Introduction to Operating Systems, Process Management, and Memory Management with nested topics and resource links.](public/screenshots/access_course.png)
-
----
-
-## 🧪 Testing Strategy
-
-### **Unit Testing (Jest)**
-```bash
-# Run all unit tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Watch mode for development
-npm run test:watch
-```
-
-### **E2E Testing (Playwright)**
-```bash
-# Run E2E tests
-npm run test:e2e
-
-# Run with UI mode
-npm run test:e2e:ui
-```
-
-### **Integration Testing (Cypress)**
-```bash
-# Open Cypress dashboard
-npx cypress open
-
-# Run headless
-npx cypress run
-```
-
 
 ---
 
